@@ -60,3 +60,15 @@
 #community-card-deck.active{
     display:none
 }
+#chance-card{
+    display:inline;
+}
+#chance-card.active{
+    display:none;
+}
+
+/*dice Roll*/
+#myDice1{
+    width:40%;
+    height:50px;
+}

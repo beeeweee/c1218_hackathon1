@@ -21,6 +21,9 @@ $('.remove-community-card').click(function(){
     $('#community-card-deck').addClass('active');
   })
  
+  $('.remove-chance-card').click(function(){
+    $('#chance-card').addClass('active');
+})
 }
 
 
@@ -91,7 +94,7 @@ function randomChanceCard(){
 
 function dealChanceCard(i){
     if(numberOfCardsInDeck ===0) return false;
-    var img= (`<img src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
+    var img= (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
    $('body').append(img);
    removeCard(i);
 }
