@@ -35,7 +35,8 @@ $('.remove-community-card').click(function(){
   $('.remove-chance-card').click(function(){
     $('#chance-card').addClass('active');
 })
-}
+
+
 
 
 
