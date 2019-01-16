@@ -5,6 +5,14 @@ var min=1;
 var max=6;
 var position=0;
 
+//player variables
+var currentPlayersObject = {
+    currentPlayers: [],
+    currentNumberOfPlayesr: 0,
+    playerStatus: [0,0,0,0],
+    playerName: [null,null,null,null]
+}
+
 function initializeGame(){
 
     $("#start-button").click(function () {
@@ -47,7 +55,10 @@ $('.remove-community-card').click(function(){
 //player 1 click handler
 $("#player1").click(function (){
     playerGame()
-})
+
+});
+
+
 
 //player game function
 function playerGame(){
@@ -60,7 +71,10 @@ function playerGame(){
     $(".dice2").append(dice2RandomeNum);
 
 
+
+
 }
+
 
 //Deal Community Chest Cards
 var communityChestDeck = new Array();
