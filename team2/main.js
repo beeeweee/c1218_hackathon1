@@ -13,6 +13,28 @@ var currentPlayersObject = {
     playerName: [null,null,null,null]
 }
 
+//money and cost allocation
+function disperseMoney(){
+    switch(currentPlayers){
+        case '1': currentPlayersObject.currentMoney += '1500'
+        break;
+        case '2': currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+        break;
+        case '3': currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+        break;
+        case '4': currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+        break;
+    }
+}
+
+function
+
 function initializeGame(){
 
     $("#start-button").click(function () {
