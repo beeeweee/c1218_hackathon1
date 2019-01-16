@@ -3,14 +3,20 @@ $(document).ready(initializeGame)
 //start variables
 var min=1;
 var max=6;
-var position=0;
 
 //player variables
 var currentPlayersObject = {
-    currentPlayers: [],
-    currentNumberOfPlayesr: 0,
-    playerStatus: [0,0,0,0],
-    playerName: [null,null,null,null]
+    'player1': {'playerPosition':0, 'playerStatus':0, 'playerName': ''},
+    'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': ''}
+
+
+
+
+    /*    currentPlayers: [],
+        currentNumberOfPlayesr: 0,
+        playerStatus: [0,0,0,0],
+        playerName: [null,null,null,null],
+        playerPosition:*/
 }
 
 //money and cost allocation
@@ -36,7 +42,6 @@ function disperseMoney(){
 function initializeGame(){
 
     $("#start-button").click(function () {
-        console.log("charu");
         $(".overlay").hide();
 
     });
@@ -44,8 +49,8 @@ function initializeGame(){
     $("#btn").click(function(){
          var randomDice1Roll= Math.floor(1+ Math.random()*6);
          var randomDice2Roll=Math.floor(1+Math.random()*6);
-         $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${randomDice1Roll}.PNG"></img>`)
-         $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${randomDice2Roll}.PNG"></img>`)
+         $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG"></img>`)
+         $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG"></img>`)
     })
     //Deal Cards
     $('#deal-community').click(function(){
@@ -104,20 +109,27 @@ function initializeGame(){
 //player 1 click handler
 $("#player1").click(function (){
     playerGame()
-
 });
 
-
-
 //player game function
-function playerGame(){
+function diceNumbers(){
+    var totalValueOfDiceRoll = [];
+
     $("#player1").attr('enable');
-    var dice1RandomeNum= Math.floor(Math.random()*(max-min+1)+min);
-    var dice2RandomeNum= Math.floor(Math.random()*(max-min+1)+min);
-    var totalNum=dice1RandomeNum+dice2RandomeNum;
-    position=position+totalNum;
-    $(".dice1").append(dice1RandomeNum);
-    $(".dice2").append(dice2RandomeNum);
+    totalValueOfDiceRoll[0]= Math.floor(Math.random()*(max-min+1)+min);
+    totalValueOfDiceRoll[1]= Math.floor(Math.random()*(max-min+1)+min);
+    totalValueOfDiceRoll = dice1RandomeNum+dice2RandomeNum;
+    return totalValueOfDiceRoll;
+}
+
+function playerCurrentPosition(){
+    var currentPosition = currentPlayersObject.player1['playerPosition'];
+    var diceRolls = diceNumbers();
+    currentPosition = currentPosition + diceRolls[0] + diceRolls[1];
+    var newPosition = currentPosition;
+    $(`.position-${newPosition}`);
+    $(`.position-${newPosition}`).append()
+
 
 
 
