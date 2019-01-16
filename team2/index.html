@@ -1,8 +1,20 @@
-
 <!doctype html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Monopoly></title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <script src="main.js"></script>
 </head>
 <body>
 <!-- Game-Board Setup !-->
@@ -62,5 +74,30 @@
     </div>
 </div>
 
+  
+  
+
+<!--Christine-->
+<!--Game Button-->
+<button type="button" class="btn btn-light start-game">Start Game</button>
+
+<!--Dice-->
+<button id="btn">Roll Dice</button>
+<br/>
+<div id="myDice1"></div> <div id="myDice2"></div>
+<!--Deal Community Chest Cards-->
+<input type="button" value="Take One Community Chest Cards" id="deal-community"/>
+<input type="button" value="Take One Chance Card" id="deal-chance"/>
+<button type="button" class="btn btn-light remove-community-card">Remove Community Card</button>
+<button type="button" class="btn btn-light remove-chance-card">Remove Chance Card</button>
+
+ <!--Player Stats-->
+ <div id="player-container">
+        <h3 id="player-stats">Players Status</h3>
+        <div id="player1"></div>
+        <div id="player2"></div>
+    </div>
+
+  
 </body>
 </html>
