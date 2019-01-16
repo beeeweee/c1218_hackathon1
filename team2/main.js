@@ -5,6 +5,14 @@ var min=1;
 var max=6;
 var position=0;
 
+//player variables
+var currentPlayersObject = {
+    currentPlayers: [],
+    currentNumberOfPlayesr: 0,
+    playerStatus: [0,0,0,0],
+    playerName: [null,null,null,null]
+}
+
 function initializeGame(){
     //create Dice Roll Effect
     $("#btn").click(function(){
@@ -35,7 +43,7 @@ $('.remove-community-card').click(function(){
 //player 1 click handler
 $("#player1").click(function (){
     playerGame()
-}
+});
 
 //player game function
 function playerGame(){
@@ -50,9 +58,6 @@ function playerGame(){
 }
 
 
-
-
-}
 
 
 
