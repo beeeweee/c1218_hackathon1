@@ -33,8 +33,6 @@ function disperseMoney(){
     }
 }
 
-function
-
 function initializeGame(){
 
     $("#start-button").click(function () {
