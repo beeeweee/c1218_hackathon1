@@ -1,5 +1,8 @@
 body{
     margin: 0;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
 }
   
 .overlay {
@@ -21,11 +24,14 @@ html {
 *, *:before, *:after {
     box-sizing: inherit;
 }
+
+
+/*Board Game Selectors*/
 .board-game-container{
     display: flex;
     background-color: red;
-    height: 100vh;
-    width: 60vw;
+    height: 100%;
+    width: 60%;
     padding: 0;
 
 }
@@ -51,6 +57,7 @@ html {
 .board{
     height: 60%;
     background-color: purple;
+    text-align: center;
 }
 
 .small-square{
@@ -75,4 +82,87 @@ html {
     width: 10%;
     height: 100%;
     flex-flow: row wrap;
+}
+
+
+/*________________________________Stats Container Selectors____________________________________*/
+.stats-container{
+    height: 100%;
+    width: 40%;
+    text-align: center;
+}
+
+#player-container{
+    height: 30%;
+    width: 100%;
+}
+
+
+/*player effects*/
+#player1, #player2{
+    background: url() no-repeat;
+    width:100px;
+    height:150px;
+    border: 1px solid red
+}
+
+/*Player Stats*/
+#player-stats{
+    font-size:1.5rem;
+    font-family: 'Alegreya Sans', sans-serif;
+    /*position: relative;*/
+    /*left: 78%;*/
+    /*top: 57px;*/
+}
+
+#player1{
+    background-image: url(monopoly_images/little_finger.PNG);
+    width: 50px;
+    height: 55px;
+    border-radius: 50%;
+    position: relative;
+    background-size: cover;
+}
+
+#player2{
+    background-image:url(monopoly_images/white_walker.PNG);
+    width: 50px;
+    height:55px;
+    display:inline-block;
+    position:relative;
+    background-size: cover;
+    border-radius:50%;
+}
+
+.indiv-players{
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+}
+
+
+
+/*Game Button*/
+
+.stats-button-container{
+    height: 80%;
+    width: 100%;
+}
+
+.start-game{
+
+}
+
+.remove-community-card{
+
+}
+
+
+/*card effects*/
+#community-card-deck{
+    display: inline;
+}
+
+#community-card-deck.active{
+    display:none
 }

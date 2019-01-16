@@ -19,6 +19,28 @@ var currentPlayersObject = {
         playerPosition:*/
 }
 
+//money and cost allocation
+function disperseMoney(){
+    switch(currentPlayers){
+        case '1': currentPlayersObject.currentMoney += '1500'
+        break;
+        case '2': currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+        break;
+        case '3': currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+        break;
+        case '4': currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+                currentPlayersObject.currentMoney += '1500'
+        break;
+    }
+}
+
+function
+
 function initializeGame(){
 
     $("#start-button").click(function () {
@@ -40,8 +62,37 @@ function initializeGame(){
         dealChanceCard(randomChanceCard());
      })
 
+
+            //remove cards clickHandlers
+    $('.remove-community-card').click(function(){
+        $('#community-card-deck').addClass('active');
+    })
+    
+    $('.remove-chance-card').click(function(){
+        $('#chance-card').addClass('active');
+    })
+    }
+    
+    //enlarge property mouseover clickHandlers
+    $('.small-square').mouseover(function(){
+        enlargePropertyElement();
+    })
+   
+    
+
+    //start game click handler
+        $("#start-button").click(function () {
+            $(".overlay").hide();
+            startTimer();
+        })
+
+    //player 1 click handler
+    $("#player1").click(function (){
+        playerGame()
+    })
+
         //clickHandlers
-$('.remove-community-card').click(function(){
+ $('.remove-community-card').click(function(){
     $('#community-card-deck').addClass('active');
   })
  
@@ -56,7 +107,7 @@ $('.remove-community-card').click(function(){
 //start game click handler
 
 
-}
+
 //player 1 click handler
 $("#player1").click(function (){
     playerGame()
@@ -154,6 +205,21 @@ function removeCard(card){
     numberOfCardsInDeck--;
 }
 }
+
+
+//Enlarge Property Element
+function enlargePropertyElement(){
+    x.style.height= "70px";
+    x.style.width=  "64px";
+}
+function normalImg(){
+    x.style.height= "34px";
+    x.style.width= "34px";
+}
+
+
+
+
 
 // //players effect
 // var player1 =`<div id="player1"></div>`;
