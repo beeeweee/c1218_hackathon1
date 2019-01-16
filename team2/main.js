@@ -1,5 +1,10 @@
 $(document).ready(initializeGame)
 
+//start variables
+var min=1;
+var max=6;
+var position=0;
+
 function initializeGame(){
     //create Dice Roll Effect
     $("#btn").click(function(){
@@ -20,18 +25,34 @@ function initializeGame(){
 $('.remove-community-card').click(function(){
     $('#community-card-deck').addClass('active');
   })
- 
+//start game click handler
+      $("#start-button").click(function () {
+        $(".overlay").hide();
+        startTimer();
+    })
+
+}
+//player 1 click handler
+$("#player1").click(function (){
+    playerGame()
+}
+
+//player game function
+function playerGame(){
+    $("#player1").attr('enable');
+    var dice1RandomeNum= Math.floor(Math.random()*(max-min+1)+min);
+    var dice2RandomeNum= Math.floor(Math.random()*(max-min+1)+min);
+    var totalNum=dice1RandomeNum+dice2RandomeNum;
+    var position=position+totalNum;
+    $(".dice1").append(dice1RandomeNum);
+    $(".dice2").append(dice2RandomeNum);
+
 }
 
 
 
 
-
-
-
-
-
-
+}
 
 
 
