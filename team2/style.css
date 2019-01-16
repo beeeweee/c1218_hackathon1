@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+}
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+.board-game-container{
+    display: flex;
+    background-color: red;
+    height: 100vh;
+    width: 60vw;
+    padding: 0;
+
+}
+
+.left-column-container, .right-column-container{
+    height: 100%;
+    width: 20%;
+    background-color: pink;
+}
+
+.middle-section-container{
+    height: 100%;
+    width: 60%;
+    background-color: green;
+
+}
+
+.top-row, .bottom-row{
+    background-color: blue;
+    height: 20%;
+}
+
+.board{
+    height: 60%;
+    background-color: purple;
+}
+
+.small-square{
+    height: 6%;
+    border: black solid 1px;
+}
+
+.large-square{
+    height: 20%;
+    border: black solid 1px;
+}
+
+.top-row{
+    display: flex;
+}
+
+.bottom-row{
+    display: flex;
+}
+
+.top-row > .small-square, .bottom-row > .small-square{
+    width: 10%;
+    height: 100%;
+    flex-flow: row wrap;
+}
