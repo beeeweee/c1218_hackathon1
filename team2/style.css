@@ -197,13 +197,15 @@ html {
     display: none;
 }
 
+
 /* Player Token*/
+
 .circle {
-    height: 25px;
-    width: 25px;
-    background-color: teal;
+    height: 50px;
+    width: 50px;
     border-radius: 50px;
     display: block;
+
 
 }
 
