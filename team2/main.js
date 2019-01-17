@@ -59,11 +59,10 @@ var currentPlayersObject = {
        }
            
         }
-    }
 
 
 
-var GameAudioController = new AudioController();
+//var GameAudioController = new AudioController();
 
   
 
@@ -97,7 +96,8 @@ function populateBoardSpots(){
 //     var imageToUseContainer = $('div');
         console.log('im doing something')
         var imageToUse = $('<img />', {
-            src: `monopoly_images/board_images/position-${currentSquare}.png`
+            src: `monopoly_images/board_images/position-${currentSquare}.png`,
+            class: 'spotImages'
             });
         $(`.position-${currentSquare}`).append(imageToUse);
         // $(`.position${currentSquare}`).append(imageToUse);
@@ -106,7 +106,7 @@ function populateBoardSpots(){
 
 
 function initializeGame() {
-    // populateBoardSpots();
+     populateBoardSpots();
 
     $("select").change(numberOfPlayersSelected);
     numberOfPlayersSelected();
@@ -139,15 +139,14 @@ function initializeGame() {
 
      })
      //Background Game Music Audio
-     $('#start-button').click(function(){
+     /*$('#start-button').click(function(){
         GameAudioController.playAudio();
-
     })
 
     $('.dice-roll').click(function(){
         GameAudioController.playDiceRolling();
     })
-
+*/
     //remove cards clickHandlers
     $('.remove-community-card').click(function () {
         $('#community-card-deck').addClass('active');
@@ -172,11 +171,11 @@ function initializeGame() {
     $('.player-2-stat').mouseout(showPlayerStats);
 
     //start game click handler
-    $("#start-button").click(function () {
+    /*$("#start-button").click(function () {
         $(".overlay").hide();
         //startTimer();
     })
-
+*/
     
 
 }
@@ -187,10 +186,11 @@ function initializeGame() {
 
 
 //start game click handler
-$("#start-button").click(function () {
+/*$("#start-button").click(function () {
     $(".overlay").hide();
     //startTimer();
 });
+*/
 
 function togglePlayer(){
     currentPlayerIndex = currentPlayerIndex + 1;
@@ -218,10 +218,11 @@ $('.remove-chance-card').click(function () {
 function numberOfPlayersSelected() {
     numberOfPlayers = $('#numberOfPlayersSelect').val();
     console.log(numberOfPlayers);
-    diplayPlayersSelected();
+    displayPlayersSelected();
 }
 
-function diplayPlayersSelected() {
+function displayPlayersSelected() {
+    debugger;
     var player2 = $('.player2');
     var player3 = $('.player3');
     var player4 = $('.player4');
@@ -426,9 +427,8 @@ $('.remove-chance-card').click(function () {
 })
 //Modal Handler
 
+$('.small-square, .large-square').click(showDeed);
 
-     $('.small-square, .large-square').click(showDeed);
-}
 
 //start game click handler
 
@@ -712,7 +712,7 @@ function playerLandsOnAnotherPlayersProperty(player, property){
 function playerLandsOnOwnedProperty(player, property){
     // display "You already own this property"
     // prompt player to finish turn
-    console.log(`${player} owns ${}.`);
+    //console.log(`${player} owns ${}.`);
 }
 
 
@@ -747,10 +747,10 @@ function getByID(propertyIndex){
     return propertyData[propertyIndex];
     console.log("hi");
 }
-=======
-    $('#mortgage-cost').text(deedData[9]);
 
-}
+    //$('#mortgage-cost').text(deedData[9]);
+
+
 
 /*
 
