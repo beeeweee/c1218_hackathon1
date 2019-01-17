@@ -265,8 +265,11 @@ function showPlayerPieces(){
     } else if (numberOfPlayers === 2){
       player2.appendTo($('.position-0'));
     } else if (numberOfPlayers === 3){
+        player2.appendTo($('.position-0'));
       player3.appendTo($('.position-0'));
     } else if (numberOfPlayers === 4){  
+        player2.appendTo($('.position-0'));
+        player3.appendTo($('.position-0'));
       player4.appendTo($('.position-0'));
     }
 }
