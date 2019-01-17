@@ -250,6 +250,7 @@ function displayPlayersSelected() {
             removePlayerPieces();
         } else {
             showPlayerPieces();
+            player2.show();
         }
         removePlayerPieces();
        deactivePlayer();
@@ -311,6 +312,7 @@ function activatedPlayers() {
 
 
 function deactivePlayer() {
+    debugger;
     var totalAmtOfActivePlayers = 0;
     var indexCount = 1;
     while (indexCount <= 4) {
@@ -335,6 +337,7 @@ function deactivePlayer() {
 
 
 function showPlayerPieces() {
+    debugger;
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
@@ -359,17 +362,24 @@ function showPlayerPieces() {
       player1.appendTo($('.position-0'));
     } else if (numberOfPlayers === 2){
       player2.appendTo($('.position-0'));
+      $('.player2').show();
     } else if (numberOfPlayers === 3){
         player2.appendTo($('.position-0'));
       player3.appendTo($('.position-0'));
+      $('.player2').show();
+      $('.player3').show();
     } else if (numberOfPlayers === 4){  
         player2.appendTo($('.position-0'));
         player3.appendTo($('.position-0'));
       player4.appendTo($('.position-0'));
+      $('.player2').show();
+      $('.player3').show();
+      $('.player4').show();
     }
 }
 
 function removePlayerPieces() {
+    debugger;
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
