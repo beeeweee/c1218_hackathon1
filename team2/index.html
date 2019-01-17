@@ -20,23 +20,32 @@
   <div class="overlay">
     <div class="overlay-content">
         <h2>Welcome to Monopoly Game</h2>
+        <h3>Number of Players</h3>
+            <div id="numberOfPlayersContainer">
+                <select id="numberOfPlayersSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
         <div class="playerSelectContainer">
-            <div class="playerContainer">
+            <div class="playerContainer player1">
                 <img id='player1Img' src="monopoly_images/little_finger.PNG">
                 <div id='player1Text'>Player 1</div>
                 <div id='selectPlayer'></div>
             </div>
-            <div class="playerContainer">
+            <div class="playerContainer player2">
                 <img id='player1Img' src="monopoly_images/white_walker.PNG">
                 <div id='player2Text'>Player 2</div>
                 <div id='selectPlayer'></div>
             </div>
-            <div class="playerContainer">
+            <div class="playerContainer player3">
                 <img id='player1Img' src="monopoly_images/daenerys.PNG">
                 <div id='player3Text'>Player 3</div>
                 <div id='selectPlayer'></div>
             </div>
-            <div class="playerContainer">
+            <div class="playerContainer player4">
                 <img id='player1Img' src="monopoly_images/jon_snow.jpg">
                 <div id='player4Text'>Player 4</div>
                 <div id='selectPlayer'></div>
@@ -114,10 +123,18 @@
     <div id="player-container">
         <h3 id="player-stats">Players Status</h3>
         <div class="indiv-players">
-            <img id='player1Img' src="monopoly_images/little_finger.PNG">
-            <img id='player1Img' src="monopoly_images/white_walker.PNG">
-            <img id='player1Img' src="monopoly_images/daenerys.PNG">
-            <img id='player1Img' src="monopoly_images/jon_snow.jpg">
+            <div class="player1">
+                <img id='player1Img' src="monopoly_images/little_finger.PNG">
+            </div>
+            <div class="player2">
+                <img id='player1Img' src="monopoly_images/white_walker.PNG">
+            </div>
+            <div class="player3">
+                <img id='player1Img' src="monopoly_images/daenerys.PNG">
+            </div>
+            <div class="player4">
+                <img id='player1Img' src="monopoly_images/jon_snow.jpg">
+            </div>
         </div>
 
 <!--Dice-->
