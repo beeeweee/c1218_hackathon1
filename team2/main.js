@@ -73,14 +73,10 @@ function initializeGame() {
     });
 
     $("#toggleplayer").click(function () {
-        currentPlayerIndex = currentPlayerIndex + 1;
-        if (currentPlayerIndex < playerIds.length) {
-            currentPlayer = playerIds[currentPlayerIndex]
-        } else {
-            currentPlayerIndex = 0;
-            currentPlayer = playerIds[currentPlayerIndex];
-        }
+
+        togglePlayer();
     });
+
 
 
     //create Dice Roll Effect
@@ -119,7 +115,17 @@ function initializeGame() {
 $("#start-button").click(function () {
     $(".overlay").hide();
     //startTimer();
-})
+});
+
+function togglePlayer(){
+    currentPlayerIndex = currentPlayerIndex + 1;
+    if (currentPlayerIndex < playerIds.length) {
+        currentPlayer = playerIds[currentPlayerIndex]
+    } else {
+        currentPlayerIndex = 0;
+        currentPlayer = playerIds[currentPlayerIndex];
+    }
+};
 
 
 //clickHandlers
@@ -378,16 +384,25 @@ function diceNumbers() {
     $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG">`)
     if (totalValueOfDiceRoll[0] !== totalValueOfDiceRoll[1]) {
 
-        return totalMove;
+        return {
+            totalMove: totalMove,
+            toggle: true,
+        }
     } else {
-        return totalMove + diceNumbers();
+        return {
+            totalMove: totalMove,
+            toggle: false,
+
+        }
+        // totalMove + diceNumbers();
     }
 }
 
 function playerCurrentPosition() {
 
     var currentPosition = currentPlayersObject[currentPlayer]['playerPosition'];
-    var diceRolls = diceNumbers(); // storing the dice number
+    var result=diceNumbers();
+    var diceRolls = result.totalMove; // storing the dice number
     console.log(diceRolls);
     var newPosition = currentPosition + diceRolls;
     if (newPosition > totlBlockCount) {
@@ -396,8 +411,10 @@ function playerCurrentPosition() {
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
     var currentPlayerPosition = $('.' + currentPlayer + '.circle');
     $(`.position-${newPosition}`).append(currentPlayerPosition);
-    $("#player1").attr('disable');
-    $("#player2").attr('enable');
+    if(result.toggle){
+        togglePlayer()
+    }
+
 }
 
 
