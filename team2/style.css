@@ -158,17 +158,11 @@ html {
 /*Game Button*/
 
 .stats-button-container{
-    height: 80%;
-    width: 100%;
+    height: 60%;
+    width: 80%;
 }
 
-.start-game{
 
-}
-
-.remove-community-card{
-
-}
 
 
 /*card effects*/
@@ -182,20 +176,57 @@ html {
 
 /*modal effect*/
 
+#property-title, .character-title-name{
+    margin-top: 10px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
 
-#property-modal{
-    position:fixed;
+#property-modal {
+    position: fixed;
     left: 50%;
     top: 50%;
+    font-size: 19px; 
     transform: translate(-50%, -50%);
-    height: 400px;
-    width:350px;
+    height: 342px;
+    width: 291px;
     background-color: white;
-    z-index: 2
+    z-index: 2;
+    border: black solid 3px;
 }
 .modal-hide{
     display: none;
 }
+
+.title-name-container, .character-name-container {
+    height: 60%;
+    width: 95%;
+    border: 2px solid black;
+    margin: auto;
+
+}
+
+/*Player Modal Stats*/
+.modal-character-content{
+    position: fixed;
+    left: 79%;
+    top: 96%;
+    font-size: 19px;
+    transform: translate(-50%, -50%);
+    height: 233px;
+    width: 245px;
+    background-color: white;
+    z-index: 2;
+    border: black solid 3px;
+}
+
+
+
+
+
+
+
 
 
 /* Player Token*/
@@ -204,6 +235,18 @@ html {
     height: 50px;
     width: 50px;
     border-radius: 50px;
+
+}
+#myDice2, #myDice1{
+    height:80%;
+    display:inline-block;
+}
+#dice-roll{
+    height: 50%;
+}
+.button-container{
+    position:relative;
+    top:5%;
     display: block;
 
 
@@ -232,3 +275,8 @@ html {
     width: 100%;
 
 }
+
+.small-square > .spotImages, .large-square > .spotImages{
+     height: 100%;
+     width: 100%;
+ }

@@ -1,0 +1,83 @@
+/*player effects*/
+#player1{
+    position:absolute;
+    background: url() no-repeat;
+    width:100px;
+    height:150px;
+    border: 1px solid red 
+}
+
+/*Player Stats*/
+#player-stats{
+    font-size:1.5rem;
+    font-family: 'Alegreya Sans', sans-serif;
+    position: relative;
+    left: 78%;
+    top: 57px;
+}
+
+#player-container{
+    border-style: 2px 2px 2px black;
+}
+#player1{
+    background-image: url(monopoly_images/little_finger.PNG);
+    width: 50px;
+    height: 55px;
+    left: 75%;
+    top:55px;
+    border-radius: 50%;
+    position: relative;
+    background-size: cover;
+}
+#player2{
+    background-image:url(monopoly_images/white_walker.PNG);
+    width: 50px;
+    height:55px;
+    display:inline-block;
+    position:relative;
+    left:79%;
+    background-size: cover;
+    border-radius:50%;
+}
+/*Game Button*/
+.start-game{
+    position:relative;
+    top:125px;
+    left:64%;
+}
+
+.remove-community-card{
+    position:relative;
+    
+}
+
+
+/*card effects*/
+#community-card-deck{
+ display: inline;
+}
+
+#community-card-deck.active{
+    display:none
+}
+#chance-card{
+    display:inline;
+}
+#chance-card.active{
+    display:none;
+}
+
+/*dice Roll*/
+#myDice1{
+    width:40%;
+    height:50px;
+}
+
+/* Enlarge Property Size*/
+.small-square{
+  transition:all .2s ease-in-out;
+}
+
+.small-square:hover{
+    transition: scale(1.1);
+}
