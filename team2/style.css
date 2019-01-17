@@ -131,24 +131,14 @@ html {
     /*top: 57px;*/
 }
 
-#player1{
+#player1Img, #player2Img, #player4Img, #player4Img{
     background-image: url(monopoly_images/little_finger.PNG);
     width: 50px;
     height: 55px;
     border-radius: 50%;
-    position: relative;
-    background-size: cover;
+    position: inline-block;
 }
 
-#player2{
-    background-image:url(monopoly_images/white_walker.PNG);
-    width: 50px;
-    height:55px;
-    display:inline-block;
-    position:relative;
-    background-size: cover;
-    border-radius:50%;
-}
 
 .indiv-players{
     display: flex;
