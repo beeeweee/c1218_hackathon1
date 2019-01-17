@@ -12,6 +12,7 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
   <script src="main.js"></script>
+  <script src="propertydata.js"></script>
 
 </head>
 <body>
@@ -55,7 +56,7 @@
 </div>
   
 <!-- Game-Board Setup !-->
-<div class="board-game-container col-md-8 container">
+<div class="board-game-container">
     <div class="left-column-container">
         <div class="position-22 large-square"></div>
         <div class="position-21 small-square"></div>
@@ -68,7 +69,7 @@
         <div class="position-14 small-square"></div>
         <div class="position-13 small-square"></div>
         <div class="position-12 small-square"></div>
-        <div class="position-11 large-square"></div>
+        <div class="position-11 large-square">Illinois</div>
     </div>
     <div class="middle-section-container">
         <div class="top-row">
@@ -84,8 +85,8 @@
             <div class="position-32 small-square"></div>
         </div>
         <div class="board">
-            <input type="button" value="Take One Community Chest Cards" id="deal-community"/>
-            <input type="button" value="Take One Chance Card" id="deal-chance"/>
+            <div class="chest-card-deck-spot">Chest Cards</div>
+            <div class="chance-card-deck-spot">Chance Cards</div>
         </div>
         <div class="bottom-row">
             <div class="position-10 small-square"></div>
@@ -141,11 +142,6 @@
 <br/>
 <div id="myDice1"></div>
 <div id="myDice2"></div>
-<!--Deal Community Chest Cards-->
-<input type="button" value="Take One Community Chest Cards" id="deal-community"/>
-<input type="button" value="Take One Chance Card" id="deal-chance"/>
-<button type="button" class="btn btn-light remove-community-card">Remove Community Card</button>
-<button type="button" class="btn btn-light remove-chance-card">Remove Chance Card</button>
     </div>
 
     <div class="stats-button-container">
@@ -156,6 +152,43 @@
         <button type="button" class="remove-community-card">Remove Community Card</button>
         <button type="button" class="remove-chance-card">Remove Chance Card</button>
     </div>
+
+<!--Modal for Properties -->
+
+<!-- The Modal -->
+<div id="property-modal" class="modal modal-hide">
+      
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="property-container">
+            <div class="property-container">
+                    <div class="title-name-container">
+                      <h5 id="title-deed"><span id="property-title"></span></h5>
+                      <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
+                      <div class="houses-rent">
+                      <p id="property-text">With 1 Houses  $ <span id="rent-1"></span>
+                        <br>
+                         With 2 Houses  $   <span id="rent-2"></span>
+                        <br>
+                        With 3 Houses   $   <span id="rent-3"></span>
+                        <br>
+                        Hotel Cost       $ <span id="rent-hotel"></span>
+                        <br>
+                        Mortgage Cost    $ <span id="mortgage-cost"></span>
+                      </div>
+                      <div class="hotel-rent">  
+                      </div>    
+                    </div>
+                  </div>
+
+
+</div>
+
+<!--Property Container-->
+ <div class="property-container">
+
+ </div>
 
   <!--Property Image Effect-->
 </div>

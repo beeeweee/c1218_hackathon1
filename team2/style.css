@@ -13,7 +13,7 @@ body{
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.85);
     background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent \9; /* ie fallback png background image */
-    z-index: 3;
+    z-index: 1;
     color: white;
     font-size: 30px;
 }
@@ -71,6 +71,10 @@ html {
 }
 
 .board{
+    background-image: url("monopoly_images/board_images/centerGameImage.png");
+    background-position: center;
+    background-size: cover;
+    position: relative;
     height: 60%;
     background-color: purple;
     text-align: center;
@@ -176,6 +180,25 @@ html {
     display:none
 }
 
+/*modal effect*/
+
+
+#property-modal{
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width:350px;
+    background-color: white;
+    z-index: 2
+}
+.modal-hide{
+    display: none;
+}
+.title-name-container{
+
+
 /* Player Token*/
 .circle {
     height: 25px;
@@ -183,4 +206,26 @@ html {
     background-color: teal;
     border-radius: 50px;
     display: block;
+
+}
+
+.chance-card-deck-spot{
+    height: 20%;
+    width: 40%;
+    background-color: #2b542c;
+}
+
+.chest-card-deck-spot{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 20%;
+    width: 40%;
+    background-color: #2b542c;
+}
+
+.chance-card-deck-spot > img, .chest-card-deck-spot > img{
+    height: 100%;
+    width: 100%;
+
 }
