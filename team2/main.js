@@ -205,10 +205,21 @@ function initializeGame() {
 function togglePlayer(){
     currentPlayerIndex = currentPlayerIndex + 1;
     if (currentPlayerIndex < playerIds.length) {
-        currentPlayer = playerIds[currentPlayerIndex]
+        currentPlayer = playerIds[currentPlayerIndex];
+        if( playerIds[currentPlayerIndex]==='player1' || playerIds[currentPlayerIndex]=='player2'){
+        dealCommunityChestCard(randomCommunityCard());
+} else {
+    dealChanceCard() ;
+}
+
     } else {
         currentPlayerIndex = 0;
         currentPlayer = playerIds[currentPlayerIndex];
+        if( playerIds[currentPlayerIndex]==='player1' || playerIds[currentPlayerIndex]=='player2'){
+            dealCommunityChestCard(randomCommunityCard());
+        } else {
+            dealChanceCard() ;
+
     }
 };
 
@@ -515,8 +526,11 @@ function playerCurrentPosition() {
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
     console.log(newPosition);
     var currentPlayerPosition = $('.' + currentPlayer + '.circle');
+
     console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
+
+
     console.log( currentPlayerPosition );
     if(result.toggle){
         togglePlayer()
@@ -530,7 +544,7 @@ function playerCurrentPosition() {
 var communityChestDeck = new Array();
 var numberOfCardsInDeck = 10;
 communityChestDeck[0] = "capture_1";
-communityChestDeck[1] = "capture_2";
+ communityChestDeck[1] = "capture_2";
 communityChestDeck[2] = "capture_1";
 communityChestDeck[3] = "capture_1";
 communityChestDeck[4] = "capture_1";
@@ -547,9 +561,10 @@ function randomCommunityCard() {
 }
 
 
-function dealCommunityChestCard(i) {
+function dealCommunityChestCard() {
     if (numberOfCardsInDeck === 0) return false;
-    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
+    /* var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`) */
+    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/capture_1.PNG">`)
     $('.chest-card-deck-spot').append(img);
 
 }
@@ -582,7 +597,8 @@ function randomChanceCard() {
 
 function dealChanceCard(i) {
     if (numberOfCardsInDeck === 0) return false;
-    var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
+    //var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
+    var img = (`<img id="chance-card" src="monopoly_images/chance/chance_1.PNG">`)
     $('.chance-card-deck-spot').append(img);
 
 }
@@ -591,12 +607,12 @@ function removeChanceCard(){
     $('.chance-card-deck-spot img').remove();
 }
 
-function removeCard(card) {
+/* function removeCard(card) {
     for (i = card; i <= numberOfCardsInDeck - 2; i++) {
         communityChestDeck[i] = communityChestDeck[i + 1];
         numberOfCardsInDeck--;
     }
-}
+} */
 
 //Modal Property
 
@@ -821,4 +837,3 @@ function getByID(propertyIndex){
 //         break;
 //     }
 // }
-
