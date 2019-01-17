@@ -25,6 +25,13 @@ html {
     box-sizing: inherit;
 }
 
+/*Players on Board*/
+.player1 {
+    background-color: black;
+    display: inline-block;
+    width: 25%;
+    height: 25%;
+}
 
 /*Board Game Selectors*/
 .board-game-container{
@@ -163,7 +170,7 @@ html {
     display: inline;
 }
 
-#community-card-deck.active{
+.active{
     display:none
 }
 
