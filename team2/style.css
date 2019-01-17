@@ -71,6 +71,10 @@ html {
 }
 
 .board{
+    background-image: url("monopoly_images/board_images/centerGameImage.png");
+    background-position: center;
+    background-size: cover;
+    position: relative;
     height: 60%;
     background-color: purple;
     text-align: center;
@@ -115,11 +119,11 @@ html {
 
 
 /*player effects*/
-#player1, #player2{
+.player1, .player2 .player3, .player4{
     background: url() no-repeat;
     width:100px;
-    height:150px;
-    border: 1px solid red
+    height:100px;
+
 }
 
 /*Player Stats*/
@@ -131,24 +135,17 @@ html {
     /*top: 57px;*/
 }
 
-#player1{
-    background-image: url(monopoly_images/little_finger.PNG);
+.player2, .player3, .player4 {
+    display: none;
+}
+
+#player1Img, #player2Img, #player4Img, #player4Img{
     width: 50px;
     height: 55px;
     border-radius: 50%;
-    position: relative;
-    background-size: cover;
+    position: inline-block;
 }
 
-#player2{
-    background-image:url(monopoly_images/white_walker.PNG);
-    width: 50px;
-    height:55px;
-    display:inline-block;
-    position:relative;
-    background-size: cover;
-    border-radius:50%;
-}
 
 .indiv-players{
     display: flex;
@@ -201,17 +198,34 @@ html {
 }
 
 
-
 /* Player Token*/
-.player1circle {
-     height: 25px;
-     width: 25px;
-     background-color: #122b40;
-     border-radius: 50px;
- }
-.player2circle {
-    height: 25px;
-    width: 25px;
-    background-color: #755c30;
+
+.circle {
+    height: 50px;
+    width: 50px;
     border-radius: 50px;
+    display: block;
+
+
+}
+
+.chance-card-deck-spot{
+    height: 20%;
+    width: 40%;
+    background-color: #2b542c;
+}
+
+.chest-card-deck-spot{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 20%;
+    width: 40%;
+    background-color: #2b542c;
+}
+
+.chance-card-deck-spot > img, .chest-card-deck-spot > img{
+    height: 100%;
+    width: 100%;
+
 }

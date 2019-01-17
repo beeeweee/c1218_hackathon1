@@ -1,19 +1,34 @@
 $(document).ready(initializeGame)
 
 //start variables
+
 var min = 1;
 var max = 6;
-var totlBlockCount=43;
-var currentPlayer ="player2";
-var playeNameArray=['a','b','c','d','e','f']
+var totlBlockCount = 43;
+var numberOfPlayers = 0;
+
+var playerIds = ['player1', 'player2'];
+var currentPlayerIndex = 0;
+var currentPlayer = "player1";
 
 //player variables
 var currentPlayersObject = {
     'player1': {
+        'playerPosition': 0, 'playerStatus': 1, 'playerName': '', 'balance': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+    },
+    'player2': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
         'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
-    'player2': {'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0}
+    'player3': {
+        'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+    },
+    'player4': {
+        'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+    },
 
 
     /*    currentPlayers: [],
@@ -49,19 +64,24 @@ function disperseMoney() {
 
 
 function initializeGame() {
+    $("select").change(numberOfPlayersSelected);
+    numberOfPlayersSelected();
 
     $("#start-button").click(function () {
         $(".overlay").hide();
 
     });
 
-    $("#toggleplayer").click(function(){
-        if(currentPlayer=='player1'){
-            currentPlayer= 'player2'
-        }else {
-            currentPlayer= 'player1'
+    $("#toggleplayer").click(function () {
+        currentPlayerIndex = currentPlayerIndex + 1;
+        if (currentPlayerIndex < playerIds.length) {
+            currentPlayer = playerIds[currentPlayerIndex]
+        } else {
+            currentPlayerIndex = 0;
+            currentPlayer = playerIds[currentPlayerIndex];
         }
     });
+
 
     //create Dice Roll Effect
     $("#btn").click(function () {
@@ -69,10 +89,12 @@ function initializeGame() {
         playerCurrentPosition();
     })
     //Deal Cards
-    $('#deal-community').click(function () {
+
+    $('.chest-card-deck-spot').click(function () {
         dealCommunityChestCard(randomCommunityCard());
     })
-    $('#deal-chance').click(function () {
+    $('.chance-card-deck-spot').click(function () {
+
         dealChanceCard(randomChanceCard());
     })
 
@@ -87,8 +109,6 @@ function initializeGame() {
     })
 
 
-
-
 }
 
 
@@ -101,8 +121,216 @@ $("#start-button").click(function () {
     //startTimer();
 })
 
-//player 1 click handler
 
+//clickHandlers
+
+$('.remove-community-card').click(function () {
+    $('#community-card-deck').addClass('active');
+})
+
+$('.remove-chance-card').click(function () {
+    $('#chance-card').addClass('active');
+})
+
+
+//start game number of players
+function numberOfPlayersSelected() {
+    numberOfPlayers = $('#numberOfPlayersSelect').val();
+    console.log(numberOfPlayers);
+    diplayPlayersSelected();
+}
+
+function diplayPlayersSelected() {
+    var player2 = $('.player2');
+    var player3 = $('.player3');
+    var player4 = $('.player4');
+
+    if (numberOfPlayers === "1") {
+        player2.hide();
+        player3.hide();
+        player4.hide();
+        activePlayer();
+        numberOfPlayers = 1;
+        if (activatedPlayers() > numberOfPlayers) {
+            removePlayerPieces();
+        } else {
+            showPlayerPieces();
+        }
+        deactivePlayer();
+        return;
+    } else if (numberOfPlayers === "2") {
+        player2.show();
+        player3.hide();
+        player4.hide();
+        activePlayer();
+        numberOfPlayers = 2;
+        if (activatedPlayers() > numberOfPlayers) {
+            removePlayerPieces();
+        } else {
+            showPlayerPieces();
+        }
+        removePlayerPieces();
+        deactivePlayer();
+        console.log('player 2 added')
+    } else if (numberOfPlayers === "3") {
+        player2.show();
+        player3.show();
+        player4.hide();
+        player3.show();
+        activePlayer();
+        numberOfPlayers = 3;
+        if (activatedPlayers() > numberOfPlayers) {
+            removePlayerPieces();
+        } else {
+            showPlayerPieces();
+        }
+        deactivePlayer();
+        console.log('player 3 added')
+    } else if (numberOfPlayers === "4") {
+        player2.show();
+        player3.show();
+        player4.show();
+        numberOfPlayers = 4;
+        activePlayer();
+        if (activatedPlayers() > numberOfPlayers) {
+            removePlayerPieces();
+        } else {
+            showPlayerPieces();
+        }
+        console.log('player 4 added')
+    }
+}
+
+function activePlayer() {
+    var totalAmtOfPlayers = numberOfPlayers;
+    for (var indivPlayer = 1; indivPlayer <= totalAmtOfPlayers; indivPlayer++) {
+        currentPlayersObject[`player${indivPlayer}`].playerStatus = 1;
+        console.log(currentPlayersObject[`player${indivPlayer}`] + " activated");
+    }
+
+}
+
+function activatedPlayers() {
+    var totalAmtOfActivePlayers = 0;
+    var indexCount = 1;
+    while (indexCount <= 4) {
+        if (currentPlayersObject[`player${indexCount}`].playerStatus === 1) {
+            totalAmtOfActivePlayers++;
+            indexCount++;
+
+        } else {
+            indexCount++;
+        }
+
+    }
+    return totalAmtOfActivePlayers;
+}
+
+function deactivePlayer() {
+    var totalAmtOfActivePlayers = 0;
+    var indexCount = 1;
+    while (indexCount <= 4) {
+        if (currentPlayersObject[`player${indexCount}`].playerStatus === 1) {
+            totalAmtOfActivePlayers++;
+            indexCount++;
+
+        } else {
+            indexCount++;
+        }
+
+    }
+    for (numberOfPlayers; numberOfPlayers < totalAmtOfActivePlayers; totalAmtOfActivePlayers--) {
+        currentPlayersObject[`player${totalAmtOfActivePlayers}`].playerStatus = 0;
+        console.log(currentPlayersObject[`player${totalAmtOfActivePlayers}`] + " deactivated");
+    }
+
+    //Modal Handler
+
+
+}
+
+
+function showPlayerPieces() {
+    var player1 = $('<img />', {
+        class: 'player1',
+        src: 'monopoly_images/little_finger.PNG',
+        alt: 'player1'
+    }).addClass('circle');
+    var player2 = $('<img />', {
+        class: 'player2',
+        src: 'monopoly_images/white_walker.PNG',
+        alt: 'player2'
+    }).addClass('circle');
+    var player3 = $('<img />', {
+        class: 'player3',
+        src: 'monopoly_images/daenerys.PNG',
+        alt: 'player3'
+    }).addClass('circle');
+    var player4 = $('<img />', {
+        class: 'player4',
+        src: 'monopoly_images/jon_snow.jpg',
+        alt: 'player4'
+    }).addClass('circle');
+    if (numberOfPlayers === 1) {
+        player1.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 2) {
+        player2.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 3) {
+        player3.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 4) {
+        player4.appendTo($('.position-0'));
+    }
+}
+
+function removePlayerPieces() {
+    var player1 = $('<img />', {
+        class: 'player1',
+        src: 'monopoly_images/little_finger.PNG',
+        alt: 'player1'
+    }).addClass('circle');
+    var player2 = $('<img />', {
+        class: 'player2',
+        src: 'monopoly_images/white_walker.PNG',
+        alt: 'player2'
+    }).addClass('circle');
+    var player3 = $('<img />', {
+        class: 'player3',
+        src: 'monopoly_images/daenerys.PNG',
+        alt: 'player3'
+    }).addClass('circle');
+    var player4 = $('<img />', {
+        class: 'player4',
+        src: 'monopoly_images/jon_snow.jpg',
+        alt: 'player4'
+    }).addClass('circle');
+    var totalAmtOfActivePlayers = 0;
+    var indexCount = 1;
+    while (indexCount <= 4) {
+        if (currentPlayersObject[`player${indexCount}`].playerStatus === 1) {
+            totalAmtOfActivePlayers++;
+            indexCount++;
+
+        } else {
+            indexCount++;
+        }
+
+    }
+    if (numberOfPlayers < totalAmtOfActivePlayers) {
+        player1.remove($('.position-0'));
+        player2.remove($('.position-0'));
+        player3.remove($('.position-0'));
+        player4.remove($('.position-0'));
+    } else if (numberOfPlayers < totalAmtOfActivePlayers) {
+        player2.remove($('.position-0'));
+        player3.remove($('.position-0'));
+        player4.remove($('.position-0'));
+    } else if (numberOfPlayers < totalAmtOfActivePlayers) {
+        player3.remove($('.position-0'));
+        player4.remove($('.position-0'));
+    } else if (numberOfPlayers < totalAmtOfActivePlayers) {
+        player4.remove($('.position-0'));
+    }
+}
 
 //clickHandlers
 $('.remove-community-card').click(function () {
@@ -113,6 +341,9 @@ $('.remove-chance-card').click(function () {
     $('#chance-card').addClass('active');
 })
 //Modal Handler
+
+
+//start game click handler
 
 
 $('.small-square, .large-square').click(showDeed);
@@ -128,10 +359,6 @@ $('.small-square, .large-square').click(showDeed);
 });*/
 
 // player choosing name from name array
-
-
-
-
 
 
 //player game function
@@ -163,11 +390,11 @@ function playerCurrentPosition() {
     var diceRolls = diceNumbers(); // storing the dice number
     console.log(diceRolls);
     var newPosition = currentPosition + diceRolls;
-    if(newPosition>totlBlockCount){
-        newPosition=newPosition - totlBlockCount -1;
+    if (newPosition > totlBlockCount) {
+        newPosition = newPosition - totlBlockCount - 1;
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
-    var currentPlayerPosition = $('.'+currentPlayer+'circle');
+    var currentPlayerPosition = $('.' + currentPlayer + '.circle');
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     $("#player1").attr('disable');
     $("#player2").attr('enable');
@@ -194,11 +421,13 @@ function randomCommunityCard() {
     return Math.floor(Math.random() * numberOfCardsInDeck);
 }
 
+
 function dealCommunityChestCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
-    $('body').append(img);
+    $('.chest-card-deck-spot').append(img);
     removeCard(i);
+
 }
 
 
@@ -222,11 +451,13 @@ function randomChanceCard() {
     return Math.floor(Math.random() * numberOfCardsInDeck);
 }
 
+
 function dealChanceCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
-    $('body').append(img);
+    $('.chance-card-deck-spot').append(img);
     removeCard(i);
+
 }
 
 function removeCard(card) {

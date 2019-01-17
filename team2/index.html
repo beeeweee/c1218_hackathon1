@@ -20,34 +20,43 @@
   <div class="overlay">
     <div class="overlay-content">
         <h2>Welcome to Monopoly Game</h2>
+        <h3>Number of Players</h3>
+            <div id="numberOfPlayersContainer">
+                <select id="numberOfPlayersSelect">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
         <div class="playerSelectContainer">
-            <div class="playerContainer">
-                <div id='player1Img'></div>
-                <div id='player1'>Player 1</div>
+            <div class="playerContainer player1">
+                <img id='player1Img' src="monopoly_images/little_finger.PNG">
+                <div id='player1Text'>Player 1</div>
                 <div id='selectPlayer'></div>
             </div>
-            <div class="playerContainer">
-                <div id='player2Img'></div>
-                <div id='player2'>Player 2</div>
+            <div class="playerContainer player2">
+                <img id='player1Img' src="monopoly_images/white_walker.PNG">
+                <div id='player2Text'>Player 2</div>
                 <div id='selectPlayer'></div>
             </div>
-            <div class="playerContainer">
-                <div id='player3Img'></div>
-                <div id='player3'>Player 3</div>
+            <div class="playerContainer player3">
+                <img id='player1Img' src="monopoly_images/daenerys.PNG">
+                <div id='player3Text'>Player 3</div>
                 <div id='selectPlayer'></div>
             </div>
-            <div class="playerContainer">
-                <div id='player4Img'></div>
-                <div id='player4'>Player 4</div>
+            <div class="playerContainer player4">
+                <img id='player1Img' src="monopoly_images/jon_snow.jpg">
+                <div id='player4Text'>Player 4</div>
                 <div id='selectPlayer'></div>
             </div>
         </div>
-        <a href="#" id="start-button">Start</a>
+        <div><a href="#" id="start-button">Start</a></div>
     </div>
 </div>
   
 <!-- Game-Board Setup !-->
-<div class="board-game-container col-md-8 container">
+<div class="board-game-container">
     <div class="left-column-container">
         <div class="position-22 large-square"></div>
         <div class="position-21 small-square"></div>
@@ -76,8 +85,8 @@
             <div class="position-32 small-square"></div>
         </div>
         <div class="board">
-            <input type="button" value="Take One Community Chest Cards" id="deal-community"/>
-            <input type="button" value="Take One Chance Card" id="deal-chance"/>
+            <div class="chest-card-deck-spot">Chest Cards</div>
+            <div class="chance-card-deck-spot">Chance Cards</div>
         </div>
         <div class="bottom-row">
             <div class="position-10 small-square"></div>
@@ -105,8 +114,9 @@
         <div class="position-42 small-square"></div>
         <div class="position-43 small-square"></div>
         <div class="position-0 large-square">
-             <div class="player1circle"></div>
-            <div class="player2circle"></div>
+            <!--<img class="player1 circle" src="monopoly_images/little_finger.PNG" alt="player1">
+            <img class="player2 circle" src="monopoly_images/white_walker.PNG" alt="player2">-->
+
         </div>
     </div>
 </div>
@@ -117,8 +127,18 @@
     <div id="player-container">
         <h3 id="player-stats">Players Status</h3>
         <div class="indiv-players">
-            <div id="player1">Little Finger</div>
-            <div id="player2">Dead King</div>
+            <div class="player1">
+                <img id='player1Img' src="monopoly_images/little_finger.PNG">
+            </div>
+            <div class="player2">
+                <img id='player1Img' src="monopoly_images/white_walker.PNG">
+            </div>
+            <div class="player3">
+                <img id='player1Img' src="monopoly_images/daenerys.PNG">
+            </div>
+            <div class="player4">
+                <img id='player1Img' src="monopoly_images/jon_snow.jpg">
+            </div>
         </div>
 
 <!--Dice-->
@@ -134,11 +154,6 @@
 <br/>
 <div id="myDice1"></div>
 <div id="myDice2"></div>
-<!--Deal Community Chest Cards-->
-<input type="button" value="Take One Community Chest Cards" id="deal-community"/>
-<input type="button" value="Take One Chance Card" id="deal-chance"/>
-<button type="button" class="btn btn-light remove-community-card">Remove Community Card</button>
-<button type="button" class="btn btn-light remove-chance-card">Remove Chance Card</button>
     </div>
 
     <div class="stats-button-container">
