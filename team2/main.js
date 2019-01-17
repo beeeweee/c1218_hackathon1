@@ -6,10 +6,9 @@ var max=6;
 
 //player variables
 var currentPlayersObject = {
-    'player1': {'playerPosition':0, 'playerStatus':0, 'playerName': ''},
-    'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': ''}
-
-
+    'player1': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0,
+        'propertiesOwned': {}, 'railRoadsOwned':[], 'railRoadsAmtOwned':0, },
+    'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0}
 
 
     /*    currentPlayers: [],
@@ -19,24 +18,28 @@ var currentPlayersObject = {
         playerPosition:*/
 }
 
+
+
+function playerTurnCycler(currentPlayerTurn) {
+    var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
+
+    if (currentPlayerTurn < totalAmtOfPlayers) {
+        return `player${currentPlayerTurn + 1}`;
+    }
+
+    return 'player1';
+}
+
+
 //money and cost allocation
 function disperseMoney(){
-    switch(currentPlayers){
-        case '1': currentPlayersObject.currentMoney += '1500'
-        break;
-        case '2': currentPlayersObject.currentMoney += '1500'
-                currentPlayersObject.currentMoney += '1500'
-        break;
-        case '3': currentPlayersObject.currentMoney += '1500'
-                currentPlayersObject.currentMoney += '1500'
-                currentPlayersObject.currentMoney += '1500'
-        break;
-        case '4': currentPlayersObject.currentMoney += '1500'
-                currentPlayersObject.currentMoney += '1500'
-                currentPlayersObject.currentMoney += '1500'
-                currentPlayersObject.currentMoney += '1500'
-        break;
+    var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
+    console.log(totalAmtOfPlayers);
+
+    for (var indivPlayer = 1; indivPlayer <= totalAmtOfPlayers; indivPlayer++){
+        currentPlayersObject[`player${indivPlayer}`].balance += 1500;
     }
+
 }
 
 function initializeGame(){
