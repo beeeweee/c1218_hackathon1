@@ -276,15 +276,18 @@ function showPlayerPieces() {
         class: 'player4',
         src: 'monopoly_images/jon_snow.jpg',
         alt: 'player4'
-    }).addClass('circle');
-    if (numberOfPlayers === 1) {
-        player1.appendTo($('.position-0'));
-    } else if (numberOfPlayers === 2) {
+      }).addClass('circle');
+    if(numberOfPlayers === 1){
+      player1.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 2){
+      player2.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 3){
         player2.appendTo($('.position-0'));
-    } else if (numberOfPlayers === 3) {
+      player3.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 4){  
+        player2.appendTo($('.position-0'));
         player3.appendTo($('.position-0'));
-    } else if (numberOfPlayers === 4) {
-        player4.appendTo($('.position-0'));
+      player4.appendTo($('.position-0'));
     }
 }
 
