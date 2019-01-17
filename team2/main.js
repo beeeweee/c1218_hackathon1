@@ -134,12 +134,21 @@ function initializeGame() {
     //Deal Cards
 
     $('.chest-card-deck-spot').click(function () {
-        dealCommunityChestCard(randomCommunityCard());
+
+
+        if($('.chest-card-deck-spot').children().length===1){
+            removeChestCard();
+        } else {
+            dealCommunityChestCard(randomCommunityCard());
+        }
     })
+
     $('.chance-card-deck-spot').click(function () {
-
-        dealChanceCard(randomChanceCard());
-
+        if ($('.chance-card-deck-spot').children().length === 1) {
+            removeChanceCard();
+        } else {
+            dealChanceCard(randomChanceCard());
+        }
      })
      //Background Game Music Audio
      /*$('#start-button').click(function(){
@@ -225,7 +234,6 @@ function numberOfPlayersSelected() {
 }
 
 function displayPlayersSelected() {
-    debugger;
     var player2 = $('.player2');
     var player3 = $('.player3');
     var player4 = $('.player4');
@@ -315,7 +323,6 @@ function activatedPlayers() {
 
 
 function deactivePlayer() {
-    debugger;
     var totalAmtOfActivePlayers = 0;
     var indexCount = 1;
     while (indexCount <= 4) {
@@ -340,7 +347,7 @@ function deactivePlayer() {
 
 
 function showPlayerPieces() {
-    debugger;
+
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
@@ -546,8 +553,11 @@ function dealCommunityChestCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
     $('.chest-card-deck-spot').append(img);
-    removeCard(i);
 
+}
+
+function removeChestCard(){
+    $('.chest-card-deck-spot img').remove();
 }
 
 
@@ -576,8 +586,11 @@ function dealChanceCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
     $('.chance-card-deck-spot').append(img);
-    removeCard(i);
 
+}
+
+function removeChanceCard(){
+    $('.chance-card-deck-spot img').remove();
 }
 
 function removeCard(card) {
