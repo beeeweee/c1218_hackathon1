@@ -49,62 +49,62 @@
 <!-- Game-Board Setup !-->
 <div class="board-game-container col-md-8 container">
     <div class="left-column-container">
-        <div class="position-22 large-square"></div>
-        <div class="position-21 small-square"></div>
-        <div class="position-20 small-square"></div>
-        <div class="position-19 small-square"></div>
-        <div class="position-18 small-square"></div>
-        <div class="position-17 small-square"></div>
-        <div class="position-16 small-square"></div>
-        <div class="position-15 small-square"></div>
-        <div class="position-14 small-square"></div>
-        <div class="position-13 small-square"></div>
-        <div class="position-12 small-square"></div>
-        <div class="position-11 large-square">Illinois</div>
+        <div class="position-22 large-square" pos="22"></div>
+        <div class="position-21 small-square" pos="21"></div>
+        <div class="position-20 small-square" pos="20"></div>
+        <div class="position-19 small-square" pos="19"></div>
+        <div class="position-18 small-square" pos="18"></div>
+        <div class="position-17 small-square" pos="17"></div>
+        <div class="position-16 small-square" pos="16"></div>
+        <div class="position-15 small-square" pos="15"></div>
+        <div class="position-14 small-square" pos="14"></div>
+        <div class="position-13 small-square" pos="12"></div>
+        <div class="position-12 small-square" pos="13"></div>
+        <div class="position-11 large-square" pos="12">Illinois</div>
     </div>
     <div class="middle-section-container">
         <div class="top-row">
-            <div class="position-23 small-square"></div>
-            <div class="position-24 small-square"></div>
-            <div class="position-25 small-square"></div>
-            <div class="position-26 small-square"></div>
-            <div class="position-27 small-square"></div>
-            <div class="position-28 small-square"></div>
-            <div class="position-29 small-square"></div>
-            <div class="position-30 small-square"></div>
-            <div class="position-31 small-square"></div>
-            <div class="position-32 small-square"></div>
+            <div class="position-23 large-square small-square" pos="23"></div>
+            <div class="position-24 small-square" pos="24"></div>
+            <div class="position-25 small-square" pos="25"></div>
+            <div class="position-26 small-square" pos="26"></div>
+            <div class="position-27 small-square" pos="27"></div>
+            <div class="position-28 small-square" pos="28"></div>
+            <div class="position-29 small-square" pos="29"></div>
+            <div class="position-30 small-square" pos="30"></div>
+            <div class="position-31 small-square" pos="31"></div>
+            <div class="position-32 large-square small-square" pos="32"></div>
         </div>
         <div class="board">
             <input type="button" value="Take One Community Chest Cards" id="deal-community"/>
             <input type="button" value="Take One Chance Card" id="deal-chance"/>
         </div>
         <div class="bottom-row">
-            <div class="position-10 small-square"></div>
-            <div class="position-9 small-square"></div>
-            <div class="position-8 small-square"></div>
-            <div class="position-7 small-square"></div>
-            <div class="position-6 small-square"></div>
-            <div class="position-5 small-square"></div>
-            <div class="position-4 small-square"></div>
-            <div class="position-3 small-square"></div>
-            <div class="position-2 small-square"></div>
-            <div class="position-1 small-square"></div>
+            <div class="position-10 small-square" pos="10"></div>
+            <div class="position-9 small-square" pos="9"></div>
+            <div class="position-8 small-square" pos="8"></div>
+            <div class="position-7 small-square" pos="7"></div>
+            <div class="position-6 small-square" pos="6"></div>
+            <div class="position-5 small-square" pos="5"></div>
+            <div class="position-4 small-square" pos="4"></div>
+            <div class="position-3 small-square" pos="3"></div>
+            <div class="position-2 small-square" pos="2"></div>
+            <div class="position-1 small-square" pos="1"></div>
         </div>
     </div>
     <div class="right-column-container">
-        <div class="position-33 large-square"></div>
-        <div class="position-34 small-square"></div>
-        <div class="position-35 small-square"></div>
-        <div class="position-36 small-square"></div>
-        <div class="position-37 small-square"></div>
-        <div class="position-38 small-square"></div>
-        <div class="position-39 small-square"></div>
-        <div class="position-40 small-square"></div>
-        <div class="position-41 small-square"></div>
-        <div class="position-42 small-square"></div>
-        <div class="position-43 small-square"></div>
-        <div class="position-0 large-square"><div class="circle"></div></div></div>
+        <div class="position-33 large-square" pos="33"></div>
+        <div class="position-34 small-square" pos="34"></div>
+        <div class="position-35 small-square" pos="35"></div>
+        <div class="position-36 small-square" pos="36"></div>
+        <div class="position-37 small-square" pos="37"></div>
+        <div class="position-38 small-square" pos="38"></div>
+        <div class="position-39 small-square" pos="39"></div>
+        <div class="position-40 small-square" pos="40"></div>
+        <div class="position-41 small-square" pos="41"></div>
+        <div class="position-42 small-square" pos="42"></div>
+        <div class="position-43 small-square" pos="43"></div>
+        <div class="position-0 large-square" pos="0"><div class="circle"></div></div></div>
     </div>
 </div>
 <!--Stats-->
@@ -149,8 +149,9 @@
     <span class="close">&times;</span>
     <div class="property-container">
             <div class="property-container">
-                    <div class="title-name-container">
+            <div class="title-name-container">
                       <h5 id="title-deed"><span id="property-title"></span></h5>
+                    </div>
                       <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
                       <div class="houses-rent">
                       <p id="property-text">With 1 Houses  $ <span id="rent-1"></span>

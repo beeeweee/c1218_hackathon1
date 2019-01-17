@@ -85,7 +85,7 @@ function initializeGame(){
     $(".circle").click(function (){
         playerCurrentPosition();
     });
-}
+
 
     
     //enlarge property mouseover clickHandlers
@@ -113,6 +113,7 @@ function initializeGame(){
 
 
      $('.small-square, .large-square').click(showDeed);
+}
 
 //start game click handler
 
@@ -130,9 +131,9 @@ function diceNumbers(){
 
     $("#player1").attr('enable');
     totalValueOfDiceRoll[0]= Math.floor(Math.random()*(max-min+1)+min);
-    $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG">`)
+    $('#myDice1').html(`<img id="dice-roll" src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG">`)
     totalValueOfDiceRoll[1]= Math.floor(Math.random()*(max-min+1)+min);
-    $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG">`)
+    $('#myDice2').html(`<img id="dice-roll" src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG">`)
     if(totalValueOfDiceRoll[0]!==totalValueOfDiceRoll[1]) {
         totalValueOfDiceRoll = totalValueOfDiceRoll[0] + totalValueOfDiceRoll[1];
         return totalValueOfDiceRoll;
@@ -232,8 +233,7 @@ function removeCard(card){
         mortgage-cost
     */
 
-function showDeed(){
-    debugger;
+function showDeed(){id="dice-roll" 
     $('#property-modal').show();
     var propertyIndex = $(this).attr('pos');
     var deedData = propData[propertyIndex];
@@ -245,6 +245,7 @@ function showDeed(){
     $('#rent-3').text(deedData[4]);
     $('#rent-hotel').text(deedData[8]);
    $('#mortgage-cost').text(deedData[9]);
+   $('.title-name-container').css('background-color', deedData[10]);
 
 }
 /*
@@ -264,27 +265,3 @@ function showDeed(){
 
 
 
-// //players effect
-// var player1 =`<div id="player1"></div>`;
-// $('.boardGame').append(player1);
-// $(document).keydown(function(e)){
-//     alert(e.keycode);
-
-
-//     var getPosition=$('#player').position();
-//     switch(e.keyCode)
-//     {
-//         case 37:
-//         $('#player1').css('left', position.left - //however many px we want // + 'px');
-//         break;
-//         case 38:
-//         $('#player1').css('top', position.top -//however many px we want // + 'px');
-//         break;
-//         case 39:
-//         $('#player1').css('right', position.right -//however many px we want // + 'px');
-//         break;
-//         case 40:
-//         $('#player1').css('right', position.right -//however many px we want // + 'px');;
-//         break;
-//     }
-// }
