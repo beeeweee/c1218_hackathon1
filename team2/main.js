@@ -7,7 +7,7 @@ var max = 6;
 var totlBlockCount = 43;
 var numberOfPlayers = 0;
 
-var playerIds = ['player1', 'player2'];
+var playerIds = ['player1', 'player2','player3', 'player4'];
 var currentPlayerIndex = 0;
 var currentPlayer = "player1";
 
