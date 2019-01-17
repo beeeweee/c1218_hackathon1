@@ -63,10 +63,10 @@ function initializeGame(){
          */
     })
     //Deal Cards
-    $('#deal-community').click(function(){
+    $('.chest-card-deck-spot').click(function(){
         dealCommunityChestCard(randomCommunityCard());
     })
-     $('#deal-chance').click(function(){
+     $('.chance-card-deck-spot').click(function(){
         dealChanceCard(randomChanceCard());
      })
 
@@ -101,13 +101,17 @@ function initializeGame(){
 
 
         //clickHandlers
-    $('.remove-community-card').click(function(){
-        $('#community-card-deck').addClass('active');
-    })
- 
-    $('.remove-chance-card').click(function(){
-        $('#chance-card').addClass('active');
-    })
+
+ $('.remove-community-card').click(function(){
+    $('#community-card-deck').addClass('active');
+  })
+
+  $('.remove-chance-card').click(function(){
+    $('#chance-card').addClass('active');
+})
+
+
+  
      //Modal Handler
      
 
@@ -180,7 +184,7 @@ function randomCommunityCard(){
 function dealCommunityChestCard(i){
     if(numberOfCardsInDeck ===0) return false;
     var img= (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
-   $('body').append(img);
+   $('.chest-card-deck-spot').append(img);
    removeCard(i);
 }
 
@@ -209,7 +213,7 @@ function randomChanceCard(){
 function dealChanceCard(i){
     if(numberOfCardsInDeck ===0) return false;
     var img= (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
-   $('body').append(img);
+   $('.chance-card-deck-spot').append(img);
    removeCard(i);
 }
 function removeCard(card){
