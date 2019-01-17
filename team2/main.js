@@ -52,10 +52,15 @@ function initializeGame(){
     });
     //create Dice Roll Effect
     $("#btn").click(function(){
-         var randomDice1Roll= Math.floor(1+ Math.random()*6);
+        console.log("charu");
+        diceNumbers()
+
+
+         /*var randomDice1Roll= Math.floor(1+ Math.random()*6);
          var randomDice2Roll=Math.floor(1+Math.random()*6);
          $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG"></img>`)
          $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG"></img>`)
+         */
     })
     //Deal Cards
     $('#deal-community').click(function(){
@@ -95,9 +100,7 @@ function initializeGame(){
         })
 
     //player 1 click handler
-    $("#player1").click(function (){
-        playerGame()
-    })
+
 
         //clickHandlers
  $('.remove-community-card').click(function(){
@@ -127,7 +130,9 @@ function diceNumbers(){
 
     $("#player1").attr('enable');
     totalValueOfDiceRoll[0]= Math.floor(Math.random()*(max-min+1)+min);
+    $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG">`)
     totalValueOfDiceRoll[1]= Math.floor(Math.random()*(max-min+1)+min);
+    $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG">`)
     if(totalValueOfDiceRoll[0]!==totalValueOfDiceRoll[1]) {
         totalValueOfDiceRoll = totalValueOfDiceRoll[0] + totalValueOfDiceRoll[1];
         return totalValueOfDiceRoll;
