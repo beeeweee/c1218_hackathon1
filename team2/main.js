@@ -66,8 +66,6 @@ var currentPlayersObject = {
 
 //var GameAudioController = new AudioController();
 
-  
-
 function playerTurnCycler(currentPlayerTurn) {
     var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
 
@@ -225,7 +223,6 @@ function numberOfPlayersSelected() {
 }
 
 function displayPlayersSelected() {
-    debugger;
     var player2 = $('.player2');
     var player3 = $('.player3');
     var player4 = $('.player4');
@@ -644,7 +641,6 @@ function hidePlayerStats(){
 
 
 function showDeed() {
-    debugger;
     $('#property-modal').show();
     var propertyIndex = $(this).attr('pos');
     var deedData = propData[propertyIndex];

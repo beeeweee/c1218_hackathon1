@@ -54,20 +54,20 @@ html {
 
 .left-column-container, .right-column-container{
     height: 100%;
-    width: 20%;
+    width: 15%;
     background-color: pink;
 }
 
 .middle-section-container{
     height: 100%;
-    width: 60%;
+    width: 80%;
     background-color: green;
 
 }
 
 .top-row, .bottom-row{
     background-color: blue;
-    height: 20%;
+    height: 15%;
 }
 
 .board{
@@ -75,19 +75,21 @@ html {
     background-position: center;
     background-size: cover;
     position: relative;
-    height: 60%;
+    height: 70%;
     background-color: purple;
     text-align: center;
 }
 
 .small-square{
-    height: 6%;
+    height: 7.7778%;
     border: black solid 1px;
+    position: relative;
 }
 
 .large-square{
-    height: 20%;
+    height: 15%;
     border: black solid 1px;
+    position: relative;
 }
 
 .top-row{
@@ -99,7 +101,7 @@ html {
 }
 
 .top-row > .small-square, .bottom-row > .small-square{
-    width: 10%;
+    width: 11.11%;
     height: 100%;
     flex-flow: row wrap;
 }
@@ -235,7 +237,10 @@ html {
     height: 50px;
     width: 50px;
     border-radius: 50px;
-    display: show;
+    position: absolute;
+    right: 5%;
+    top: 2%
+
 
 }
 #myDice2, #myDice1{
@@ -257,18 +262,28 @@ html {
 }
 
 .chance-card-deck-spot{
-    height: 20%;
-    width: 40%;
-    background-color: #2b542c;
+    position: absolute;
+    height: 15%;
+    width: 20%;
+    background-image: url("monopoly_images/chance/chanceBackOfCard.png");
+    background-size: cover;
+    top: 41px;
+    right: 49px;
+    transform: rotate(-135deg);
+
 }
 
 .chest-card-deck-spot{
     position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 20%;
-    width: 40%;
-    background-color: #2b542c;
+    bottom: 34px;
+    left: 44px;
+    height: 15%;
+    width: 20%;
+    background-image: url("monopoly_images/community_chest/chestBackOfCard.png");
+    background-size: cover;
+    transform: rotate(45deg);
+
+
 }
 
 .chance-card-deck-spot > img, .chest-card-deck-spot > img{
