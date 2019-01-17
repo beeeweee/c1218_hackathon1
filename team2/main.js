@@ -39,7 +39,7 @@ function disperseMoney(){
     }
 }
 
-function
+
 
 function initializeGame(){
 
@@ -71,7 +71,12 @@ function initializeGame(){
     $('.remove-chance-card').click(function(){
         $('#chance-card').addClass('active');
     })
-    }
+
+    //player 1 click handler
+    $(".circle").click(function (){
+        playerCurrentPosition();
+    });
+}
     
     //enlarge property mouseover clickHandlers
     $('.small-square').mouseover(function(){
@@ -109,8 +114,8 @@ function initializeGame(){
 
 
 //player 1 click handler
-$("#player1").click(function (){
-    playerGame()
+$(".circle").click(function (){
+    playerCurrentPosition();
 });
 
 //player game function
@@ -120,22 +125,27 @@ function diceNumbers(){
     $("#player1").attr('enable');
     totalValueOfDiceRoll[0]= Math.floor(Math.random()*(max-min+1)+min);
     totalValueOfDiceRoll[1]= Math.floor(Math.random()*(max-min+1)+min);
-    totalValueOfDiceRoll = dice1RandomeNum+dice2RandomeNum;
-    return totalValueOfDiceRoll;
+    if(totalValueOfDiceRoll[0]!==totalValueOfDiceRoll[1]) {
+        totalValueOfDiceRoll = totalValueOfDiceRoll[0] + totalValueOfDiceRoll[1];
+        return totalValueOfDiceRoll;
+    }else {
+        totalValueOfDiceRoll[0]=totalValueOfDiceRoll[0]+Math.floor(Math.random()*(max-min+1)+min);
+        totalValueOfDiceRoll[1]=totalValueOfDiceRoll[1]+Math.floor(Math.random()*(max-min+1)+min);
+        totalValueOfDiceRoll= totalValueOfDiceRoll[0]+totalValueOfDiceRoll[1];
+         return totalValueOfDiceRoll;
+    }
 }
 
 function playerCurrentPosition(){
+    debugger;
     var currentPosition = currentPlayersObject.player1['playerPosition'];
-    var diceRolls = diceNumbers();
-    currentPosition = currentPosition + diceRolls[0] + diceRolls[1];
-    var newPosition = currentPosition;
-    $(`.position-${newPosition}`);
-    $(`.position-${newPosition}`).append()
-
-
-
-
-
+    var diceRolls = diceNumbers(); // storing the dice number
+    var newPosition = currentPosition + diceRolls;
+    currentPlayersObject.player1['playerPosition'] = newPosition;
+    var currentPlayer = $('.circle');
+    $(`.position-${newPosition}`).append(currentPlayer);
+    $("#player1").attr('disable');
+    $("#player2").attr('enable');
 }
 
 
