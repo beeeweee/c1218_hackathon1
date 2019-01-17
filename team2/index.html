@@ -12,6 +12,7 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
   <script src="main.js"></script>
+  <script src="propertydata.js"></script>
 
 </head>
 <body>
@@ -26,7 +27,7 @@
 <!-- Game-Board Setup !-->
 <div class="board-game-container col-md-8 container">
     <div class="left-column-container">
-        <div class="position-11 large-square"></div>
+        <div class="position-11 large-square">Missouri</div>
         <div class="position-10 small-square"></div>
         <div class="position-9 small-square"></div>
         <div class="position-8 small-square"></div>
@@ -37,7 +38,7 @@
         <div class="position-3 small-square"></div>
         <div class="position-2 small-square"></div>
         <div class="position-1 small-square"></div>
-        <div class="position-0 large-square"></div>
+        <div class="position-0 large-square" pos="0">Illinois</div>
     </div>
     <div class="middle-section-container">
         <div class="top-row">
@@ -108,11 +109,42 @@
         <button type="button" class="remove-chance-card">Remove Chance Card</button>
     </div>
 
-<<<<<<< HEAD
-  <!--Property Image Effect-->
-=======
+<!--Modal for Properties -->
+
+<!-- The Modal -->
+<div id="property-modal" class="modal modal-hide">
+      
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="property-container">
+            <div class="property-container">
+                    <div class="title-name-container">
+                      <h5 id="title-deed"><span id="property-title"></span></h5>
+                      <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
+                      <div class="houses-rent">
+                      <p id="property-text">With 1 Houses  $ <span id="rent-1"></span>
+                        <br>
+                         With 2 Houses  $   <span id="rent-2"></span>
+                        <br>
+                        With 3 Houses   $   <span id="rent-3"></span>
+                        <br>
+                        Hotel Cost       $ <span id="rent-hotel"></span>
+                        <br>
+                        Mortgage Cost    $ <span id="mortgage-cost"></span>
+                      </div>
+                      <div class="hotel-rent">  
+                      </div>    
+                    </div>
+                  </div>
+
+
 </div>
->>>>>>> ae2d5f0e408332af5fef298575bda4e0d3201ea0
-  
+
+<!--Property Container-->
+ <div class="property-container">
+
+ </div>
+
 </body>
 </html>
