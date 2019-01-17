@@ -542,7 +542,7 @@ function dealCommunityChestCard(i) {
 
 
 //Deal Chance Cards
-var chanceDeck = new Array();
+var chanceDeck = [];
 var numberOfCardsInChanceDeck = 10;
 chanceDeck[0] = "chance_1";
 chanceDeck[1] = "chance_2";
@@ -557,16 +557,31 @@ chanceDeck[9] = "chance_10";
 chanceDeck[10] = "go_to_jail";
 chanceDeck[11] = "Get_out_jail";
 
+
+
+
+
 function randomChanceCard() {
     return Math.floor(Math.random() * numberOfCardsInDeck);
 }
 
 
 function dealChanceCard(i) {
-    if (numberOfCardsInDeck === 0) return false;
+    if (numberOfCardsInDeck === 0) {
+        console.log("ab")
+        return false;
+    }
     var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
+    console.log("cd")
     $('.chance-card-deck-spot').append(img);
-    removeCard(i);
+    console.log("ef")
+    $('.chance-card-deck-spot').
+    console.log(i)
+    console.log("gh")
+
+}
+
+function hideCard(){
 
 }
 
