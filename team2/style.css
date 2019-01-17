@@ -170,6 +170,6 @@ html {
     display: inline;
 }
 
-#community-card-deck.active{
+.active{
     display:none
 }
