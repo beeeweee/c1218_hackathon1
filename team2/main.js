@@ -3,12 +3,18 @@ $(document).ready(initializeGame)
 //start variables
 var min=1;
 var max=6;
+var numberOfPlayers = 0;
 
 //player variables
 var currentPlayersObject = {
-    'player1': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0,
+    'player1': {'playerPosition':0, 'playerStatus':1, 'playerName': '', 'balance': 0,
         'propertiesOwned': {}, 'railRoadsOwned':[], 'railRoadsAmtOwned':0, },
-    'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0}
+    'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0,
+        'propertiesOwned': {}, 'railRoadsOwned':[], 'railRoadsAmtOwned':0, },
+    'player3': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0,
+    'propertiesOwned': {}, 'railRoadsOwned':[], 'railRoadsAmtOwned':0, },
+    'player4': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0,
+    'propertiesOwned': {}, 'railRoadsOwned':[], 'railRoadsAmtOwned':0, },
 
 
     /*    currentPlayers: [],
@@ -45,7 +51,8 @@ function disperseMoney(){
 
 
 function initializeGame(){
-
+    $( "select").change( numberOfPlayersSelected );
+    numberOfPlayersSelected();
     $("#start-button").click(function () {
         $(".overlay").hide();
 
@@ -109,8 +116,204 @@ function initializeGame(){
 })
 
 
+//start game number of players
+function numberOfPlayersSelected(){
+    numberOfPlayers = $('#numberOfPlayersSelect').val();
+    console.log(numberOfPlayers);
+    diplayPlayersSelected();
+}
 
+function diplayPlayersSelected(){
+    var player2 = $('.player2');
+    var player3 = $('.player3');
+    var player4 = $('.player4');
+    
+    if(numberOfPlayers === "1"){
+        player2.hide();
+        player3.hide();
+        player4.hide();
+        activePlayer();
+        numberOfPlayers = 1;
+        if(activatedPlayers() > numberOfPlayers){
+            removePlayerPieces();
+        } else 
+        {
+            showPlayerPieces();
+        }
+        deactivePlayer();
+        return;
+    } else if (numberOfPlayers === "2"){
+        player2.show();
+        player3.hide();
+        player4.hide();
+        activePlayer();
+        numberOfPlayers = 2;
+        if(activatedPlayers() > numberOfPlayers){
+            removePlayerPieces();
+        } else 
+        {
+            showPlayerPieces();
+        }
+        removePlayerPieces();
+        deactivePlayer();
+        console.log('player 2 added')
+    } else if (numberOfPlayers === "3"){
+        player2.show();
+        player3.show();
+        player4.hide();
+        player3.show();
+        activePlayer();
+        numberOfPlayers = 3;
+        if(activatedPlayers() > numberOfPlayers){
+            removePlayerPieces();
+        } else 
+        {
+            showPlayerPieces();
+        }
+        deactivePlayer();
+        console.log('player 3 added')
+    } else if (numberOfPlayers === "4"){
+        player2.show();
+        player3.show();
+        player4.show();
+        numberOfPlayers = 4;
+        activePlayer();
+        if(activatedPlayers() > numberOfPlayers){
+            removePlayerPieces();
+        } else 
+        {
+            showPlayerPieces();
+        }
+        console.log('player 4 added')
+    }
+}
 
+function activePlayer(){
+    var totalAmtOfPlayers = numberOfPlayers;
+    for (var indivPlayer = 1; indivPlayer <= totalAmtOfPlayers; indivPlayer++){
+        currentPlayersObject[`player${indivPlayer}`].playerStatus = 1;
+        console.log(currentPlayersObject[`player${indivPlayer}`]+" activated");
+    }
+
+}
+
+function activatedPlayers(){
+    var totalAmtOfActivePlayers = 0;
+    var indexCount = 1;
+    while(indexCount <= 4){
+        if(currentPlayersObject[`player${indexCount}`].playerStatus === 1){
+            totalAmtOfActivePlayers++;
+            indexCount++;
+
+        } else {
+            indexCount++;
+        }
+    
+    }
+    return totalAmtOfActivePlayers;
+}
+
+function deactivePlayer(){
+    var totalAmtOfActivePlayers = 0;
+    var indexCount = 1;
+    while(indexCount <= 4){
+        if(currentPlayersObject[`player${indexCount}`].playerStatus === 1){
+            totalAmtOfActivePlayers++;
+            indexCount++;
+
+        } else {
+            indexCount++;
+        }
+        
+    }
+    for (numberOfPlayers; numberOfPlayers < totalAmtOfActivePlayers; totalAmtOfActivePlayers--){
+        currentPlayersObject[`player${totalAmtOfActivePlayers}`].playerStatus = 0;
+        console.log(currentPlayersObject[`player${totalAmtOfActivePlayers}`]+" deactivated");
+    }
+
+}
+
+function showPlayerPieces(){
+    var player1 = $('<img />', { 
+        class: 'player1',
+        src: 'monopoly_images/little_finger.PNG',
+        alt: 'player1'
+      }).addClass('circle');
+    var player2 = $('<img />', { 
+        class: 'player2',
+        src: 'monopoly_images/white_walker.PNG',
+        alt: 'player2'
+    }).addClass('circle');
+    var player3 = $('<img />', { 
+        class: 'player3',
+        src: 'monopoly_images/daenerys.PNG',
+        alt: 'player3'
+      }).addClass('circle');
+      var player4 = $('<img />', { 
+        class: 'player4',
+        src: 'monopoly_images/jon_snow.jpg',
+        alt: 'player4'
+      }).addClass('circle');
+    if(numberOfPlayers === 1){
+      player1.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 2){
+      player2.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 3){
+      player3.appendTo($('.position-0'));
+    } else if (numberOfPlayers === 4){  
+      player4.appendTo($('.position-0'));
+    }
+}
+
+function removePlayerPieces(){
+    var player1 = $('<img />', { 
+        class: 'player1',
+        src: 'monopoly_images/little_finger.PNG',
+        alt: 'player1'
+      }).addClass('circle');
+    var player2 = $('<img />', { 
+        class: 'player2',
+        src: 'monopoly_images/white_walker.PNG',
+        alt: 'player2'
+    }).addClass('circle');
+    var player3 = $('<img />', { 
+        class: 'player3',
+        src: 'monopoly_images/daenerys.PNG',
+        alt: 'player3'
+      }).addClass('circle');
+      var player4 = $('<img />', { 
+        class: 'player4',
+        src: 'monopoly_images/jon_snow.jpg',
+        alt: 'player4'
+      }).addClass('circle');
+      var totalAmtOfActivePlayers = 0;
+    var indexCount = 1;
+    while(indexCount <= 4){
+        if(currentPlayersObject[`player${indexCount}`].playerStatus === 1){
+            totalAmtOfActivePlayers++;
+            indexCount++;
+
+        } else {
+            indexCount++;
+        }
+        
+    }
+    if(numberOfPlayers < totalAmtOfActivePlayers){
+      player1.remove($('.position-0'));
+      player2.remove($('.position-0'));
+      player3.remove($('.position-0'));
+      player4.remove($('.position-0'));
+    } else if (numberOfPlayers < totalAmtOfActivePlayers){
+      player2.remove($('.position-0'));
+      player3.remove($('.position-0'));
+      player4.remove($('.position-0'));
+    } else if (numberOfPlayers < totalAmtOfActivePlayers){
+        player3.remove($('.position-0'));
+        player4.remove($('.position-0'));
+    } else if (numberOfPlayers < totalAmtOfActivePlayers){  
+      player4.remove($('.position-0'));
+    }
+}
 
 //start game click handler
 

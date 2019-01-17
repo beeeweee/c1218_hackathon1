@@ -115,11 +115,11 @@ html {
 
 
 /*player effects*/
-#player1, #player2{
+.player1, .player2 .player3, .player4{
     background: url() no-repeat;
     width:100px;
-    height:150px;
-    border: 1px solid red
+    height:100px;
+
 }
 
 /*Player Stats*/
@@ -131,8 +131,11 @@ html {
     /*top: 57px;*/
 }
 
+.player2, .player3, .player4 {
+    display: none;
+}
+
 #player1Img, #player2Img, #player4Img, #player4Img{
-    background-image: url(monopoly_images/little_finger.PNG);
     width: 50px;
     height: 55px;
     border-radius: 50%;
@@ -179,4 +182,5 @@ html {
     width: 25px;
     background-color: teal;
     border-radius: 50px;
+    display: block;
 }
