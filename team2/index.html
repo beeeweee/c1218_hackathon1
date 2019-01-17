@@ -58,40 +58,35 @@
     <!-- Game-Board Setup !-->
     <div class="board-game-container col-md-8 container">
         <div class="left-column-container">
-            <div class="position-22 large-square" pos="22"></div>
-            <div class="position-21 small-square" pos="21"></div>
-            <div class="position-20 small-square" pos="20"></div>
+            <div class="position-20 large-square" pos="20"></div>
             <div class="position-19 small-square" pos="19"></div>
             <div class="position-18 small-square" pos="18"></div>
             <div class="position-17 small-square" pos="17"></div>
             <div class="position-16 small-square" pos="16"></div>
             <div class="position-15 small-square" pos="15"></div>
             <div class="position-14 small-square" pos="14"></div>
-            <div class="position-13 small-square" pos="12"></div>
-            <div class="position-12 small-square" pos="13"></div>
-            <div class="position-11 large-square" pos="12">cv</div>
+            <div class="position-13 small-square" pos="13"></div>
+            <div class="position-12 small-square" pos="12"></div>
+            <div class="position-11 small-square" pos="11"></div>
+            <div class="position-10 large-square" pos="10"></div>
         </div>
         <div class="middle-section-container">
             <div class="top-row">
-                <div class="position-23 large-square small-square" pos="23"></div>
+                <div class="position-21 small-square" pos="21"></div>
+                <div class="position-22 small-square" pos="22"></div>
+                <div class="position-23 small-square" pos="23"></div>
                 <div class="position-24 small-square" pos="24"></div>
                 <div class="position-25 small-square" pos="25"></div>
                 <div class="position-26 small-square" pos="26"></div>
                 <div class="position-27 small-square" pos="27"></div>
                 <div class="position-28 small-square" pos="28"></div>
                 <div class="position-29 small-square" pos="29"></div>
-                <div class="position-30 small-square" pos="30"></div>
-                <div class="position-31 small-square" pos="31"></div>
-                <div class="position-32 large-square small-square" pos="32"></div>
             </div>
             <div class="board">
-                <input type="button" value="Take One Community Chest Cards" id="deal-community" />
-                <input type="button" value="Take One Chance Card" id="deal-chance" />
-                <div class="chest-card-deck-spot">Chest Cards</div>
-                <div class="chance-card-deck-spot">Chance Cards</div>
+                <div class="chest-card-deck-spot"></div>
+                <div class="chance-card-deck-spot"></div>
             </div>
             <div class="bottom-row">
-                <div class="position-10 small-square" pos="10"></div>
                 <div class="position-9 small-square" pos="9"></div>
                 <div class="position-8 small-square" pos="8"></div>
                 <div class="position-7 small-square" pos="7"></div>
@@ -104,20 +99,17 @@
             </div>
     </div>
         <div class="right-column-container">
-            <div class="position-33 large-square" pos="33"></div>
+            <div class="position-30 large-square" pos="30"></div>
+            <div class="position-31 small-square" pos="31"></div>
+            <div class="position-32 small-square" pos="32"></div>
+            <div class="position-33 small-square" pos="33"></div>
             <div class="position-34 small-square" pos="34"></div>
             <div class="position-35 small-square" pos="35"></div>
             <div class="position-36 small-square" pos="36"></div>
             <div class="position-37 small-square" pos="37"></div>
             <div class="position-38 small-square" pos="38"></div>
             <div class="position-39 small-square" pos="39"></div>
-            <div class="position-40 small-square" pos="40"></div>
-            <div class="position-41 small-square" pos="41"></div>
-            <div class="position-42 small-square" pos="42"></div>
-            <div class="position-43 small-square" pos="43"></div>
-            <div class="position-0 large-square" pos="0">
-                <div class="circle"></div>
-            </div>
+            <div class="position-0 large-square" pos="0"></div>
         </div>
     </div>
 <!--Stats-->
@@ -142,40 +134,23 @@
         </div>
 
 <!--Dice-->
-<button id="btn">Roll Dice</button>
 
 
 
         <!--set player  name functionality -->
 
-        <button id="setplayerName">Set Player Name</button>
-
-<br/>
-<div id="myDice1"></div>
-<div id="myDice2"></div>
-    </div>
-
-            <!--Dice-->
-            <div class="button-container">
-                <button id="btn">Roll Dice</button>
-            </div>
-
-            <div id="myDice1"></div>
-            <div id="myDice2"></div>
-            <!--Deal Community Chest Cards-->
-            <input type="button" value="Take One Community Chest Cards" id="deal-community" />
-            <input type="button" value="Take One Chance Card" id="deal-chance" />
-            <button type="button" class="btn btn-light remove-community-card">Remove Community Card</button>
-            <button type="button" class="btn btn-light remove-chance-card">Remove Chance Card</button>
-
         <div class="stats-button-container">
-            <!--Game Button-->
-            <button type="button" class="start-game">Start Game</button>
-
+            <button id="setplayerName">Set Player Name</button>
+            <button id="btn">Roll Dice</button>
             <!--Deal Community Chest Cards-->
             <button type="button" class="remove-community-card">Remove Community Card</button>
             <button type="button" class="remove-chance-card">Remove Chance Card</button>
         </div>
+
+        <div id="myDice1"></div>
+        <div id="myDice2"></div>
+    </div>
+
     </div>
         <!--Modal for Properties -->
 
