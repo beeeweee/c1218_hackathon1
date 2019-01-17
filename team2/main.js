@@ -369,10 +369,15 @@ function showPlayerPieces() {
     } else if (numberOfPlayers === 3){
         player2.appendTo($('.position-0'));
       player3.appendTo($('.position-0'));
+      $('.player2').show();
+      $('.player3').show();
     } else if (numberOfPlayers === 4){  
         player2.appendTo($('.position-0'));
         player3.appendTo($('.position-0'));
       player4.appendTo($('.position-0'));
+      $('.player2').show();
+      $('.player3').show();
+      $('.player4').show();
     }
 }
 
