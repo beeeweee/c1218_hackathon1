@@ -18,6 +18,15 @@ body{
     font-size: 30px;
 }
 
+.overlay-content {
+    text-align: center;
+}
+
+.playerSelectContainer{
+    display: inline-block;
+    height: 60%;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -25,6 +34,13 @@ html {
     box-sizing: inherit;
 }
 
+/*Players on Board*/
+.player1 {
+    background-color: black;
+    display: inline-block;
+    width: 25%;
+    height: 25%;
+}
 
 /*Board Game Selectors*/
 .board-game-container{
@@ -163,7 +179,7 @@ html {
     display: inline;
 }
 
-#community-card-deck.active{
+.active{
     display:none
 }
 
@@ -185,4 +201,11 @@ html {
 }
 .title-name-container{
 
+
+/* Player Token*/
+.circle {
+    height: 25px;
+    width: 25px;
+    background-color: teal;
+    border-radius: 50px;
 }

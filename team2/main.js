@@ -3,15 +3,46 @@ $(document).ready(initializeGame)
 //start variables
 var min=1;
 var max=6;
-var position=0;
 
 //player variables
 var currentPlayersObject = {
-    currentPlayers: [],
-    currentNumberOfPlayesr: 0,
-    playerStatus: [0,0,0,0],
-    playerName: [null,null,null,null]
+    'player1': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0,
+        'propertiesOwned': {}, 'railRoadsOwned':[], 'railRoadsAmtOwned':0, },
+    'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0}
+
+
+    /*    currentPlayers: [],
+        currentNumberOfPlayesr: 0,
+        playerStatus: [0,0,0,0],
+        playerName: [null,null,null,null],
+        playerPosition:*/
 }
+
+
+
+function playerTurnCycler(currentPlayerTurn) {
+    var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
+
+    if (currentPlayerTurn < totalAmtOfPlayers) {
+        return `player${currentPlayerTurn + 1}`;
+    }
+
+    return 'player1';
+}
+
+
+//money and cost allocation
+function disperseMoney(){
+    var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
+    console.log(totalAmtOfPlayers);
+
+    for (var indivPlayer = 1; indivPlayer <= totalAmtOfPlayers; indivPlayer++){
+        currentPlayersObject[`player${indivPlayer}`].balance += 1500;
+    }
+
+
+}
+
 
 function initializeGame(){
 
@@ -23,8 +54,8 @@ function initializeGame(){
     $("#btn").click(function(){
          var randomDice1Roll= Math.floor(1+ Math.random()*6);
          var randomDice2Roll=Math.floor(1+Math.random()*6);
-         $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${randomDice1Roll}.PNG"></img>`)
-         $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${randomDice2Roll}.PNG"></img>`)
+         $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG"></img>`)
+         $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG"></img>`)
     })
     //Deal Cards
     $('#deal-community').click(function(){
@@ -43,6 +74,13 @@ function initializeGame(){
     $('.remove-chance-card').click(function(){
         $('#chance-card').addClass('active');
     })
+
+
+    //player 1 click handler
+    $(".circle").click(function (){
+        playerCurrentPosition();
+    });
+}
 
     
     //enlarge property mouseover clickHandlers
@@ -78,26 +116,39 @@ function initializeGame(){
 
 
 //player 1 click handler
-    $("#player1").click(function (){
-        playerGame()
 
-    });
-
-}
+$(".circle").click(function (){
+    playerCurrentPosition();
+});
 
 //player game function
-function playerGame(){
+function diceNumbers(){
+    var totalValueOfDiceRoll = [];
+
     $("#player1").attr('enable');
-    var dice1RandomeNum= Math.floor(Math.random()*(max-min+1)+min);
-    var dice2RandomeNum= Math.floor(Math.random()*(max-min+1)+min);
-    var totalNum=dice1RandomeNum+dice2RandomeNum;
-    position=position+totalNum;
-    $(".dice1").append(dice1RandomeNum);
-    $(".dice2").append(dice2RandomeNum);
+    totalValueOfDiceRoll[0]= Math.floor(Math.random()*(max-min+1)+min);
+    totalValueOfDiceRoll[1]= Math.floor(Math.random()*(max-min+1)+min);
+    if(totalValueOfDiceRoll[0]!==totalValueOfDiceRoll[1]) {
+        totalValueOfDiceRoll = totalValueOfDiceRoll[0] + totalValueOfDiceRoll[1];
+        return totalValueOfDiceRoll;
+    }else {
+        totalValueOfDiceRoll[0]=totalValueOfDiceRoll[0]+Math.floor(Math.random()*(max-min+1)+min);
+        totalValueOfDiceRoll[1]=totalValueOfDiceRoll[1]+Math.floor(Math.random()*(max-min+1)+min);
+        totalValueOfDiceRoll= totalValueOfDiceRoll[0]+totalValueOfDiceRoll[1];
+         return totalValueOfDiceRoll;
+    }
+}
 
-
-
-
+function playerCurrentPosition(){
+    debugger;
+    var currentPosition = currentPlayersObject.player1['playerPosition'];
+    var diceRolls = diceNumbers(); // storing the dice number
+    var newPosition = currentPosition + diceRolls;
+    currentPlayersObject.player1['playerPosition'] = newPosition;
+    var currentPlayer = $('.circle');
+    $(`.position-${newPosition}`).append(currentPlayer);
+    $("#player1").attr('disable');
+    $("#player2").attr('enable');
 }
 
 
