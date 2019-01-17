@@ -12,6 +12,7 @@
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
   <script src="main.js"></script>
+  <script src="propertydata.js"></script>
 
 </head>
 <body>
@@ -21,27 +22,27 @@
         <h2>Welcome to Monopoly Game</h2>
         <div class="playerSelectContainer">
             <div class="playerContainer">
-                <div id='player1Img'></div>
-                <div id='player1'>Player 1</div>
+                <img id='player1Img' src="monopoly_images/little_finger.PNG">
+                <div id='player1Text'>Player 1</div>
                 <div id='selectPlayer'></div>
             </div>
             <div class="playerContainer">
-                <div id='player2Img'></div>
-                <div id='player2'>Player 2</div>
+                <img id='player1Img' src="monopoly_images/white_walker.PNG">
+                <div id='player2Text'>Player 2</div>
                 <div id='selectPlayer'></div>
             </div>
             <div class="playerContainer">
-                <div id='player3Img'></div>
-                <div id='player3'>Player 3</div>
+                <img id='player1Img' src="monopoly_images/daenerys.PNG">
+                <div id='player3Text'>Player 3</div>
                 <div id='selectPlayer'></div>
             </div>
             <div class="playerContainer">
-                <div id='player4Img'></div>
-                <div id='player4'>Player 4</div>
+                <img id='player1Img' src="monopoly_images/jon_snow.jpg">
+                <div id='player4Text'>Player 4</div>
                 <div id='selectPlayer'></div>
             </div>
         </div>
-        <a href="#" id="start-button">Start</a>
+        <div><a href="#" id="start-button">Start</a></div>
     </div>
 </div>
   
@@ -59,7 +60,7 @@
         <div class="position-14 small-square"></div>
         <div class="position-13 small-square"></div>
         <div class="position-12 small-square"></div>
-        <div class="position-11 large-square"></div>
+        <div class="position-11 large-square">Illinois</div>
     </div>
     <div class="middle-section-container">
         <div class="top-row">
@@ -113,8 +114,10 @@
     <div id="player-container">
         <h3 id="player-stats">Players Status</h3>
         <div class="indiv-players">
-            <div id="player1"></div>
-            <div id="player2"></div>
+            <img id='player1Img' src="monopoly_images/little_finger.PNG">
+            <img id='player1Img' src="monopoly_images/white_walker.PNG">
+            <img id='player1Img' src="monopoly_images/daenerys.PNG">
+            <img id='player1Img' src="monopoly_images/jon_snow.jpg">
         </div>
 
 <!--Dice-->
@@ -132,6 +135,43 @@
         <button type="button" class="remove-community-card">Remove Community Card</button>
         <button type="button" class="remove-chance-card">Remove Chance Card</button>
     </div>
+
+<!--Modal for Properties -->
+
+<!-- The Modal -->
+<div id="property-modal" class="modal modal-hide">
+      
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <div class="property-container">
+            <div class="property-container">
+                    <div class="title-name-container">
+                      <h5 id="title-deed"><span id="property-title"></span></h5>
+                      <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
+                      <div class="houses-rent">
+                      <p id="property-text">With 1 Houses  $ <span id="rent-1"></span>
+                        <br>
+                         With 2 Houses  $   <span id="rent-2"></span>
+                        <br>
+                        With 3 Houses   $   <span id="rent-3"></span>
+                        <br>
+                        Hotel Cost       $ <span id="rent-hotel"></span>
+                        <br>
+                        Mortgage Cost    $ <span id="mortgage-cost"></span>
+                      </div>
+                      <div class="hotel-rent">  
+                      </div>    
+                    </div>
+                  </div>
+
+
+</div>
+
+<!--Property Container-->
+ <div class="property-container">
+
+ </div>
 
   <!--Property Image Effect-->
 </div>
