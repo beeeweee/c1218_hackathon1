@@ -208,6 +208,9 @@ html {
 
 
 }
+.moveSound{
+    display:none;
+}
 
 .chance-card-deck-spot{
     height: 20%;

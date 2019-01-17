@@ -7,7 +7,7 @@ var max = 6;
 var totlBlockCount = 43;
 var numberOfPlayers = 0;
 
-var playerIds = ['player1', 'player2','player3', 'player4'];
+var playerIds = ['player1', 'player2','player3','player4'];
 var currentPlayerIndex = 0;
 var currentPlayer = "player1";
 
@@ -75,6 +75,7 @@ function initializeGame() {
     $("#toggleplayer").click(function () {
 
         togglePlayer();
+
     });
 
 
@@ -162,7 +163,7 @@ function diplayPlayersSelected() {
         } else {
             showPlayerPieces();
         }
-        deactivePlayer();
+       deactivePlayer();
         return;
     } else if (numberOfPlayers === "2") {
         player2.show();
@@ -176,7 +177,7 @@ function diplayPlayersSelected() {
             showPlayerPieces();
         }
         removePlayerPieces();
-        deactivePlayer();
+       deactivePlayer();
         console.log('player 2 added')
     } else if (numberOfPlayers === "3") {
         player2.show();
@@ -190,7 +191,7 @@ function diplayPlayersSelected() {
         } else {
             showPlayerPieces();
         }
-        deactivePlayer();
+       deactivePlayer();
         console.log('player 3 added')
     } else if (numberOfPlayers === "4") {
         player2.show();
@@ -231,6 +232,8 @@ function activatedPlayers() {
     }
     return totalAmtOfActivePlayers;
 }
+
+
 
 function deactivePlayer() {
     var totalAmtOfActivePlayers = 0;
@@ -403,6 +406,7 @@ function diceNumbers() {
 
 function playerCurrentPosition() {
 
+
     var currentPosition = currentPlayersObject[currentPlayer]['playerPosition'];
     var result=diceNumbers();
     var diceRolls = result.totalMove; // storing the dice number
@@ -412,10 +416,14 @@ function playerCurrentPosition() {
         newPosition = newPosition - totlBlockCount - 1;
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
+    console.log(newPosition);
     var currentPlayerPosition = $('.' + currentPlayer + '.circle');
+    console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
+    console.log( currentPlayerPosition );
     if(result.toggle){
         togglePlayer()
+
     }
 
 }
