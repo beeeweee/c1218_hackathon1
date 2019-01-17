@@ -1,184 +1,210 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" href="style.css">
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Monopoly></title>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
-    <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-  <script src="main.js"></script>
-  <script src="propertydata.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script src="propertydata.js"></script>
 
 </head>
+
 <body>
-<!--Charu-->
-  <div class="overlay">
-    <div class="overlay-content">
-        <h2>Welcome to Monopoly Game</h2>
-        <div class="playerSelectContainer">
-            <div class="playerContainer">
-                <div id='player1Img'></div>
-                <div id='player1'>Player 1</div>
-                <div id='selectPlayer'></div>
+    <!--Charu-->
+    <div class="overlay">
+        <div class="overlay-content">
+            <h2>Welcome to Monopoly Game</h2>
+            <div class="playerSelectContainer">
+                <div class="playerContainer">
+                    <div id='player1Img'></div>
+                    <div id='player1'>Player 1</div>
+                    <div id='selectPlayer'></div>
+                </div>
+                <div class="playerContainer">
+                    <div id='player2Img'></div>
+                    <div id='player2'>Player 2</div>
+                    <div id='selectPlayer'></div>
+                </div>
+                <div class="playerContainer">
+                    <div id='player3Img'></div>
+                    <div id='player3'>Player 3</div>
+                    <div id='selectPlayer'></div>
+                </div>
+                <div class="playerContainer">
+                    <div id='player4Img'></div>
+                    <div id='player4'>Player 4</div>
+                    <div id='selectPlayer'></div>
+                </div>
             </div>
-            <div class="playerContainer">
-                <div id='player2Img'></div>
-                <div id='player2'>Player 2</div>
-                <div id='selectPlayer'></div>
+            <a href="#" id="start-button">Start</a>
+        </div>
+    </div>
+
+    <!-- Game-Board Setup !-->
+    <div class="board-game-container col-md-8 container">
+        <div class="left-column-container">
+            <div class="position-22 large-square" pos="22"></div>
+            <div class="position-21 small-square" pos="21"></div>
+            <div class="position-20 small-square" pos="20"></div>
+            <div class="position-19 small-square" pos="19"></div>
+            <div class="position-18 small-square" pos="18"></div>
+            <div class="position-17 small-square" pos="17"></div>
+            <div class="position-16 small-square" pos="16"></div>
+            <div class="position-15 small-square" pos="15"></div>
+            <div class="position-14 small-square" pos="14"></div>
+            <div class="position-13 small-square" pos="12"></div>
+            <div class="position-12 small-square" pos="13"></div>
+            <div class="position-11 large-square" pos="12">cv</div>
+        </div>
+        <div class="middle-section-container">
+            <div class="top-row">
+                <div class="position-23 large-square small-square" pos="23"></div>
+                <div class="position-24 small-square" pos="24"></div>
+                <div class="position-25 small-square" pos="25"></div>
+                <div class="position-26 small-square" pos="26"></div>
+                <div class="position-27 small-square" pos="27"></div>
+                <div class="position-28 small-square" pos="28"></div>
+                <div class="position-29 small-square" pos="29"></div>
+                <div class="position-30 small-square" pos="30"></div>
+                <div class="position-31 small-square" pos="31"></div>
+                <div class="position-32 large-square small-square" pos="32"></div>
             </div>
-            <div class="playerContainer">
-                <div id='player3Img'></div>
-                <div id='player3'>Player 3</div>
-                <div id='selectPlayer'></div>
+            <div class="board">
+                <input type="button" value="Take One Community Chest Cards" id="deal-community" />
+                <input type="button" value="Take One Chance Card" id="deal-chance" />
             </div>
-            <div class="playerContainer">
-                <div id='player4Img'></div>
-                <div id='player4'>Player 4</div>
-                <div id='selectPlayer'></div>
+            <div class="bottom-row">
+                <div class="position-10 small-square" pos="10"></div>
+                <div class="position-9 small-square" pos="9"></div>
+                <div class="position-8 small-square" pos="8"></div>
+                <div class="position-7 small-square" pos="7"></div>
+                <div class="position-6 small-square" pos="6"></div>
+                <div class="position-5 small-square" pos="5"></div>
+                <div class="position-4 small-square" pos="4"></div>
+                <div class="position-3 small-square" pos="3"></div>
+                <div class="position-2 small-square" pos="2"></div>
+                <div class="position-1 small-square" pos="1"></div>
             </div>
         </div>
-        <a href="#" id="start-button">Start</a>
-    </div>
-</div>
-  
-<!-- Game-Board Setup !-->
-<div class="board-game-container col-md-8 container">
-    <div class="left-column-container">
-        <div class="position-22 large-square" pos="22"></div>
-        <div class="position-21 small-square" pos="21"></div>
-        <div class="position-20 small-square" pos="20"></div>
-        <div class="position-19 small-square" pos="19"></div>
-        <div class="position-18 small-square" pos="18"></div>
-        <div class="position-17 small-square" pos="17"></div>
-        <div class="position-16 small-square" pos="16"></div>
-        <div class="position-15 small-square" pos="15"></div>
-        <div class="position-14 small-square" pos="14"></div>
-        <div class="position-13 small-square" pos="12"></div>
-        <div class="position-12 small-square" pos="13"></div>
-        <div class="position-11 large-square" pos="12">Illinois</div>
-    </div>
-    <div class="middle-section-container">
-        <div class="top-row">
-            <div class="position-23 large-square small-square" pos="23"></div>
-            <div class="position-24 small-square" pos="24"></div>
-            <div class="position-25 small-square" pos="25"></div>
-            <div class="position-26 small-square" pos="26"></div>
-            <div class="position-27 small-square" pos="27"></div>
-            <div class="position-28 small-square" pos="28"></div>
-            <div class="position-29 small-square" pos="29"></div>
-            <div class="position-30 small-square" pos="30"></div>
-            <div class="position-31 small-square" pos="31"></div>
-            <div class="position-32 large-square small-square" pos="32"></div>
-        </div>
-        <div class="board">
-            <input type="button" value="Take One Community Chest Cards" id="deal-community"/>
-            <input type="button" value="Take One Chance Card" id="deal-chance"/>
-        </div>
-        <div class="bottom-row">
-            <div class="position-10 small-square" pos="10"></div>
-            <div class="position-9 small-square" pos="9"></div>
-            <div class="position-8 small-square" pos="8"></div>
-            <div class="position-7 small-square" pos="7"></div>
-            <div class="position-6 small-square" pos="6"></div>
-            <div class="position-5 small-square" pos="5"></div>
-            <div class="position-4 small-square" pos="4"></div>
-            <div class="position-3 small-square" pos="3"></div>
-            <div class="position-2 small-square" pos="2"></div>
-            <div class="position-1 small-square" pos="1"></div>
+        <div class="right-column-container">
+            <div class="position-33 large-square" pos="33"></div>
+            <div class="position-34 small-square" pos="34"></div>
+            <div class="position-35 small-square" pos="35"></div>
+            <div class="position-36 small-square" pos="36"></div>
+            <div class="position-37 small-square" pos="37"></div>
+            <div class="position-38 small-square" pos="38"></div>
+            <div class="position-39 small-square" pos="39"></div>
+            <div class="position-40 small-square" pos="40"></div>
+            <div class="position-41 small-square" pos="41"></div>
+            <div class="position-42 small-square" pos="42"></div>
+            <div class="position-43 small-square" pos="43"></div>
+            <div class="position-0 large-square" pos="0">
+                <div class="circle"></div>
+            </div>
         </div>
     </div>
-    <div class="right-column-container">
-        <div class="position-33 large-square" pos="33"></div>
-        <div class="position-34 small-square" pos="34"></div>
-        <div class="position-35 small-square" pos="35"></div>
-        <div class="position-36 small-square" pos="36"></div>
-        <div class="position-37 small-square" pos="37"></div>
-        <div class="position-38 small-square" pos="38"></div>
-        <div class="position-39 small-square" pos="39"></div>
-        <div class="position-40 small-square" pos="40"></div>
-        <div class="position-41 small-square" pos="41"></div>
-        <div class="position-42 small-square" pos="42"></div>
-        <div class="position-43 small-square" pos="43"></div>
-        <div class="position-0 large-square" pos="0"><div class="circle"></div></div></div>
     </div>
-</div>
-<!--Stats-->
-<div class="stats-container">
+    <!--Stats-->
+    <div class="stats-container">
 
-    <!--Player Stats-->
-    <div id="player-container">
-        <h3 id="player-stats">Players Status</h3>
-        <div class="indiv-players">
-            <div id="player1"></div>
-            <div id="player2"></div>
+        <!--Player Stats-->
+        <div id="player-container">
+            <h3 id="player-stats">Players Status</h3>
+            <div class="indiv-players">
+                <div id="player1" class="player-1-stat"></div>
+                <div id="player2" class="player-2-stat"></div>
+            </div>
+
+            <!--Dice-->
+            <div class="button-container">
+                <button id="btn">Roll Dice</button>
+            </div>
+
+            <div id="myDice1"></div>
+            <div id="myDice2"></div>
+            <!--Deal Community Chest Cards-->
+            <input type="button" value="Take One Community Chest Cards" id="deal-community" />
+            <input type="button" value="Take One Chance Card" id="deal-chance" />
+            <button type="button" class="btn btn-light remove-community-card">Remove Community Card</button>
+            <button type="button" class="btn btn-light remove-chance-card">Remove Chance Card</button>
         </div>
 
-<!--Dice-->
-<button id="btn">Roll Dice</button>
-<br/>
-<div id="myDice1"></div>
-<div id="myDice2"></div>
-<!--Deal Community Chest Cards-->
-<input type="button" value="Take One Community Chest Cards" id="deal-community"/>
-<input type="button" value="Take One Chance Card" id="deal-chance"/>
-<button type="button" class="btn btn-light remove-community-card">Remove Community Card</button>
-<button type="button" class="btn btn-light remove-chance-card">Remove Chance Card</button>
-    </div>
+        <div class="stats-button-container">
+            <!--Game Button-->
+            <button type="button" class="start-game">Start Game</button>
 
-    <div class="stats-button-container">
-        <!--Game Button-->
-        <button type="button" class="start-game">Start Game</button>
+            <!--Deal Community Chest Cards-->
+            <button type="button" class="remove-community-card">Remove Community Card</button>
+            <button type="button" class="remove-chance-card">Remove Chance Card</button>
+        </div>
 
-        <!--Deal Community Chest Cards-->
-        <button type="button" class="remove-community-card">Remove Community Card</button>
-        <button type="button" class="remove-chance-card">Remove Chance Card</button>
-    </div>
+        <!--Modal for Properties -->
 
-<!--Modal for Properties -->
-
-<!-- The Modal -->
-<div id="property-modal" class="modal modal-hide">
-      
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div class="property-container">
-            <div class="property-container">
-            <div class="title-name-container">
-                      <h5 id="title-deed"><span id="property-title"></span></h5>
+        <!-- The Modal -->
+        <div id="property-modal" class="modal modal-hide">
+            <!-- Modal  Property Content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="property-container">
+                    <div class="property-container">
+                        <div class="title-name-container">
+                            <h5 id="title-deed"><span id="property-title"></span></h5>
+                        </div>
+                        <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
+                        <div class="houses-rent">
+                            <p id="property-text">With 1 Houses $ <span id="rent-1"></span>
+                                <br>
+                                With 2 Houses $ <span id="rent-2"></span>
+                                <br>
+                                With 3 Houses $ <span id="rent-3"></span>
+                                <br>
+                                Hotel Cost $ <span id="rent-hotel"></span>
+                                <br>
+                                Mortgage Cost $ <span id="mortgage-cost"></span>
+                        </div>
+                        <div class="hotel-rent">
+                        </div>
                     </div>
-                      <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
-                      <div class="houses-rent">
-                      <p id="property-text">With 1 Houses  $ <span id="rent-1"></span>
-                        <br>
-                         With 2 Houses  $   <span id="rent-2"></span>
-                        <br>
-                        With 3 Houses   $   <span id="rent-3"></span>
-                        <br>
-                        Hotel Cost       $ <span id="rent-hotel"></span>
-                        <br>
-                        Mortgage Cost    $ <span id="mortgage-cost"></span>
-                      </div>
-                      <div class="hotel-rent">  
-                      </div>    
+                </div>
+            </div>
+</div>
+            <!--Modal Character Stats-->
+            <div class="modal-character-content">
+                <span class="close">&times;</span>
+                <div class="property-container">
+                    <div class="character-stat-container">
+                        <div class="character-name-container">
+                            <h5 id="character-title-name"><span id="character-name"></span></h5>
+                        </div>
+                        <h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6>
+                        <div class="houses-rent">
+                            <p id="property-own">Property Currently Owned $ <span id="property-owned-description"></span>
+                                <br>
+                                Currently has <span id="houses-owned"></span>
+                                <br>
+                                Currently has <span id="hotels-owned"></span>
+                                <br>
+                        </div>
                     </div>
-                  </div>
+                </div>
+            </div>                           
+            <!--Audi-->
+            <audio id="monopoly-audio" autoplay="autoplay">
+                <source src="audio/bkg_song.mp3" />
+            </audio>
+            <audio id="dice-audio" autoplay="autoplay">
+                <source src="audio/Dice_throw.wav" />
+            </audio>
 
 
-</div>
 
-<!--Property Container-->
- <div class="property-container">
 
- </div>
-
-  <!--Property Image Effect-->
-</div>
-  
 </body>
+
 </html>

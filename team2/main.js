@@ -1,4 +1,4 @@
-$(document).ready(initializeGame)
+$(document).ready(initializeGame);
 
 //start variables
 var min=1;
@@ -9,17 +9,37 @@ var currentPlayersObject = {
     'player1': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0,
         'propertiesOwned': {}, 'railRoadsOwned':[], 'railRoadsAmtOwned':0, },
     'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0}
-
-
-    /*    currentPlayers: [],
-        currentNumberOfPlayesr: 0,
-        playerStatus: [0,0,0,0],
-        playerName: [null,null,null,null],
-        playerPosition:*/
 }
 
+   //Game Sound
+   var AudioController = function(){
+    this.diceRolling;
+    this.monopolyPiecesMoving=[];
+    this.backgroundTheme;
+ 
+    this.playAudio = function(){
+        var playPromise = document.querySelector('#monopoly-audio').play();
+        if (playPromise !== undefined) {
+          playPromise.then(function() {
+          }).catch(function(error) {
+          });
+        }
+      }
+        this.playDiceRolling = function(){
+       this.diceRolling= $('#dice-audio').play();
+       if(diceRolling != undefined){
+           diceRolling.then(function(){
+           }).catch(function(error){     
+           });
+       }
+           
+        }
+    }
 
 
+var GameAudioController = new AudioController();
+
+  
 function playerTurnCycler(currentPlayerTurn) {
     var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
 
@@ -39,9 +59,10 @@ function disperseMoney(){
     for (var indivPlayer = 1; indivPlayer <= totalAmtOfPlayers; indivPlayer++){
         currentPlayersObject[`player${indivPlayer}`].balance += 1500;
     }
-
-
 }
+
+
+
 
 
 function initializeGame(){
@@ -55,12 +76,6 @@ function initializeGame(){
         console.log("charu");
         diceNumbers()
 
-
-         /*var randomDice1Roll= Math.floor(1+ Math.random()*6);
-         var randomDice2Roll=Math.floor(1+Math.random()*6);
-         $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG"></img>`)
-         $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG"></img>`)
-         */
     })
     //Deal Cards
     $('#deal-community').click(function(){
@@ -69,7 +84,14 @@ function initializeGame(){
      $('#deal-chance').click(function(){
         dealChanceCard(randomChanceCard());
      })
+     //Background Game Music Audio
+     $('#start-button').click(function(){
+        GameAudioController.playAudio();
+    })
 
+    $('.dice-roll').click(function(){
+        GameAudioController.playDiceRolling();
+    })
 
             //remove cards clickHandlers
     $('.remove-community-card').click(function(){
@@ -86,18 +108,20 @@ function initializeGame(){
         playerCurrentPosition();
     });
 
+      ///show player Status
+     $('.player-1-stat').mouseover(showPlayerStats);
+    $('player-1-stat').mouseout(showPlayerStats);
 
-    
-    //enlarge property mouseover clickHandlers
+    $('.player-2-stat').mouseover(showPlayerStats);
+    $('.player-2-stat').mouseout(showPlayerStats);
 
-   
     //start game click handler
     $("#start-button").click(function () {
         $(".overlay").hide();
         //startTimer();
     })
 
-    //player 1 click handler
+    
 
 
         //clickHandlers
@@ -114,9 +138,6 @@ function initializeGame(){
 
      $('.small-square, .large-square').click(showDeed);
 }
-
-//start game click handler
-
 
 
 //player 1 click handler
@@ -220,18 +241,7 @@ function removeCard(card){
     }
 }
 
-
-
-//Enlarge Property Element
-
-    /*
-      base-rent
-        property-title
-        rent-1
-        rent-2
-        rent-hotel
-        mortgage-cost
-    */
+//Modal Property
 
 function showDeed(){id="dice-roll" 
     $('#property-modal').show();
@@ -248,20 +258,105 @@ function showDeed(){id="dice-roll"
    $('.title-name-container').css('background-color', deedData[10]);
 
 }
-/*
+var Property = function(){
+    this.tileId;
+    this.picture;
+    this.name;
+    this.tileType;
+    this.propertycolorgroup;
+    this.financials = {
+        base:{
+            rent:[],
+            cost:null,
+        },
+        house:{
+            rent:[],
+            cost:null,
+        },
+       hotel: {
+        rent:[],
+        cost:null,
+    }
+    }
+    
+};
 
-0 name  
-1 price
-2 Price per house    
-3 Rent    
-4(1 House)    Rent
-5(2 Houses)    Rent
-6(3 Houses)    Rent
-7(4 Houses)    Rent
-8(Hotel) rent    
-9 Mortgage
-*/
+
+
+// Show Player Stats Modal
+
+function showPlayerStats(){
+    $('.modal-character-content').show();
+    console.log("Hi");
+}
+function hidePlayerStats(){
+    $('.modal-character-content').hide();
+    console.log("Hi");
+}
+
+
+function showDeed(){ 
+    $('#property-modal').show();
+    var propertyIndex = $(this).attr('pos');
+    var deedData = propData[propertyIndex];
+
+    $('#base-rent').text(deedData[3]);
+    $('#property-title').text(deedData[0]);
+    $('#rent-1').text(deedData[1]);
+    $('#rent-2').text(deedData[2]);
+    $('#rent-3').text(deedData[4]);
+    $('#rent-hotel').text(deedData[8]);
+   $('#mortgage-cost').text(deedData[9]);
+   $('.title-name-container').css('background-color', deedData[10]);
+
+}
+
+function showCharacterStats(playerPosition){
+    var characterIndex = $(this).monopolyProperties[index];// 
+    var characterData= monopolyProperties[characterIndex];
+    $('#character-title-name').css('background-color', deedData[10]);
+    // $('#character-name').text(characterData[]);
+    // $('#houses-owned').text(characterData[]);
+    // $('#hotels-owned').text(characterData[]);
+
+}
+
+
+//need the id to see which property the player lands on and use that function to know the character index
 
 
 
 
+
+// #character-name
+// #amount-currently-has
+//     #propert-owned-description
+//     #houses-owned
+//     #hotels-owned
+
+
+  //once the person lands on the property, they will need to know if they either are owners of the property or not
+    //if owners: they can either purchase a another house /motel 
+    //if not owners: they need to check who is the owner of the property and see how much rent to pay the owner
+    //create function to check who is the owner 
+   
+    //create an function to find out the cost of the property any money system
+    //
+   // to get the amount / will need the monetary value function and create a function to run that function 
+function getPropertyOwner(propertyIndex){
+    //  monopolyProperties.index
+    
+     if(monopolyProperties[propertyIndex]["owner"]){
+         return monopolyProperties[propertyIndex]["owner"];
+     }
+     return null;
+    }
+
+     function setPropertyOwner(propertyIndex, currentPlayerID){
+         monopolyProperties[propertyIndex]["owner"] = currentPlayerID;
+     }
+    
+     function getByID(propertyIndex){
+        return monopolyProperties[propertyIndex];
+        console.log("hi");
+     }

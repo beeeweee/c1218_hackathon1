@@ -179,18 +179,18 @@ html {
 
 /*modal effect*/
 
-#property-title{
+#property-title, .character-title-name{
     margin-top: 10px;
     color: white;
     text-transform: uppercase;
     font-size: 1.5rem;
 }
 
-#property-modal{
+#property-modal {
     position: fixed;
     left: 50%;
     top: 50%;
-    font-size: 19px;
+    font-size: 19px; 
     transform: translate(-50%, -50%);
     height: 342px;
     width: 291px;
@@ -201,14 +201,34 @@ html {
 .modal-hide{
     display: none;
 }
-.title-name-container{
+.title-name-container, .character-name-container {
     height: 60%;
     width: 95%;
     border: 2px solid black;
     margin: auto;
 
-    /* background-color: blue; */
 }
+
+/*Player Modal Stats*/
+.modal-character-content{
+    position: fixed;
+    left: 79%;
+    top: 96%;
+    font-size: 19px;
+    transform: translate(-50%, -50%);
+    height: 233px;
+    width: 245px;
+    background-color: white;
+    z-index: 2;
+    border: black solid 3px;
+}
+
+
+
+
+
+
+
 
 /* Player Token*/
 .circle {
@@ -216,4 +236,15 @@ html {
     width: 25px;
     background-color: teal;
     border-radius: 50px;
+}
+#myDice2, #myDice1{
+    height:80%;
+    display:inline-block;
+}
+#dice-roll{
+    height: 50%;
+}
+.button-container{
+    position:relative;
+    top:5%;
 }
