@@ -235,6 +235,7 @@ html {
     height: 50px;
     width: 50px;
     border-radius: 50px;
+
 }
 #myDice2, #myDice1{
     height:80%;
@@ -272,7 +273,7 @@ html {
 
 }
 
-.small-square > img, .large-square > img{
+.small-square > .spotImages, .large-square > .spotImages{
      height: 100%;
      width: 100%;
  }
