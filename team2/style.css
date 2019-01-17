@@ -199,13 +199,19 @@ html {
 .modal-hide{
     display: none;
 }
-.title-name-container{
+
 
 
 /* Player Token*/
-.circle {
+.player1circle {
+     height: 25px;
+     width: 25px;
+     background-color: #122b40;
+     border-radius: 50px;
+ }
+.player2circle {
     height: 25px;
     width: 25px;
-    background-color: teal;
+    background-color: #755c30;
     border-radius: 50px;
 }
