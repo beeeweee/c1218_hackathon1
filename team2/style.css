@@ -18,6 +18,15 @@ body{
     font-size: 30px;
 }
 
+.overlay-content {
+    text-align: center;
+}
+
+.playerSelectContainer{
+    display: inline-block;
+    height: 60%;
+}
+
 html {
     box-sizing: border-box;
 }
