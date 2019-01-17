@@ -50,7 +50,7 @@ for(let i = 0; i < propData.length; i++){
     }
     console.log(PropertyObject);
 */
-[ { 'property-title': 'Mediterranean Ave',
+var propertyData=[ { 'property-title': 'Mediterranean Ave',
 'property-cost': 60,
 'property-rent': 50,
 'base-rent': 2,
@@ -329,4 +329,9 @@ for(let i = 0; i < propData.length; i++){
 'rent-3': 200,
 'rent-4': 200,
 'rent-hotel': 200,
-'mortgage-cost': 200 } ]
+'mortgage-cost': 200 } ];
+// create a loop to loop through the object to set the owner of the property
+// in the object
+for (var i =0; i< propertyData.length; i++){
+  propertyData[i].ownerProperty =null;
+}

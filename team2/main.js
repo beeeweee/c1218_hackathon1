@@ -11,10 +11,7 @@ var currentPlayersObject = {
     'player2': {'playerPosition':0, 'playerStatus':0, 'playerName': '', 'balance': 0}
 }
 
-   //Game Sound
-   var AudioController = function(){
-    this.diceRolling;
-    this.monopolyPiecesMoving=[];
+   //Game Soun
     this.backgroundTheme;
  
     this.playAudio = function(){
@@ -243,21 +240,21 @@ function removeCard(card){
 
 //Modal Property
 
-function showDeed(){id="dice-roll" 
-    $('#property-modal').show();
-    var propertyIndex = $(this).attr('pos');
-    var deedData = propData[propertyIndex];
+// function showDeed(){id="dice-roll" 
+//     $('#property-modal').show();
+//     var propertyIndex = $(this).attr('pos');
+//     var deedData = propData[propertyIndex];
 
-    $('#base-rent').text(deedData[3]);
-    $('#property-title').text(deedData[0]);
-    $('#rent-1').text(deedData[1]);
-    $('#rent-2').text(deedData[2]);
-    $('#rent-3').text(deedData[4]);
-    $('#rent-hotel').text(deedData[8]);
-   $('#mortgage-cost').text(deedData[9]);
-   $('.title-name-container').css('background-color', deedData[10]);
+//     $('#base-rent').text(deedData[3]);
+//     $('#property-title').text(deedData[0]);
+//     $('#rent-1').text(deedData[1]);
+//     $('#rent-2').text(deedData[2]);
+//     $('#rent-3').text(deedData[4]);
+//     $('#rent-hotel').text(deedData[8]);
+//    $('#mortgage-cost').text(deedData[9]);
+//    $('.title-name-container').css('background-color', deedData[10]);
 
-}
+// }
 var Property = function(){
     this.tileId;
     this.picture;
@@ -311,9 +308,20 @@ function showDeed(){
 
 }
 
-function showCharacterStats(playerPosition){
-    var characterIndex = $(this).monopolyProperties[index];// 
-    var characterData= monopolyProperties[characterIndex];
+function showCharacterStats(player){
+    var characterIndex = currentPlayersObject[player].playerPosition;// 
+    var property = propertyData[characterIndex];
+    var owner = getPropertyOwner(characterIndex);
+   
+    if (!owner){
+       
+        playerCanBuyProperties(player, property);
+    }else if(owner !== player){
+        playerLandsOnAnotherPlayersProperty(player, property);
+    } else{
+        playerLandsOnOwnedProperty(player, property);
+
+    }
     $('#character-title-name').css('background-color', deedData[10]);
     // $('#character-name').text(characterData[]);
     // $('#houses-owned').text(characterData[]);
@@ -322,17 +330,63 @@ function showCharacterStats(playerPosition){
 }
 
 
+
+
+function playerCanBuyProperties(player, property){
+    if( player >=  property){
+        
+
+    }
+}
+// if player has money equal to or more than the cost of the property
+    // display message "You have enough money to buy property"
+    // prompt if player wants to buy
+    // if player buys property
+        // display message "You have purchased the property"
+        // subtract cost of property from player money
+        // change displayed property owner
+        // display remaining money
+    // else player doesn't buy property
+        // display message "You decided not to buy"
+// else player doesn't have enough money to buy property
+    // display message "Not enough money"
+// 
+//player can buy prop if they have enough money and if so subtract from value  
+
+
+function playerLandsOnAnotherPlayersProperty(player, property){
+    // get player's current money and how much they owe to property owner
+    //  display how much player owes 
+    //  while player doesn't have enough money to pay owner
+        // if player has no remaining properties
+            // player loses and pays remaining money to owner
+            // exit function
+        // else player does have remaining properties
+            // display player's owned properties, houses, hotels, mortgages
+            // display how much player can get by selling each property
+            // give player choice of which property (house, hotel, mortgage) to sell
+            // display message "You chose to sell _____ property"
+            // change ownership status player-chosen property
+            // add amount of sale to player's money
+            // display player's new money total
+    // player has enough money to pay owner
+    // player pays money to owner
+    // display player's and owner's new money total
+}
+
+
+
+function playerLandsOnOwnedProperty(player, property){
+    // display "You already own this property"
+    // prompt player to finish turn
+    console.log(`${player} owns ${}.`);
+}
+
+
+
 //need the id to see which property the player lands on and use that function to know the character index
 
 
-
-
-
-// #character-name
-// #amount-currently-has
-//     #propert-owned-description
-//     #houses-owned
-//     #hotels-owned
 
 
   //once the person lands on the property, they will need to know if they either are owners of the property or not
@@ -344,19 +398,19 @@ function showCharacterStats(playerPosition){
     //
    // to get the amount / will need the monetary value function and create a function to run that function 
 function getPropertyOwner(propertyIndex){
-    //  monopolyProperties.index
+    //  propertyData.index
     
-     if(monopolyProperties[propertyIndex]["owner"]){
-         return monopolyProperties[propertyIndex]["owner"];
+     if(propertyData[propertyIndex]["ownerProperty"]){
+         return propertyData[propertyIndex]["ownerProperty"];
      }
      return null;
-    }
+}
 
-     function setPropertyOwner(propertyIndex, currentPlayerID){
-         monopolyProperties[propertyIndex]["owner"] = currentPlayerID;
-     }
+function setPropertyOwner(propertyIndex, currentPlayerID){
+    propertyData[propertyIndex]["ownerProperty"] = currentPlayerID;
+}
     
-     function getByID(propertyIndex){
-        return monopolyProperties[propertyIndex];
-        console.log("hi");
-     }
+function getByID(propertyIndex){
+    return propertyData[propertyIndex];
+    console.log("hi");
+}
