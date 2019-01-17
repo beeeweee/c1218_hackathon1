@@ -13,7 +13,7 @@ body{
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.85);
     background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent \9; /* ie fallback png background image */
-    z-index: 9999;
+    z-index: 1;
     color: white;
     font-size: 30px;
 }
@@ -182,6 +182,25 @@ html {
 .active{
     display:none
 }
+
+/*modal effect*/
+
+
+#property-modal{
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width:350px;
+    background-color: white;
+    z-index: 2
+}
+.modal-hide{
+    display: none;
+}
+.title-name-container{
+
 
 /* Player Token*/
 .circle {

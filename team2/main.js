@@ -75,24 +75,22 @@ function initializeGame(){
         $('#chance-card').addClass('active');
     })
 
+
     //player 1 click handler
     $(".circle").click(function (){
         playerCurrentPosition();
     });
 }
+
     
     //enlarge property mouseover clickHandlers
-    $('.small-square').mouseover(function(){
-        enlargePropertyElement();
-    })
-   
-    
 
+   
     //start game click handler
-        $("#start-button").click(function () {
-            $(".overlay").hide();
-            startTimer();
-        })
+    $("#start-button").click(function () {
+        $(".overlay").hide();
+        //startTimer();
+    })
 
     //player 1 click handler
     $("#player1").click(function (){
@@ -100,23 +98,25 @@ function initializeGame(){
     })
 
         //clickHandlers
- $('.remove-community-card').click(function(){
-    $('#community-card-deck').addClass('active');
-  })
+    $('.remove-community-card').click(function(){
+        $('#community-card-deck').addClass('active');
+    })
  
-  $('.remove-chance-card').click(function(){
-    $('#chance-card').addClass('active');
-})
+    $('.remove-chance-card').click(function(){
+        $('#chance-card').addClass('active');
+    })
+     //Modal Handler
+     
 
 
-
-
+     $('.small-square, .large-square').click(showDeed);
 
 //start game click handler
 
 
 
 //player 1 click handler
+
 $(".circle").click(function (){
     playerCurrentPosition();
 });
@@ -179,12 +179,7 @@ function dealCommunityChestCard(i){
    removeCard(i);
 }
 
-function removeCard(card){
-    for(i=card; i <=numberOfCardsInDeck-2; i++){
-    communityChestDeck[i] =communityChestDeck[i+1];
-    numberOfCardsInDeck--;
-}
-}
+
 
 //Deal Chance Cards
 var chanceDeck = new Array();
@@ -214,22 +209,52 @@ function dealChanceCard(i){
 }
 function removeCard(card){
     for(i=card; i <=numberOfCardsInDeck-2; i++){
-    communityChestDeck[i] =communityChestDeck[i+1];
-    numberOfCardsInDeck--;
+        communityChestDeck[i] =communityChestDeck[i+1];
+        numberOfCardsInDeck--;
+    }
 }
-}
+
 
 
 //Enlarge Property Element
-function enlargePropertyElement(){
-    x.style.height= "70px";
-    x.style.width=  "64px";
-}
-function normalImg(){
-    x.style.height= "34px";
-    x.style.width= "34px";
-}
 
+    /*
+      base-rent
+        property-title
+        rent-1
+        rent-2
+        rent-hotel
+        mortgage-cost
+    */
+
+function showDeed(){
+    debugger;
+    $('#property-modal').show();
+    var propertyIndex = $(this).attr('pos');
+    var deedData = propData[propertyIndex];
+
+    $('#base-rent').text(deedData[3]);
+    $('#property-title').text(deedData[0]);
+    $('#rent-1').text(deedData[1]);
+    $('#rent-2').text(deedData[2]);
+    $('#rent-3').text(deedData[4]);
+    $('#rent-hotel').text(deedData[8]);
+   $('#mortgage-cost').text(deedData[9]);
+
+}
+/*
+
+0 name  
+1 price
+2 Price per house    
+3 Rent    
+4(1 House)    Rent
+5(2 Houses)    Rent
+6(3 Houses)    Rent
+7(4 Houses)    Rent
+8(Hotel) rent    
+9 Mortgage
+*/
 
 
 
