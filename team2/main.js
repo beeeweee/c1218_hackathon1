@@ -7,7 +7,7 @@ var max = 6;
 var totlBlockCount = 43;
 var numberOfPlayers = 0;
 
-var playerIds = ['player1', 'player2','player3', 'player4'];
+var playerIds = ['player1', 'player2'];
 var currentPlayerIndex = 0;
 var currentPlayer = "player1";
 
@@ -92,13 +92,27 @@ function disperseMoney() {
 
 
 
+function populateBoardSpots(){
+    for (var currentSquare = 0; currentSquare <= 39; currentSquare++){
+//     var imageToUseContainer = $('div');
+        console.log('im doing something')
+        var imageToUse = $('<img />', {
+            src: `monopoly_images/board_images/position-${currentSquare}.png`
+            });
+        $(`.position-${currentSquare}`).append(imageToUse);
+        // $(`.position${currentSquare}`).append(imageToUse);
+    }
+}
+
+
 function initializeGame() {
+    // populateBoardSpots();
+
     $("select").change(numberOfPlayersSelected);
     numberOfPlayersSelected();
 
     $("#start-button").click(function () {
         $(".overlay").hide();
-
     });
 
     $("#toggleplayer").click(function () {

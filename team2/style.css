@@ -271,3 +271,8 @@ html {
     width: 100%;
 
 }
+
+.small-square > img, .large-square > img{
+     height: 100%;
+     width: 100%;
+ }
