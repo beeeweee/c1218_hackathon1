@@ -1,0 +1,328 @@
+body{
+    margin: 0;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+  
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent \9; /* ie fallback png background image */
+    z-index: 1;
+    color: white;
+    font-size: 30px;
+}
+
+.overlay-content {
+    text-align: center;
+}
+
+.playerSelectContainer{
+    display: inline-block;
+    height: 60%;
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/*Players on Board*/
+.player1 {
+    background-color: black;
+    display: inline-block;
+    width: 25%;
+    height: 25%;
+}
+
+/*Board Game Selectors*/
+.board-game-container{
+    display: flex;
+    background-color: red;
+    height: 100%;
+    width: 60%;
+    padding: 0;
+
+}
+
+.left-column-container, .right-column-container{
+    height: 100%;
+    width: 15%;
+    background-color: pink;
+}
+
+.middle-section-container{
+    height: 100%;
+    width: 80%;
+    background-color: green;
+
+}
+
+.top-row, .bottom-row{
+    background-color: blue;
+    height: 15%;
+}
+
+.board{
+    background-image: url("monopoly_images/board_images/centerGameImage.png");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 70%;
+    background-color: purple;
+    text-align: center;
+}
+
+.small-square{
+    height: 7.7778%;
+    border: black solid 1px;
+    position: relative;
+}
+
+.large-square{
+    height: 15%;
+    border: black solid 1px;
+    position: relative;
+}
+
+.top-row{
+    display: flex;
+}
+
+.bottom-row{
+    display: flex;
+}
+
+.top-row > .small-square, .bottom-row > .small-square{
+    width: 11.11%;
+    height: 100%;
+    flex-flow: row wrap;
+}
+
+
+/*________________________________Stats Container Selectors____________________________________*/
+.stats-container{
+    height: 100%;
+    width: 40%;
+    text-align: center;
+    background-image: url("monopoly_images/statsBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+#player-container{
+    height: 30%;
+    width: 100%;
+}
+
+
+/*player effects*/
+.player1, .player2 .player3, .player4{
+    background: url() no-repeat;
+    width:100px;
+    height:100px;
+
+}
+
+/*Player Stats*/
+#player-stats{
+    font-size:1.5rem;
+    font-family: 'Alegreya Sans', sans-serif;
+    /*position: relative;*/
+    /*left: 78%;*/
+    /*top: 57px;*/
+}
+
+.player2, .player3, .player4 {
+    display: none;
+}
+
+#player1Img, #player2Img, #player4Img, #player4Img{
+    width: 50px;
+    height: 55px;
+    border-radius: 50%;
+    position: inline-block;
+}
+
+
+.indiv-players{
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    height: 40%;
+}
+
+
+
+/*Game Button*/
+
+.stats-button-container{
+    width: 80%;
+    margin: auto;
+}
+
+.stats-text-info-container{
+    height: 65%;
+    width: 100%;
+}
+
+
+/*card effects*/
+#community-card-deck{
+    display: inline;
+}
+
+.active{
+    display:none
+}
+
+/*modal effect*/
+
+#property-title, .character-title-name{
+    margin-top: 8px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+
+}
+
+#property-modal {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    font-size: 19px; 
+    transform: translate(-50%, -50%);
+    height: 342px;
+    width: 291px;
+    background-color: white;
+    z-index: 2;
+    border: black solid 3px;
+}
+.modal-hide{
+    display: none;
+}
+
+.title-name-container, .character-name-container {
+    height: 60%;
+    width: 75%;
+    border: 2px solid black;
+    margin: auto;
+
+}
+
+/*Player Modal Stats*/
+.modal-character-content{
+    position: fixed;
+    left: 79%;
+    top: 96%;
+    font-size: 19px;
+    transform: translate(-50%, -50%);
+    height: 233px;
+    width: 245px;
+    background-color: white;
+    z-index: 2;
+    border: black solid 3px;
+}
+
+#title-deed{
+    margin: 6px;
+}
+
+.currentPlayerInfoContainer{
+    margin-top: 68%;
+    font-size: large;
+}
+
+/* Player Token*/
+
+.circle {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    border-color: red;
+    position: absolute;
+    right: 5%;
+    top: 2%;
+    border: solid red 5px;
+
+}
+
+.dice-container{
+    height: 107%;
+    position: absolute;
+    left: 30%;
+    top: -10%;
+    transform: rotate(-45deg);
+}
+
+.dice{
+    height:36%;
+    display:inline-block;
+    transform: rotate(-45deg);
+}
+
+.dice > img{
+    height: 50%;
+}
+
+#dice-roll{
+    height: 50%;
+}
+.button-container{
+    position:relative;
+    top:5%;
+    display: block;
+
+
+}
+.moveSound{
+    display:none;
+}
+
+.chance-card-deck-spot{
+    position: absolute;
+    height: 15%;
+    width: 20%;
+    background-image: url("monopoly_images/chance/chanceBackOfCard.png");
+    background-size: cover;
+    top: 41px;
+    right: 49px;
+    transform: rotate(-135deg);
+
+}
+
+.chest-card-deck-spot{
+    position: absolute;
+    bottom: 34px;
+    left: 44px;
+    height: 15%;
+    width: 20%;
+    background-image: url("monopoly_images/community_chest/chestBackOfCard.png");
+    background-size: cover;
+    transform: rotate(45deg);
+
+
+}
+
+.chance-card-deck-spot > img, .chest-card-deck-spot > img{
+    height: 100%;
+    width: 100%;
+
+}
+
+.small-square > .spotImages, .large-square > .spotImages{
+     height: 100%;
+     width: 100%;
+ }
+
+.property-container{
+    height: 15%;
+}
