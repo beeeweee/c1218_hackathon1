@@ -1,23 +1,13 @@
 $(document).ready(initializeGame);
 
-//start variables
-
+//start (global) variables
 var min = 1;
 var max = 6;
 var totlBlockCount = 43;
 var numberOfPlayers = 0;
-
-
 var playerIds = ['player1', 'player2','player3','player4'];
-
 var currentPlayerIndex = 0;
 var currentPlayer = "player1";
-
-//player variables
-
-// var currentProp = propData[propertyIndex];
-// currentProp.owner = currentPlayersObject[ currentPlayer ];
-
 var currentPlayersObject = {
     'player1': {
         'playerPosition': 0, 'playerStatus': 1, 'playerName': '', 'balance': 0,
@@ -40,48 +30,38 @@ var currentPlayersObject = {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
         'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
-
-
-    /*    currentPlayers: [],
-        currentNumberOfPlayesr: 0,
-        playerStatus: [0,0,0,0],
-        playerName: [null,null,null,null],
-        playerPosition:*/
-
 }
 
-   //Game Sound
-    // this.backgroundTheme;
- 
-    // this.playAudio = function(){
-    //     var playPromise = document.querySelector('#monopoly-audio').play();
-    //     if (playPromise !== undefined) {
-    //       playPromise.then(function() {
-    //       }).catch(function(error) {
-    //       });
-    //     }
-    //   }
-    //     this.playDiceRolling = function(){
-    //    this.diceRolling= $('#dice-audio').play();
-    //    if(diceRolling != undefined){
-    //        diceRolling.then(function(){
-    //        }).catch(function(error){     
-    //        });
-    //    }
-           
-    //     }
-
-
-
-//var GameAudioController = new AudioController();
+//Game Sound
+    //Background Music
+var GameAudioController = new AudioController();
+this.backgroundTheme;
+this.playAudio = function(){
+    var playPromise = document.querySelector('#monopoly-audio').play();
+    if (playPromise !== undefined) {
+        playPromise.then(function() {
+        }).catch(function(error) {
+        });
+    }
+    }
+    //DiceRoll
+//     function diceRollSound(){this.playDiceRolling = function(){
+//     this.diceRolling= $('#dice-audio').play();
+//     if(diceRolling != undefined){
+//         diceRolling.then(function(){
+//         }).catch(function(error){     
+//         });
+//     }
+        
+//     }
+// }
+//Current Player Turns
 
 function playerTurnCycler(currentPlayerTurn) {
     var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
-
     if (currentPlayerTurn < totalAmtOfPlayers) {
         return `player${currentPlayerTurn + 1}`;
     }
-
     return 'player1';
 }
 
@@ -96,6 +76,7 @@ function disperseMoney() {
     }
 }
 
+//property checks and allocation
 function numberOfPropertiesOwned(){
     var numberOfActivePlayers = numberOfPlayers;
     // var currentNumberOfPropertiesOwned = Object.keys(currentPlayersObject.player1.propertiesOwned).length;
@@ -109,8 +90,6 @@ function numberOfPropertiesOwned(){
 }
 
 function checkWhatTypeOfPropertiesPlayerHas(currentProperty){
-    debugger;
-
     var currentNumberOfPropertiesOwned = numberOfPropertiesOwned();
     var activePlayers = numberOfPlayers;
     while(activePlayers){
@@ -122,35 +101,24 @@ function checkWhatTypeOfPropertiesPlayerHas(currentProperty){
             console.log(currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`])
             console.log(currentProperty);
         }
-        activePlayers--;
-        
+        activePlayers--;  
     }
-//     for (var i in propertyData){
-//         if(propertyData[i].ownerProperty===currentPlayer){
-//             currentPropertyOwned.push(propertyData[i]);
-//         }
-//     }
-//    return currentPropertyOwned;
-
  }
 
 
-
-
+//player population
 function populateBoardSpots(){
     for (var currentSquare = 0; currentSquare <= 39; currentSquare++){
-//     var imageToUseContainer = $('div');
         console.log('im doing something')
         var imageToUse = $('<img />', {
             src: `monopoly_images/board_images/position-${currentSquare}.png`,
             class: 'spotImages'
             });
         $(`.position-${currentSquare}`).append(imageToUse);
-        // $(`.position${currentSquare}`).append(imageToUse);
     }
 }
 
-
+//************ Initialize App **************
 function initializeGame() {
      populateBoardSpots();
 
@@ -167,19 +135,14 @@ function initializeGame() {
 
     });
 
-
-
-
-    //create Dice Roll Effect
+//create Dice Roll Effect
     $("#btn").click(function () {
         console.log("testing1");
         playerCurrentPosition();
     })
-    //Deal Cards
+//Deal Cards
 
     $('.chest-card-deck-spot').click(function () {
-
-
         if($('.chest-card-deck-spot').children().length===1){
             removeChestCard();
         } else {
@@ -194,7 +157,7 @@ function initializeGame() {
             dealChanceCard(randomChanceCard());
         }
      })
-     //Background Game Music Audio
+//Background Game Music Audio
      /*$('#start-button').click(function(){
         GameAudioController.playAudio();
     })
@@ -202,8 +165,8 @@ function initializeGame() {
     $('.dice-roll').click(function(){
         GameAudioController.playDiceRolling();
     })
-*/
-    //remove cards clickHandlers
+    */
+//remove cards clickHandlers
     $('.remove-community-card').click(function () {
         $('#community-card-deck').addClass('active');
     })
@@ -212,42 +175,33 @@ function initializeGame() {
         $('#chance-card').addClass('active');
     })
 
-
-
-    //player 1 click handler
+//player 1 click handler
     $(".circle").click(function (){
         playerCurrentPosition();
     });
 
-      ///show player Status
+///show player Status
      $('.player-1-stat').mouseover(showPlayerStats);
     $('player-1-stat').mouseout(showPlayerStats);
 
     $('.player-2-stat').mouseover(showPlayerStats);
     $('.player-2-stat').mouseout(showPlayerStats);
 
-    //start game click handler
-    /*$("#start-button").click(function () {
-        $(".overlay").hide();
-        //startTimer();
-    })
-*/
-$('.small-square, .large-square').click(showDeed);
+    $('.small-square, .large-square').click(showDeed);
     
+//Click Handlers
+    $('.remove-community-card').click(function () {
+        $('#community-card-deck').addClass('active');
+    })
+    
+    $('.remove-chance-card').click(function () {
+        $('#chance-card').addClass('active');
+    })
+    //Modal Handler
+    
+    $('.small-square, .large-square').click(showDeed);
 
 }
-
-
-//enlarge property mouseover clickHandlers
-
-
-
-//start game click handler
-/*$("#start-button").click(function () {
-    $(".overlay").hide();
-    //startTimer();
-});
-*/
 
 function togglePlayer(){
     currentPlayerIndex = currentPlayerIndex + 1;
@@ -271,7 +225,7 @@ $('.remove-chance-card').click(function () {
 })
 
 
-//start game number of players
+//****start game number of players and board setup*****
 function numberOfPlayersSelected() {
     numberOfPlayers = $('#numberOfPlayersSelect').val();
     console.log(numberOfPlayers);
@@ -346,7 +300,6 @@ function activePlayer() {
         currentPlayersObject[`player${indivPlayer}`].playerStatus = 1;
         console.log(currentPlayersObject[`player${indivPlayer}`] + " activated");
     }
-
 }
 
 function activatedPlayers() {
@@ -356,16 +309,12 @@ function activatedPlayers() {
         if (currentPlayersObject[`player${indexCount}`].playerStatus === 1) {
             totalAmtOfActivePlayers++;
             indexCount++;
-
         } else {
             indexCount++;
         }
-
     }
     return totalAmtOfActivePlayers;
 }
-
-
 
 function deactivePlayer() {
     var totalAmtOfActivePlayers = 0;
@@ -378,21 +327,14 @@ function deactivePlayer() {
         } else {
             indexCount++;
         }
-
     }
     for (numberOfPlayers; numberOfPlayers < totalAmtOfActivePlayers; totalAmtOfActivePlayers--) {
         currentPlayersObject[`player${totalAmtOfActivePlayers}`].playerStatus = 0;
         console.log(currentPlayersObject[`player${totalAmtOfActivePlayers}`] + " deactivated");
     }
-
-    //Modal Handler
-
-
 }
 
-
 function showPlayerPieces() {
-
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
@@ -483,33 +425,7 @@ function removePlayerPieces() {
         player4.remove($('.position-0'));
     }
 }
-
-//clickHandlers
-$('.remove-community-card').click(function () {
-    $('#community-card-deck').addClass('active');
-})
-
-$('.remove-chance-card').click(function () {
-    $('#chance-card').addClass('active');
-})
-//Modal Handler
-
-$('.small-square, .large-square').click(showDeed);
-
-
-
-//start game click handler
-
-
-//player 1 click handler
-
-/*$(".circle").click(function (){
-    console.log("ab");
-    playerCurrentPosition();
-});*/
-
-// player choosing name from name array
-
+//*****END
 
 //player game function
 function diceNumbers() {
@@ -537,15 +453,12 @@ function diceNumbers() {
         return {
             totalMove: totalMove,
             toggle: false,
-
         }
         // totalMove + diceNumbers();
     }
 }
 
 function playerCurrentPosition() {
-
-
     var currentPosition = currentPlayersObject[currentPlayer]['playerPosition'];
     var result=diceNumbers();
     var diceRolls = result.totalMove; // storing the dice number
@@ -562,11 +475,9 @@ function playerCurrentPosition() {
     console.log( currentPlayerPosition );
     if(result.toggle){
         togglePlayer()
-
     }
-
 }
-
+//****END******
 
 //Deal Community Chest Cards
 var communityChestDeck = new Array();
@@ -583,23 +494,19 @@ communityChestDeck[8] = "capture_1";
 communityChestDeck[9] = "capture_1";
 communityChestDeck[10] = "capture_1";
 
-
 function randomCommunityCard() {
     return Math.floor(Math.random() * numberOfCardsInDeck);
 }
-
 
 function dealCommunityChestCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
     $('.chest-card-deck-spot').append(img);
-
 }
 
 function removeChestCard(){
     $('.chest-card-deck-spot img').remove();
 }
-
 
 //Deal Chance Cards
 var chanceDeck = new Array();
@@ -621,12 +528,10 @@ function randomChanceCard() {
     return Math.floor(Math.random() * numberOfCardsInDeck);
 }
 
-
 function dealChanceCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
     $('.chance-card-deck-spot').append(img);
-
 }
 
 function removeChanceCard(){
@@ -639,6 +544,7 @@ function removeCard(card) {
         numberOfCardsInDeck--;
     }
 }
+//*****END*****
 
 //Modal Property
 var Property = function(){
@@ -667,7 +573,6 @@ var Property = function(){
 
 
 // Show Player Stats Modal
-
 function showPlayerStats(){
     $('.modal-character-content').show();
     console.log("Hi");
@@ -676,8 +581,6 @@ function hidePlayerStats(){
     $('.modal-character-content').hide();
     console.log("Hi");
 }
-
-
 
 function showDeed() {
     $('#property-modal').show();
@@ -714,11 +617,7 @@ function showCharacterStats(player){
     // $('#character-name').text(characterData[]);
     // $('#houses-owned').text(characterData[]);
     // $('#hotels-owned').text(characterData[]);
-
 }
-
-
-
 
 function playerCanBuyProperties(player, property) {
     var playerWantToPurchase = true;
@@ -760,8 +659,6 @@ function displayNewOwnerShip() {
     function playerDoesNotHaveEnoughMoney() {
         $('#noMoneyLeft').text();
     }
-
-
     
 // if player has money equal to or more than the cost of the property
     // display message "You have enough money to buy property"
@@ -777,9 +674,6 @@ function displayNewOwnerShip() {
     // display message "Not enough money"
 // 
 //player can buy prop if they have enough money and if so subtract from value  
-
-
-
 
 function playerLandsOnAnotherPlayersProperty(player, property){
 
@@ -802,18 +696,6 @@ function playerLandsOnAnotherPlayersProperty(player, property){
     // display player's and owner's new money total
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function playerLandsOnOwnedProperty(player, property){
     // display "You already own this property"
     // prompt player to finish turn
@@ -821,11 +703,7 @@ function playerLandsOnOwnedProperty(player, property){
 }
 
 
-
 //need the id to see which property the player lands on and use that function to know the character index
-
-
-
 
   //once the person lands on the property, they will need to know if they either are owners of the property or not
     //if owners: they can either purchase a another house /motel 
@@ -854,8 +732,6 @@ function getByID(propertyIndex){
 }
 }
     //$('#mortgage-cost').text(deedData[9]);
-
-
 
 /*
 
