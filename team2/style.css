@@ -187,10 +187,11 @@ html {
 /*modal effect*/
 
 #property-title, .character-title-name{
-    margin-top: 10px;
+    margin-top: 8px;
     color: white;
     text-transform: uppercase;
     font-size: 1.5rem;
+
 }
 
 #property-modal {
@@ -211,7 +212,7 @@ html {
 
 .title-name-container, .character-name-container {
     height: 60%;
-    width: 95%;
+    width: 75%;
     border: 2px solid black;
     margin: auto;
 
@@ -231,8 +232,14 @@ html {
     border: black solid 3px;
 }
 
+#title-deed{
+    margin: 6px;
+}
 
-
+.currentPlayerInfoContainer{
+    margin-top: 68%;
+    font-size: large;
+}
 
 /* Player Token*/
 
@@ -315,3 +322,7 @@ html {
      height: 100%;
      width: 100%;
  }
+
+.property-container{
+    height: 15%;
+}
