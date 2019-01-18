@@ -37,8 +37,9 @@ var currentPlayersObject = {
 
 //Game Sound
     //Background Music
-var GameAudioController = new AudioController();
+//var GameAudioController = new AudioController();
 this.backgroundTheme;
+
 this.playAudio = function(){
     var playPromise = document.querySelector('#monopoly-audio').play();
     if (playPromise !== undefined) {
