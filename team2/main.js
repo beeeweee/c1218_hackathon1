@@ -14,14 +14,23 @@ var currentPlayerIndex = 0;
 var currentPlayer = "player1";
 
 //player variables
+
+// var currentProp = propData[propertyIndex];
+// currentProp.owner = currentPlayersObject[ currentPlayer ];
+
 var currentPlayersObject = {
     'player1': {
         'playerPosition': 0, 'playerStatus': 1, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {
+            '1': '1',
+            '2': '3'
+        }, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
     'player2': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {
+            'property1': 1,
+        }, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
     'player3': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
@@ -66,8 +75,6 @@ var currentPlayersObject = {
 
 //var GameAudioController = new AudioController();
 
-  
-
 function playerTurnCycler(currentPlayerTurn) {
     var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
 
@@ -89,8 +96,43 @@ function disperseMoney() {
     }
 }
 
+function numberOfPropertiesOwned(){
+    var numberOfActivePlayers = numberOfPlayers;
+    // var currentNumberOfPropertiesOwned = Object.keys(currentPlayersObject.player1.propertiesOwned).length;
+    var numberOfPropertiesOwned = 0;
+    console.log(currentPlayersObject.player1.propertiesOwned['2']);
+    while(numberOfActivePlayers){
+        numberOfPropertiesOwned += Object.keys(currentPlayersObject[`player${numberOfActivePlayers}`].propertiesOwned).length;
+        numberOfActivePlayers--;
+    }
+    return numberOfPropertiesOwned;
+}
 
+function checkWhatTypeOfPropertiesPlayerHas(currentProperty){
+    debugger;
 
+    var currentNumberOfPropertiesOwned = numberOfPropertiesOwned();
+    var activePlayers = numberOfPlayers;
+    while(activePlayers){
+        for(currentNumberOfPropertiesOwned; currentNumberOfPropertiesOwned > 0; currentNumberOfPropertiesOwned--){
+            debugger;
+            if(currentProperty === currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`]){
+                console.log('Same property');
+            }
+            console.log(currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`])
+            console.log(currentProperty);
+        }
+        activePlayers--;
+        
+    }
+//     for (var i in propertyData){
+//         if(propertyData[i].ownerProperty===currentPlayer){
+//             currentPropertyOwned.push(propertyData[i]);
+//         }
+//     }
+//    return currentPropertyOwned;
+
+ }
 
 
 
@@ -136,12 +178,21 @@ function initializeGame() {
     //Deal Cards
 
     $('.chest-card-deck-spot').click(function () {
-        dealCommunityChestCard(randomCommunityCard());
+
+
+        if($('.chest-card-deck-spot').children().length===1){
+            removeChestCard();
+        } else {
+            dealCommunityChestCard(randomCommunityCard());
+        }
     })
+
     $('.chance-card-deck-spot').click(function () {
-
-        dealChanceCard(randomChanceCard());
-
+        if ($('.chance-card-deck-spot').children().length === 1) {
+            removeChanceCard();
+        } else {
+            dealChanceCard(randomChanceCard());
+        }
      })
      //Background Game Music Audio
      /*$('#start-button').click(function(){
@@ -255,6 +306,7 @@ function displayPlayersSelected() {
             removePlayerPieces();
         } else {
             showPlayerPieces();
+            player2.show();
         }
         removePlayerPieces();
        deactivePlayer();
@@ -340,6 +392,7 @@ function deactivePlayer() {
 
 
 function showPlayerPieces() {
+
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
@@ -364,17 +417,24 @@ function showPlayerPieces() {
       player1.appendTo($('.position-0'));
     } else if (numberOfPlayers === 2){
       player2.appendTo($('.position-0'));
+      $('.player2').show();
     } else if (numberOfPlayers === 3){
         player2.appendTo($('.position-0'));
       player3.appendTo($('.position-0'));
+      $('.player2').show();
+      $('.player3').show();
     } else if (numberOfPlayers === 4){  
         player2.appendTo($('.position-0'));
         player3.appendTo($('.position-0'));
       player4.appendTo($('.position-0'));
+      $('.player2').show();
+      $('.player3').show();
+      $('.player4').show();
     }
 }
 
 function removePlayerPieces() {
+    debugger;
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
@@ -437,12 +497,6 @@ $('.remove-chance-card').click(function () {
 $('.small-square, .large-square').click(showDeed);
 
 
-//start game click handler
-
-
-
-
-console.log('Hi');
 
 //start game click handler
 
@@ -539,8 +593,11 @@ function dealCommunityChestCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
     $('.chest-card-deck-spot').append(img);
-    removeCard(i);
 
+}
+
+function removeChestCard(){
+    $('.chest-card-deck-spot img').remove();
 }
 
 
@@ -569,8 +626,11 @@ function dealChanceCard(i) {
     if (numberOfCardsInDeck === 0) return false;
     var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
     $('.chance-card-deck-spot').append(img);
-    removeCard(i);
 
+}
+
+function removeChanceCard(){
+    $('.chance-card-deck-spot img').remove();
 }
 
 function removeCard(card) {
