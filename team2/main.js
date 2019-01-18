@@ -37,9 +37,8 @@ var currentPlayersObject = {
 
 //Game Sound
     //Background Music
-//var GameAudioController = new AudioController();
-this.backgroundTheme;
 
+this.backgroundTheme;
 this.playAudio = function(){
     var playPromise = document.querySelector('#monopoly-audio').play();
     if (playPromise !== undefined) {
@@ -180,10 +179,10 @@ function initializeGame() {
         }
      })
 //Background Game Music Audio
-     /*$('#start-button').click(function(){
-        GameAudioController.playAudio();
+    $('#start-button').click(function(){
+        playAudio();
     })
-
+/*
     $('.dice-roll').click(function(){
         GameAudioController.playDiceRolling();
     })
@@ -226,37 +225,28 @@ function initializeGame() {
 }
 
 function togglePlayer(){
-    /* currentPlayerIndex = currentPlayerIndex + 1;
-    if (currentPlayerIndex < playerIds.length) {
-        currentPlayer = playerIds[currentPlayerIndex]
-    } else {
-        currentPlayerIndex = 0;
-        currentPlayer = playerIds[currentPlayerIndex];
-    } */
-
-
 
     if (currentPlayerIndex < playerIds.length) {
         currentPlayer = playerIds[currentPlayerIndex];
-
-        if( (currentPlayerIndex===0 || currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")  ){
+ 
+        if( (currentPlayerIndex===0 || currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar") ){
             dealCommunityChestCard(randomCommunityCard());
             removeChanceCard();
-        } else if((currentPlayerIndex===1||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("valar")){
+        } else if((currentPlayerIndex===1||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar")){
             dealChanceCard();
             removeChestCard()
         }
-
+ 
     } else {
         currentPlayerIndex = 0;
         currentPlayer = playerIds[currentPlayerIndex];
-        if( (currentPlayerIndex===0 ||currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")){
+        if( (currentPlayerIndex===0 ||currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar") ){
             dealCommunityChestCard(randomCommunityCard());
             removeChanceCard();
-        } else if ((currentPlayerIndex==1 ||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("valar")){
+        } else if ((currentPlayerIndex==1 ||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar")){
             dealChanceCard() ;
             removeChestCard()
-
+ 
         }
     };
 
@@ -647,7 +637,14 @@ function hidePlayerStats(){
 function showDeed() {
     $('#property-modal').show();
     var propertyIndex = $(this).attr('pos');
-    var deedData = propData[propertyIndex];
+    var deedData = null;
+
+    for (var arrayNum = 0; arrayNum < propData.length; arrayNum++){
+        console.log('made it in@')
+        if (propData[arrayNum][11] == propertyIndex){
+            deedData = propData[arrayNum];
+        }
+    }
 
     $('#base-rent').text(deedData[3]);
     $('#property-title').text(deedData[0]);
