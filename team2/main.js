@@ -50,26 +50,26 @@ var currentPlayersObject = {
 
 }
 
-   //Game Soun
-    this.backgroundTheme;
+   //Game Sound
+    // this.backgroundTheme;
  
-    this.playAudio = function(){
-        var playPromise = document.querySelector('#monopoly-audio').play();
-        if (playPromise !== undefined) {
-          playPromise.then(function() {
-          }).catch(function(error) {
-          });
-        }
-      }
-        this.playDiceRolling = function(){
-       this.diceRolling= $('#dice-audio').play();
-       if(diceRolling != undefined){
-           diceRolling.then(function(){
-           }).catch(function(error){     
-           });
-       }
+    // this.playAudio = function(){
+    //     var playPromise = document.querySelector('#monopoly-audio').play();
+    //     if (playPromise !== undefined) {
+    //       playPromise.then(function() {
+    //       }).catch(function(error) {
+    //       });
+    //     }
+    //   }
+    //     this.playDiceRolling = function(){
+    //    this.diceRolling= $('#dice-audio').play();
+    //    if(diceRolling != undefined){
+    //        diceRolling.then(function(){
+    //        }).catch(function(error){     
+    //        });
+    //    }
            
-        }
+    //     }
 
 
 
@@ -133,6 +133,8 @@ function checkWhatTypeOfPropertiesPlayerHas(currentProperty){
 //    return currentPropertyOwned;
 
  }
+
+
 
 
 function populateBoardSpots(){
@@ -230,6 +232,7 @@ function initializeGame() {
         //startTimer();
     })
 */
+$('.small-square, .large-square').click(showDeed);
     
 
 }
@@ -495,6 +498,9 @@ $('.small-square, .large-square').click(showDeed);
 
 
 
+//start game click handler
+
+
 //player 1 click handler
 
 /*$(".circle").click(function (){
@@ -674,7 +680,6 @@ function hidePlayerStats(){
 
 
 function showDeed() {
-    debugger;
     $('#property-modal').show();
     var propertyIndex = $(this).attr('pos');
     var deedData = propData[propertyIndex];
@@ -715,12 +720,49 @@ function showCharacterStats(player){
 
 
 
-function playerCanBuyProperties(player, property){
-    if( player >=  property){
-        
-
+function playerCanBuyProperties(player, property) {
+    var playerWantToPurchase = true;
+    if (currentPlayersObjects.balance >= property) {
+        playerHasEnoughMoney();
+        playerHasPurchase();
+        displayNewOwnerShip();
+        displayRemainingAmount();
+        playerDoesNotPurchase();
+        playerDoesNotHaveEnoughMoney();
     }
 }
+
+// Plays Has Enough Money To Purchase Property
+function PlayerHasEnoughMoney() {
+    $('#hasMoney').text();
+}
+
+function playerHasPurchase() {
+    var costOfDifference = currentPlayersObject.balance;
+    ('#playerPurchase').text();
+    costOfDifference = costOfDifference - currentPlayersObject.balance;
+}
+
+
+function displayNewOwnerShip() {
+    $('#new-ownership').text();
+
+    function displayRemainingAmount() {
+        $('#currentAmountLeft').text();
+
+    }
+
+    function playerDoesNotPurchase() {
+        $('#doesNotPurchase').text();
+    }
+
+
+    function playerDoesNotHaveEnoughMoney() {
+        $('#noMoneyLeft').text();
+    }
+
+
+    
 // if player has money equal to or more than the cost of the property
     // display message "You have enough money to buy property"
     // prompt if player wants to buy
@@ -737,7 +779,10 @@ function playerCanBuyProperties(player, property){
 //player can buy prop if they have enough money and if so subtract from value  
 
 
+
+
 function playerLandsOnAnotherPlayersProperty(player, property){
+
     // get player's current money and how much they owe to property owner
     //  display how much player owes 
     //  while player doesn't have enough money to pay owner
@@ -756,6 +801,16 @@ function playerLandsOnAnotherPlayersProperty(player, property){
     // player pays money to owner
     // display player's and owner's new money total
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -797,7 +852,7 @@ function getByID(propertyIndex){
     return propertyData[propertyIndex];
     console.log("hi");
 }
-
+}
     //$('#mortgage-cost').text(deedData[9]);
 
 
@@ -816,29 +871,4 @@ function getByID(propertyIndex){
 9 Mortgage
 */
 
-
-// //players effect
-// var player1 =`<div id="player1"></div>`;
-// $('.boardGame').append(player1);
-// $(document).keydown(function(e)){
-//     alert(e.keycode);
-
-
-//     var getPosition=$('#player').position();
-//     switch(e.keyCode)
-//     {
-//         case 37:
-//         $('#player1').css('left', position.left - //however many px we want // + 'px');
-//         break;
-//         case 38:
-//         $('#player1').css('top', position.top -//however many px we want // + 'px');
-//         break;
-//         case 39:
-//         $('#player1').css('right', position.right -//however many px we want // + 'px');
-//         break;
-//         case 40:
-//         $('#player1').css('right', position.right -//however many px we want // + 'px');;
-//         break;
-//     }
-// }
 
