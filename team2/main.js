@@ -494,14 +494,6 @@ $('.remove-chance-card').click(function () {
 $('.small-square, .large-square').click(showDeed);
 
 
-//start game click handler
-
-
-
-$('.small-square, .large-square').click(showDeed);
-
-//start game click handler
-
 
 //player 1 click handler
 
@@ -643,23 +635,6 @@ function removeCard(card) {
 }
 
 //Modal Property
-
-
-// function showDeed(){id="dice-roll" 
-//     $('#property-modal').show();
-//     var propertyIndex = $(this).attr('pos');
-//     var deedData = propData[propertyIndex];
-
-//     $('#base-rent').text(deedData[3]);
-//     $('#property-title').text(deedData[0]);
-//     $('#rent-1').text(deedData[1]);
-//     $('#rent-2').text(deedData[2]);
-//     $('#rent-3').text(deedData[4]);
-//     $('#rent-hotel').text(deedData[8]);
-//    $('#mortgage-cost').text(deedData[9]);
-//    $('.title-name-container').css('background-color', deedData[10]);
-
-// }
 var Property = function(){
     this.tileId;
     this.picture;
@@ -699,6 +674,7 @@ function hidePlayerStats(){
 
 
 function showDeed() {
+    debugger;
     $('#property-modal').show();
     var propertyIndex = $(this).attr('pos');
     var deedData = propData[propertyIndex];
