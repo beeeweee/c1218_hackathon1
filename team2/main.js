@@ -8,7 +8,7 @@ var totlBlockCount = 43;
 var numberOfPlayers = 0;
 
 
-var playerIds = ['player1', 'player2','player3','player4'];
+var playerIds = [];
 
 var currentPlayerIndex = 0;
 var currentPlayer = "player1";
@@ -150,6 +150,13 @@ function populateBoardSpots(){
     }
 }
 
+function changePlayerArray(){
+    var amount = numberOfPlayers;
+
+    for (var indivPlayer = 1; indivPlayer <= amount; indivPlayer++){
+        playerIds.push(`player${indivPlayer}`);
+    }
+}
 
 function initializeGame() {
      populateBoardSpots();
@@ -159,6 +166,7 @@ function initializeGame() {
 
     $("#start-button").click(function () {
         $(".overlay").hide();
+        changePlayerArray();
     });
 
     $("#toggleplayer").click(function () {
@@ -168,7 +176,8 @@ function initializeGame() {
     });
 
 
-
+    $('.currentPlayerInfoContainer').text(
+        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
 
     //create Dice Roll Effect
     $("#btn").click(function () {
@@ -434,7 +443,6 @@ function showPlayerPieces() {
 }
 
 function removePlayerPieces() {
-    debugger;
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
@@ -562,9 +570,12 @@ function playerCurrentPosition() {
     console.log( currentPlayerPosition );
     if(result.toggle){
         togglePlayer()
-
     }
 
+    $('.currentPlayerInfoContainer').text(
+        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`
+
+    )
 }
 
 
