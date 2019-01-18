@@ -14,14 +14,23 @@ var currentPlayerIndex = 0;
 var currentPlayer = "player1";
 
 //player variables
+
+// var currentProp = propData[propertyIndex];
+// currentProp.owner = currentPlayersObject[ currentPlayer ];
+
 var currentPlayersObject = {
     'player1': {
         'playerPosition': 0, 'playerStatus': 1, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {
+            '1': '1',
+            '2': '3'
+        }, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
     'player2': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {
+            'property1': 1,
+        }, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
     'player3': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
@@ -87,8 +96,43 @@ function disperseMoney() {
     }
 }
 
+function numberOfPropertiesOwned(){
+    var numberOfActivePlayers = numberOfPlayers;
+    // var currentNumberOfPropertiesOwned = Object.keys(currentPlayersObject.player1.propertiesOwned).length;
+    var numberOfPropertiesOwned = 0;
+    console.log(currentPlayersObject.player1.propertiesOwned['2']);
+    while(numberOfActivePlayers){
+        numberOfPropertiesOwned += Object.keys(currentPlayersObject[`player${numberOfActivePlayers}`].propertiesOwned).length;
+        numberOfActivePlayers--;
+    }
+    return numberOfPropertiesOwned;
+}
 
+function checkWhatTypeOfPropertiesPlayerHas(currentProperty){
+    debugger;
 
+    var currentNumberOfPropertiesOwned = numberOfPropertiesOwned();
+    var activePlayers = numberOfPlayers;
+    while(activePlayers){
+        for(currentNumberOfPropertiesOwned; currentNumberOfPropertiesOwned > 0; currentNumberOfPropertiesOwned--){
+            debugger;
+            if(currentProperty === currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`]){
+                console.log('Same property');
+            }
+            console.log(currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`])
+            console.log(currentProperty);
+        }
+        activePlayers--;
+        
+    }
+//     for (var i in propertyData){
+//         if(propertyData[i].ownerProperty===currentPlayer){
+//             currentPropertyOwned.push(propertyData[i]);
+//         }
+//     }
+//    return currentPropertyOwned;
+
+ }
 
 
 function populateBoardSpots(){
