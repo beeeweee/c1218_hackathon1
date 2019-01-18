@@ -85,6 +85,11 @@
             <div class="board">
                 <div class="chest-card-deck-spot"></div>
                 <div class="chance-card-deck-spot"></div>
+                <div class="dice-container">
+                    <div class = 'dice' id="myDice1"></div>
+                    <div class="dice" id="myDice2"></div>
+                </div>
+
             </div>
             <div class="bottom-row">
                 <div class="position-9 small-square" pos="9"></div>
@@ -132,26 +137,29 @@
                 <img id='player1Img' src="monopoly_images/jon_snow.jpg">
             </div>
         </div>
-
-<!--Dice-->
-
-
-
-        <!--set player  name functionality -->
-
         <div class="stats-button-container">
-            <button id="setplayerName">Set Player Name</button>
             <button id="btn">Roll Dice</button>
-            <!--Deal Community Chest Cards-->
-            <button type="button" class="remove-community-card">Remove Community Card</button>
-            <button type="button" class="remove-chance-card">Remove Chance Card</button>
         </div>
-
-        <div id="myDice1"></div>
-        <div id="myDice2"></div>
     </div>
 
+    <div class="stats-text-info-container">
+        <div class="character-stat-container">
+            <div class="character-name-container">
+                <h5 id="character-title-name"><span id="character-name"></span></h5>
+            </div>
+            <h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6>
+            <div class="houses-rent">
+                <p id="property-own">Property Currently Owned By and is $ <span id="property-owned-description"></span>
+                    <br>
+                    Currently has <span id="houses-owned"></span>
+                    <br>
+                    Currently has <span id="hotels-owned"></span>
+                    <br>
+            </div>
+        </div>
     </div>
+
+</div>
         <!--Modal for Properties -->
 
         <!-- The Modal -->
@@ -181,7 +189,7 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
             <!--Modal Character Stats-->
             <div class="modal-character-content">
                 <span class="close">&times;</span>
@@ -201,8 +209,24 @@
                         </div>
                     </div>
                 </div>
-            </div>                           
-            <!--Audi-->
+            </div>      
+            
+            
+            <!--Display OwnerShip / Property Text  for Each Player--->
+            <h4 id="hasMoney" class="display-ownership-text">"You have enough money to buy property. Do you want to buy the Property?</h4>
+            <h4 id="playerPurchase" class="display-ownership-text">You have purchased the property.</h4>
+            <h4 id="new-ownership" class="display-ownership-text">You are the owner of this property.</h4>
+            <h4 id="currentAmountLeft" class="display-ownership-text">You currently have this much money.</h4>
+            <h4 id="doesNotPurchase" class="display-ownership-text">You do not want to buy the property.</h4>
+            <h4 id="noMoneyLeft" class="display-ownership-text">You have no money.</h4>
+            <h4 id="displayWhatTypeOfProperties" class="display-ownership-text">You owed <span id="houses-hotels-mortgages-owned">     houses</span></h4>
+            <h4 id="howMuchPlayerCanGet" class="display-ownership-text">You can get <span id="player-can-get">  .....</span></h4>
+            <h4 id="playChoiceOfProperty" class="display-ownership-text">You can sell <span id="player-choice-to-sell">  .....</span></h4>
+     
+            give player choice of which property (house, hotel, mortgage) to sell
+            // display message "You chose to sell _____ property"
+
+
             <audio id="monopoly-audio" autoplay="autoplay">
                 <source src="audio/bkg_song.mp3" />
             </audio>

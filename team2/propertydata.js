@@ -50,16 +50,19 @@ for(let i = 0; i < propData.length; i++){
     }
     console.log(PropertyObject);
 */
-var propertyData=[ { 'property-title': 'Mediterranean Ave',
-'property-cost': 60,
-'property-rent': 50,
-'base-rent': 2,
-'rent-1': 10,
-'rent-2': 30,
-'rent-3': 90,
-'rent-4': 160,
-'rent-hotel': 250,
-'mortgage-cost': 30 },
+var propertyData=[ 
+    { 
+        'property-title': 'Mediterranean Ave',
+        'property-cost': 60,
+        'property-rent': 50,
+        'base-rent': 2,
+        'rent-1': 10,
+        'rent-2': 30,
+        'rent-3': 90,
+        'rent-4': 160,
+        'rent-hotel': 250,
+        'mortgage-cost': 30,
+    },
 { 'property-title': 'Baltic Avenue',
 'property-cost': 60,
 'property-rent': 50,

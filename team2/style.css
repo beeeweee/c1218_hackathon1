@@ -112,6 +112,10 @@ html {
     height: 100%;
     width: 40%;
     text-align: center;
+    background-image: url("monopoly_images/statsBackground.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
 }
 
 #player-container{
@@ -153,6 +157,7 @@ html {
     display: flex;
     justify-content: center;
     flex-flow: wrap;
+    height: 40%;
 }
 
 
@@ -160,11 +165,14 @@ html {
 /*Game Button*/
 
 .stats-button-container{
-    height: 60%;
     width: 80%;
+    margin: auto;
 }
 
-
+.stats-text-info-container{
+    height: 70%;
+    width: 100%;
+}
 
 
 /*card effects*/
@@ -226,27 +234,38 @@ html {
 
 
 
-
-
-
-
-
 /* Player Token*/
 
 .circle {
     height: 50px;
     width: 50px;
     border-radius: 50px;
+    border-color: red;
     position: absolute;
     right: 5%;
-    top: 2%
-
+    top: 2%;
+    border: solid red 5px;
 
 }
-#myDice2, #myDice1{
-    height:80%;
+
+.dice-container{
+    height: 107%;
+    position: absolute;
+    left: 30%;
+    top: -10%;
+    transform: rotate(-45deg);
+}
+
+.dice{
+    height:36%;
     display:inline-block;
+    transform: rotate(-45deg);
 }
+
+.dice > img{
+    height: 50%;
+}
+
 #dice-roll{
     height: 50%;
 }
