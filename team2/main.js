@@ -4,8 +4,9 @@ $(document).ready(initializeGame);
 
 var min = 1;
 var max = 6;
-var totlBlockCount = 43;
+var totlBlockCount = 39;
 var numberOfPlayers = 0;
+var currentPlayerPosition;
 
 
 var playerIds = ['player1', 'player2','player3','player4'];
@@ -203,13 +204,43 @@ function initializeGame() {
 */
 
 function togglePlayer(){
-    currentPlayerIndex = currentPlayerIndex + 1;
+    /* currentPlayerIndex = currentPlayerIndex + 1;
     if (currentPlayerIndex < playerIds.length) {
         currentPlayer = playerIds[currentPlayerIndex]
     } else {
         currentPlayerIndex = 0;
         currentPlayer = playerIds[currentPlayerIndex];
-    }
+    } */
+
+
+
+    if (currentPlayerIndex < playerIds.length) {
+        currentPlayer = playerIds[currentPlayerIndex];
+
+        if( (currentPlayerIndex===0 || currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")  ){
+            dealCommunityChestCard(randomCommunityCard());
+            removeChanceCard();
+        } else if((currentPlayerIndex===1||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("valar")){
+            dealChanceCard();
+            removeChestCard()
+        }
+
+    } else {
+        currentPlayerIndex = 0;
+        currentPlayer = playerIds[currentPlayerIndex];
+        if( (currentPlayerIndex===0 ||currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")){
+            dealCommunityChestCard(randomCommunityCard());
+            removeChanceCard();
+        } else if ((currentPlayerIndex==1 ||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("valar")){
+            dealChanceCard() ;
+            removeChestCard()
+
+        }
+    };
+
+    currentPlayerIndex = currentPlayerIndex + 1;
+
+
 };
 
 
@@ -387,7 +418,7 @@ function showPlayerPieces() {
 }
 
 function removePlayerPieces() {
-    debugger;
+
     var player1 = $('<img />', {
         class: 'player1',
         src: 'monopoly_images/little_finger.PNG',
@@ -481,7 +512,7 @@ function diceNumbers() {
     $('#myDice1').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[0]}.PNG">`)
     totalValueOfDiceRoll[1] = Math.floor(Math.random() * (max - min + 1) + min);
     console.log("second no " + totalValueOfDiceRoll[1]);
-    totalMove = totalValueOfDiceRoll[0] + totalValueOfDiceRoll[1];
+     totalMove = totalValueOfDiceRoll[0] + totalValueOfDiceRoll[1];
 
 
     $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG">`)
@@ -514,7 +545,7 @@ function playerCurrentPosition() {
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
     console.log(newPosition);
-    var currentPlayerPosition = $('.' + currentPlayer + '.circle');
+     currentPlayerPosition = $('.' + currentPlayer + '.circle');
     console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     console.log( currentPlayerPosition );
@@ -547,9 +578,10 @@ function randomCommunityCard() {
 }
 
 
-function dealCommunityChestCard(i) {
-    if (numberOfCardsInDeck === 0) return false;
-    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
+function dealCommunityChestCard() {
+    //if (numberOfCardsInDeck === 0) return false;
+    //var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
+    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/capture_1.PNG">`)
     $('.chest-card-deck-spot').append(img);
 
 }
@@ -580,9 +612,10 @@ function randomChanceCard() {
 }
 
 
-function dealChanceCard(i) {
-    if (numberOfCardsInDeck === 0) return false;
-    var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
+function dealChanceCard() {
+    //if (numberOfCardsInDeck === 0) return false;
+    //var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
+    var img = (`<img id="chance-card" src="monopoly_images/chance/chance_1.PNG">`)
     $('.chance-card-deck-spot').append(img);
 
 }
