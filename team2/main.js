@@ -143,6 +143,7 @@ function initializeGame() {
             dealChanceCard(randomChanceCard());
         }
      })
+
 //Background Game Music Audio
     $('#start-button').click(function(){
         playAudio();
@@ -153,6 +154,7 @@ function initializeGame() {
     })
     */
 //remove cards clickHandlers
+
     $('.remove-community-card').click(function () {
         $('#community-card-deck').addClass('active');
     })

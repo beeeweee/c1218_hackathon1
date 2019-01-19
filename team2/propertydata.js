@@ -1,4 +1,5 @@
 var propData = [
+
     ["Craster's Keep",60,50,2,10,30,90,160,250,30,"#7c533b",1,'player1'],
     ["The First of The First Men",60,50,4,20,60,180,320,450,30,"57137f", 3],
     ["The NightFort",100,50,6,30,90,270,400,550,50,"9addf3",6],
@@ -49,6 +50,7 @@ for(let i = 0; i < propData.length; i++){
     }
     console.log(PropertyObject);
 */
+
 var propertyData = [{
         'property-title': "Craster's Keep",
         'property-position': 'position-1',
