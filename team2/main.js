@@ -51,16 +51,18 @@ var currentPlayersObject = {
 }
 
    //Game Sound
-    // this.backgroundTheme;
+    this.backgroundTheme;
  
-    // this.playAudio = function(){
-    //     var playPromise = document.querySelector('#monopoly-audio').play();
-    //     if (playPromise !== undefined) {
-    //       playPromise.then(function() {
-    //       }).catch(function(error) {
-    //       });
-    //     }
-    //   }
+
+
+function playAudio(){
+    var playPromise = document.querySelector('#monopoly-audio').play();
+    if (playPromise !== undefined) {
+      playPromise.then(function() {
+      }).catch(function(error) {
+      });
+    }
+  }
     //     this.playDiceRolling = function(){
     //    this.diceRolling= $('#dice-audio').play();
     //    if(diceRolling != undefined){
@@ -73,7 +75,6 @@ var currentPlayersObject = {
 
 
 
-//var GameAudioController = new AudioController();
 
 function playerTurnCycler(currentPlayerTurn) {
     var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
@@ -195,14 +196,16 @@ function initializeGame() {
         }
      })
      //Background Game Music Audio
-     /*$('#start-button').click(function(){
-        GameAudioController.playAudio();
+     $('#start-button').click(function(){
+        playAudio();
     })
 
-    $('.dice-roll').click(function(){
-        GameAudioController.playDiceRolling();
-    })
-*/
+//     $('.dice-roll').click(function(){
+//         GameAudioController.playDiceRolling();
+//     })
+
+
+// */
     //remove cards clickHandlers
     $('.remove-community-card').click(function () {
         $('#community-card-deck').addClass('active');
