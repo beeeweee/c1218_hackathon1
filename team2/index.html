@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Monopoly></title>
+    <title>Monopoly</title>
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
@@ -61,7 +61,7 @@
             <div class="position-20 large-square" pos="20"></div>
             <div class="position-19 small-square" pos="19"></div>
             <div class="position-18 small-square" pos="18"></div>
-            <div class="position-17 small-square" pos="17"></div>
+            <div class="position-17 small-square iron-Throne" pos="17"></div>
             <div class="position-16 small-square" pos="16"></div>
             <div class="position-15 small-square" pos="15"></div>
             <div class="position-14 small-square" pos="14"></div>
@@ -73,7 +73,7 @@
         <div class="middle-section-container">
             <div class="top-row">
                 <div class="position-21 small-square" pos="21"></div>
-                <div class="position-22 small-square" pos="22"></div>
+                <div class="position-22 small-square valar" pos="22"></div>
                 <div class="position-23 small-square" pos="23"></div>
                 <div class="position-24 small-square" pos="24"></div>
                 <div class="position-25 small-square" pos="25"></div>
@@ -94,12 +94,12 @@
             <div class="bottom-row">
                 <div class="position-9 small-square" pos="9"></div>
                 <div class="position-8 small-square" pos="8"></div>
-                <div class="position-7 small-square" pos="7"></div>
+                <div class="position-7 small-square valar" pos="7"></div>
                 <div class="position-6 small-square" pos="6"></div>
                 <div class="position-5 small-square" pos="5"></div>
                 <div class="position-4 small-square" pos="4"></div>
                 <div class="position-3 small-square" pos="3"></div>
-                <div class="position-2 small-square" pos="2"></div>
+                <div class="position-2 small-square iron-Throne" pos="2"></div>
                 <div class="position-1 small-square" pos="1"></div>
             </div>
     </div>
@@ -107,10 +107,10 @@
             <div class="position-30 large-square" pos="30"></div>
             <div class="position-31 small-square" pos="31"></div>
             <div class="position-32 small-square" pos="32"></div>
-            <div class="position-33 small-square" pos="33"></div>
+            <div class="position-33 small-square iron-Throne" pos="33"></div>
             <div class="position-34 small-square" pos="34"></div>
             <div class="position-35 small-square" pos="35"></div>
-            <div class="position-36 small-square" pos="36"></div>
+            <div class="position-36 small-square valar" pos="36"></div>
             <div class="position-37 small-square" pos="37"></div>
             <div class="position-38 small-square" pos="38"></div>
             <div class="position-39 small-square" pos="39"></div>
@@ -143,97 +143,124 @@
     </div>
 
     <div class="stats-text-info-container">
-        <div class="character-stat-container">
-            <div class="character-name-container">
-                <h5 id="character-title-name"><span id="character-name"></span></h5>
+
+        <div class="property-container">
+            <div class="title-name-container">
+                <h5 id="title-deed"><span id="property-title"></span></h5>
             </div>
-            <h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6>
+            <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
             <div class="houses-rent">
-                <p id="property-own">Property Currently Owned By and is $ <span id="property-owned-description"></span>
+                <p id="property-text">With 1 Houses $ <span id="rent-1"></span>
                     <br>
-                    Currently has <span id="houses-owned"></span>
+                    With 2 Houses $ <span id="rent-2"></span>
                     <br>
-                    Currently has <span id="hotels-owned"></span>
+                    With 3 Houses $ <span id="rent-3"></span>
                     <br>
+                    Hotel Cost $ <span id="rent-hotel"></span>
+                    <br>
+                    Mortgage Cost $ <span id="mortgage-cost"></span>
+            </div>
+            <div class="hotel-rent">
             </div>
         </div>
+
+        <div class="currentPlayerInfoContainer"></div>
+
+        <!--<div class="character-stat-container">-->
+            <!--<div class="character-name-container">-->
+                <!--<h5 id="character-title-name"><span id="character-name"></span></h5>-->
+            <!--</div>-->
+            <!--<h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6>-->
+            <!--<div class="houses-rent">-->
+                <!--<p id="property-own">Property Currently Owned By and is $ <span id="property-owned-description"></span>-->
+                    <!--<br>-->
+                    <!--Currently has <span id="houses-owned"></span>-->
+                    <!--<br>-->
+                    <!--Currently has <span id="hotels-owned"></span>-->
+                    <!--<br>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 
 </div>
         <!--Modal for Properties -->
 
-        <!-- The Modal -->
-        <div id="property-modal" class="modal modal-hide">
-            <!-- Modal  Property Content -->
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div class="property-container">
-                    <div class="property-container">
-                        <div class="title-name-container">
-                            <h5 id="title-deed"><span id="property-title"></span></h5>
-                        </div>
-                        <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
-                        <div class="houses-rent">
-                            <p id="property-text">With 1 Houses $ <span id="rent-1"></span>
-                                <br>
-                                With 2 Houses $ <span id="rent-2"></span>
-                                <br>
-                                With 3 Houses $ <span id="rent-3"></span>
-                                <br>
-                                Hotel Cost $ <span id="rent-hotel"></span>
-                                <br>
-                                Mortgage Cost $ <span id="mortgage-cost"></span>
-                        </div>
-                        <div class="hotel-rent">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!--Modal Character Stats-->
-            <div class="modal-character-content">
-                <span class="close">&times;</span>
-                <div class="property-container">
-                    <div class="character-stat-container">
-                        <div class="character-name-container">
-                            <h5 id="character-title-name"><span id="character-name"></span></h5>
-                        </div>
-                        <h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6>
-                        <div class="houses-rent">
-                            <p id="property-own">Property Currently Owned By and is $ <span id="property-owned-description"></span>
-                                <br>
-                                Currently has <span id="houses-owned"></span>
-                                <br>
-                                Currently has <span id="hotels-owned"></span>
-                                <br>
-                        </div>
-                    </div>
-                </div>
-            </div>      
-            
-            
-            <!--Display OwnerShip / Property Text  for Each Player--->
-            <h4 id="hasMoney" class="display-ownership-text">"You have enough money to buy property. Do you want to buy the Property?</h4>
-            <h4 id="playerPurchase" class="display-ownership-text">You have purchased the property.</h4>
-            <h4 id="new-ownership" class="display-ownership-text">You are the owner of this property.</h4>
-            <h4 id="currentAmountLeft" class="display-ownership-text">You currently have this much money.</h4>
-            <h4 id="doesNotPurchase" class="display-ownership-text">You do not want to buy the property.</h4>
-            <h4 id="noMoneyLeft" class="display-ownership-text">You have no money.</h4>
-            <h4 id="displayWhatTypeOfProperties" class="display-ownership-text">You owed <span id="houses-hotels-mortgages-owned">     houses</span></h4>
-            <h4 id="howMuchPlayerCanGet" class="display-ownership-text">You can get <span id="player-can-get">  .....</span></h4>
-            <h4 id="playChoiceOfProperty" class="display-ownership-text">You can sell <span id="player-choice-to-sell">  .....</span></h4>
-     
-            give player choice of which property (house, hotel, mortgage) to sell
-            // display message "You chose to sell _____ property"
+        <!--&lt;!&ndash; The Modal &ndash;&gt;-->
+        <!--<div id="property-modal" class="modal modal-hide">-->
+            <!--&lt;!&ndash; Modal  Property Content &ndash;&gt;-->
+            <!--<div class="modal-content">-->
+                <!--<span class="close">&times;</span>-->
+                <!--<div class="property-container">-->
+                    <!--<div class="property-container">-->
+                        <!--<div class="title-name-container">-->
+                            <!--<h5 id="title-deed"><span id="property-title"></span></h5>-->
+                        <!--</div>-->
+                        <!--<h6 id="rent-label">Rent $<span id="base-rent"></span></h6>-->
+                        <!--<div class="houses-rent">-->
+                            <!--<p id="property-text">With 1 Houses $ <span id="rent-1"></span>-->
+                                <!--<br>-->
+                                <!--With 2 Houses $ <span id="rent-2"></span>-->
+                                <!--<br>-->
+                                <!--With 3 Houses $ <span id="rent-3"></span>-->
+                                <!--<br>-->
+                                <!--Hotel Cost $ <span id="rent-hotel"></span>-->
+                                <!--<br>-->
+                                <!--Mortgage Cost $ <span id="mortgage-cost"></span>-->
+                        <!--</div>-->
+                        <!--<div class="hotel-rent">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
+
+            <!--&lt;!&ndash;Modal Character Stats&ndash;&gt;-->
+            <!--<div class="modal-character-content">-->
+                <!--<span class="close">&times;</span>-->
+                <!--<div class="property-container">-->
+                    <!--<div class="character-stat-container">-->
+                        <!--<div class="character-name-container">-->
+                            <!--<h5 id="character-title-name"><span id="character-name"></span></h5>-->
+                        <!--</div>-->
+                        <!--<h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6>-->
+                        <!--<div class="houses-rent">-->
+                            <!--<p id="property-own">Property Currently Owned By and is $ <span id="property-owned-description"></span>-->
+                                <!--<br>-->
+                                <!--Currently has <span id="houses-owned"></span>-->
+                                <!--<br>-->
+                                <!--Currently has <span id="hotels-owned"></span>-->
+                                <!--<br>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>      -->
+            <!---->
+            
 
             <!--Audio-->
+            <!--&lt;!&ndash;Display OwnerShip / Property Text  for Each Player-&ndash;&gt;-->
+            <!--<h4 id="hasMoney" class="display-ownership-text">"You have enough money to buy property. Do you want to buy the Property?</h4>-->
+            <!--<h4 id="playerPurchase" class="display-ownership-text">You have purchased the property.</h4>-->
+            <!--<h4 id="new-ownership" class="display-ownership-text">You are the owner of this property.</h4>-->
+            <!--<h4 id="currentAmountLeft" class="display-ownership-text">You currently have this much money.</h4>-->
+            <!--<h4 id="doesNotPurchase" class="display-ownership-text">You do not want to buy the property.</h4>-->
+            <!--<h4 id="noMoneyLeft" class="display-ownership-text">You have no money.</h4>-->
+            <!--<h4 id="displayWhatTypeOfProperties" class="display-ownership-text">You owed <span id="houses-hotels-mortgages-owned">     houses</span></h4>-->
+            <!--<h4 id="howMuchPlayerCanGet" class="display-ownership-text">You can get <span id="player-can-get">  .....</span></h4>-->
+            <!--<h4 id="playChoiceOfProperty" class="display-ownership-text">You can sell <span id="player-choice-to-sell">  .....</span></h4>-->
+     <!---->
+            <!--give player choice of which property (house, hotel, mortgage) to sell-->
+            <!--// display message "You chose to sell _____ property"-->
+
+
             <audio id="monopoly-audio" autoplay="autoplay">
                 <source src="audio/bkg_song.mp3" />
             </audio>
             <!-- <audio id="dice-audio" autoplay="autoplay">
                 <source src="audio/Dice_throw.wav" />
-            </audio>  -->
+            </audio>
+
 
 
 
