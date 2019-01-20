@@ -7,23 +7,29 @@ body{
   
 .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.85);
-    background: url(data:;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAABl0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuNUmK/OAAAAATSURBVBhXY2RgYNgHxGAAYuwDAA78AjwwRoQYAAAAAElFTkSuQmCC) repeat scroll transparent \9; /* ie fallback png background image */
+    height: 100%;
+    width: 100%;
+    background-image: url("monopoly_images/welcomeBackground.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: .85;
     z-index: 1;
     color: white;
     font-size: 30px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .overlay-content {
     text-align: center;
+    margin-bottom: 2%;
+    width: 100%;
 }
 
 .playerSelectContainer{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     height: 60%;
 }
 
@@ -213,7 +219,6 @@ html {
 .title-name-container, .character-name-container {
     height: 60%;
     width: 75%;
-    border: 2px solid black;
     margin: auto;
 
 }
@@ -234,25 +239,51 @@ html {
 
 #title-deed{
     margin: 6px;
+    padding-top: 4px;
 }
 
 .currentPlayerInfoContainer{
-    margin-top: 68%;
+    margin-top: 45%;
     font-size: large;
 }
 
 /* Player Token*/
 
 .circle {
-    height: 50px;
-    width: 50px;
+    height: 27px;
+    width: 30px;
     border-radius: 50px;
-    border-color: red;
+    /*border-color: red;*/
     position: absolute;
+    /*right: 5%;*/
+    /*top: 2%;*/
+    border: solid red 2.5px;
+
+}
+
+.player1{
+    border-color: red;
+    left: 5%;
+    top: 2%;
+}
+
+.player2{
+    border-color: green;
+    left: 5%;
+    bottom: 2%;
+    margin-right: 25px;
+}
+
+.player3{
+    border-color: blue;
     right: 5%;
     top: 2%;
-    border: solid red 5px;
+}
 
+.player4{
+    border-color: purple;
+    right: 5%;
+    bottom: 2%;
 }
 
 .dice-container{
@@ -325,4 +356,21 @@ html {
 
 .property-container{
     height: 15%;
+}
+
+.playersNumberText{
+    margin: 2% 0;
+}
+
+#numberOfPlayersContainer{
+    margin-bottom: 15px;
+}
+
+.playerContainer{
+    margin: 0 5%;
+    margin-bottom: 1%;
+}
+
+.welcomeText{
+    margin-bottom: 1%;
 }
