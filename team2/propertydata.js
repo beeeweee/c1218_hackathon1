@@ -54,6 +54,7 @@ for(let i = 0; i < propData.length; i++){
 var propertyData = [{
         'property-title': "Craster's Keep",
         'property-position': 'position-1',
+        'property-current-rent': null,
         'property-cost': 60,
         'property-rent': 50,
         'base-rent': 2,
@@ -68,6 +69,7 @@ var propertyData = [{
     {
         'property-title': "The First of The First Men",
         'property-position': 'position-3',
+        'property-current-rent': null,
         'property-cost': 60,
         'property-rent': 50,
         'base-rent': 4,
@@ -82,6 +84,7 @@ var propertyData = [{
     {
         'property-title': "The NightFort",
         'property-position': 'position-6',
+        'property-current-rent': null,
         'property-cost': 100,
         'property-rent': 50,
         'base-rent': 6,
@@ -96,6 +99,7 @@ var propertyData = [{
     {
         'property-title': "Moles's Town",
         'property-position': 'position-8',
+        'property-current-rent': null,
         'property-cost': 100,
         'property-rent': 50,
         'base-rent': 6,
@@ -110,6 +114,7 @@ var propertyData = [{
     {
         'property-title': "The Inn at The CrossRoads",
         'property-position': 'position-9',
+        'property-current-rent': null,
         'property-cost': 120,
         'property-rent': 50,
         'base-rent': 8,
@@ -124,6 +129,7 @@ var propertyData = [{
     {
         'property-title': "Vaes Dothrak",
         'property-position': 'position-11',
+        'property-current-rent': null,
         'property-cost': 140,
         'property-rent': 100,
         'base-rent': 10,
@@ -138,6 +144,7 @@ var propertyData = [{
     {
         'property-title': "Qarth",
         'property-position': 'position-13',
+        'property-current-rent': null,
         'property-cost': 140,
         'property-rent': 100,
         'base-rent': 10,
@@ -152,6 +159,7 @@ var propertyData = [{
     {
         'property-title': "Pentos",
         'property-position': 'position-14',
+        'property-current-rent': null,
         'property-cost': 160,
         'property-rent': 100,
         'base-rent': 12,
@@ -166,6 +174,7 @@ var propertyData = [{
     {
         'property-title': "The Eyrie",
         'property-position': 'position-16',
+        'property-current-rent': null,
         'property-cost': 180,
         'property-rent': 100,
         'base-rent': 14,
@@ -180,6 +189,7 @@ var propertyData = [{
     {
         'property-title': "Dragonstone",
         'property-position': 'position-18',
+        'property-current-rent': null,
         'property-cost': 180,
         'property-rent': 100,
         'base-rent': 14,
@@ -194,6 +204,7 @@ var propertyData = [{
     {
         'property-title': "Moat Cailin",
         'property-position': 'position-19',
+        'property-current-rent': null,
         'property-cost': 200,
         'property-rent': 100,
         'base-rent': 16,
@@ -208,6 +219,7 @@ var propertyData = [{
     {
         'property-title': "HarrenHall",
         'property-position': 'position-21',
+        'property-current-rent': null,
         'property-cost': 220,
         'property-rent': 150,
         'base-rent': 18,
@@ -222,6 +234,7 @@ var propertyData = [{
     {
         'property-title': "The DreadFort",
         'property-position': 'position-23',
+        'property-current-rent': null,
         'property-cost': 220,
         'property-rent': 150,
         'base-rent': 18,
@@ -236,6 +249,7 @@ var propertyData = [{
     {
         'property-title': "The Twins",
         'property-position': 'position-24',
+        'property-current-rent': null,
         'property-cost': 240,
         'property-rent': 150,
         'base-rent': 20,
@@ -250,6 +264,7 @@ var propertyData = [{
     {
         'property-title': "Astapor",
         'property-position': 'position-26',
+        'property-current-rent': null,
         'property-cost': 260,
         'property-rent': 150,
         'base-rent': 22,
@@ -264,6 +279,7 @@ var propertyData = [{
     {
         'property-title': "Yunki",
         'property-position': 'position-27',
+        'property-current-rent': null,
         'property-cost': 260,
         'property-rent': 150,
         'base-rent': 22,
@@ -278,6 +294,7 @@ var propertyData = [{
     {
         'property-title': "Meereen",
         'property-position': 'position-29',
+        'property-current-rent': null,
         'property-cost': 280,
         'property-rent': 150,
         'base-rent': 24,
@@ -292,6 +309,7 @@ var propertyData = [{
     {
         'property-title': "Castle Black",
         'property-position': 'position-31',
+        'property-current-rent': null,
         'property-cost': 300,
         'property-rent': 200,
         'base-rent': 26,
@@ -306,6 +324,7 @@ var propertyData = [{
     {
         'property-title': "Pyke",
         'property-position': 'position-32',
+        'property-current-rent': null,
         'property-cost': 300,
         'property-rent': 200,
         'base-rent': 26,
@@ -320,6 +339,7 @@ var propertyData = [{
     {
         'property-title': "Winterfell",
         'property-position': 'position-34',
+        'property-current-rent': null,
         'property-cost': 320,
         'property-rent': 200,
         'base-rent': 28,
@@ -334,6 +354,7 @@ var propertyData = [{
     {
         'property-title': "Braavos",
         'property-position': 'position-37',
+        'property-current-rent': null,
         'property-cost': 350,
         'property-rent': 200,
         'base-rent': 35,
@@ -348,6 +369,7 @@ var propertyData = [{
     {
         'property-title': "King's Landing",
         'property-position': 'position-38',
+        'property-current-rent': null,
         'property-cost': 400,
         'property-rent': 200,
         'base-rent': 50,
@@ -362,6 +384,7 @@ var propertyData = [{
     {
         'property-title': "Redwasr",
         'property-position': 'position-12',
+        'property-current-rent': null,
         'property-cost': 150,
         'property-rent': 75,
         'base-rent': 150,
@@ -376,6 +399,7 @@ var propertyData = [{
     {
         'property-title': "The Wall",
         'property-position': 'position-28',
+        'property-current-rent': null,
         'property-cost': 150,
         'property-rent': 7,
         'base-rent': 150,
@@ -390,6 +414,7 @@ var propertyData = [{
     {
         'property-title': "House Lanister",
         'property-position': 'position-5',
+        'property-current-rent': null,
         'property-cost': 200,
         'property-rent': 25,
         'base-rent': 50,
@@ -404,6 +429,7 @@ var propertyData = [{
     {
         'property-title': "House Baratheon",
         'property-position': 'position-15',
+        'property-current-rent': null,
         'property-cost': 200,
         'property-rent': 25,
         'base-rent': 50,
@@ -418,6 +444,7 @@ var propertyData = [{
     {
         'property-title': "House Targaryen ",
         'property-position': 'position-25',
+        'property-current-rent': null,
         'property-cost': 200,
         'property-rent': 25,
         'base-rent': 50,
@@ -432,6 +459,7 @@ var propertyData = [{
     {
         'property-title': "House Stark",
         'property-position': 'position-35',
+        'property-current-rent': null,
         'property-cost': 200,
         'property-rent': 25,
         'base-rent': 50,
@@ -462,11 +490,20 @@ function findProperty(propertyName){
     }
 }
 
-function findProperty(propertyName){
+function findPropertyPosition(propertyName){
     var numberOfProperties = propertyData.length;
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === propertyName){
-            return propertyName;
+            return propertyData[propertyIndex]['property-position'];
+        }
+    }
+}
+
+function findNameByPropertyPosition(position){
+    var numberOfProperties = propertyData.length;
+    for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
+        if(propertyData[propertyIndex]['property-position'] === position){
+            return propertyData[propertyIndex]['property-title'];
         }
     }
 }
@@ -493,31 +530,65 @@ function findPropertyNormalRent(propertyName){
     var numberOfProperties = propertyData.length;
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === propertyName){
-            return propertyData[propertyIndex]['property-rent'];
+            return propertyData[propertyIndex]['base-rent'];
         }
     }
 }
 
-function findPropertyRent1(propertyName){
+function findPropertyCurrentRent(propertyName){
     var numberOfProperties = propertyData.length;
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === propertyName){
-            return propertyData[propertyIndex]['rent-1'];
+            return propertyData[propertyIndex]['property-current-rent'];
         }
     }
 }
 //****End ******/
 
-//Update New Owner
+//Updates to Property Object
 function updateNewOwner (property, player){
+    debugger;
+    var numberOfProperties = propertyData.length;
+    for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
+        if(propertyData[propertyIndex]['property-title'] === property){
+            return propertyData[propertyIndex]['propertyOwner'] = player;
+        }
+    }
+}
+
+function updateNewOwnerWithRent (property, player){
     var numberOfProperties = propertyData.length;
     var newProperty = findProperty(property);
     var currentPlayer = player;
+    updateCurrentRentAmount();
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
-        if(propertyData[propertyIndex]['property-title'] === newProperty){
-            return propertyData[propertyIndex]['propertyOwner'] = currentPlayer;
+        if(propertyData[propertyIndex]['property-title'] === property){
+            return propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['base-rent'];
+        }
+    }
+}
+
+function updateCurrentRentAmount(property){
+    debugger;
+    var numberOfProperties = propertyData.length;
+    var currentProperty = findProperty(property);
+    for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
+        if(propertyData[propertyIndex]['property-title'] === property){
+            switch(propertyData[propertyIndex]['property-current-rent']){
+                case null: propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['rent-1'];
+                break;
+                case 'rent-1': propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['rent-2'];
+                break;
+                case 'rent-2': propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['rent-3'];
+                break;
+                case 'rent-3': propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['rent-4'];
+                break;
+                case 'rent-4': propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['rent-hotel'];
+                break;
+            }
         }
     }
 }
 //****End ******/
+
 
