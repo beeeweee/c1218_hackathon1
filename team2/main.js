@@ -100,6 +100,9 @@ function changePlayerArray(){
 function initializeGame() {
      populateBoardSpots();
 
+     $('.property-container').hide();
+     $('#passButton').click(function(){$('.property-container').hide()});
+
     $("select").change(numberOfPlayersSelected);
     numberOfPlayersSelected();
 
@@ -113,6 +116,8 @@ function initializeGame() {
         togglePlayer();
 
     });
+
+    $(`.indiv-players > .player1 > img`).css('border', 'yellow 3px dashed');
 
 
     $('.currentPlayerInfoContainer').text(
@@ -175,8 +180,6 @@ function initializeGame() {
     $('.player-2-stat').mouseover(showPlayerStats);
     $('.player-2-stat').mouseout(showPlayerStats);
 
-    $('.small-square, .large-square').click(showDeed);
-    
 //Click Handlers
     $('.remove-community-card').click(function () {
         $('#community-card-deck').addClass('active');
@@ -187,7 +190,9 @@ function initializeGame() {
     })
     //Modal Handler
     
-    $('.small-square, .large-square').click(showDeed);
+    // $('.small-square, .large-square').click(showDeed);
+
+    showDeed();
 
 }
 //****END******
@@ -203,7 +208,6 @@ function displayCurrentLandingCard(){
 }
 
 function togglePlayer(){
-
     if (currentPlayerIndex < playerIds.length) {
         currentPlayer = playerIds[currentPlayerIndex];
  
@@ -493,17 +497,26 @@ function playerCurrentPosition() {
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     console.log( currentPlayerPosition );
     if(result.toggle){
+        $(`.indiv-players > * > *`).css('border', '0')
+
+        $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed');
+
         togglePlayer()
     }
+
+    $('.property-container').hide();
 
     $('.currentPlayerInfoContainer').text(
         `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`
 
     )
 
-    $(`.indiv-players > * > *`).css('border', '0')
+    showDeed();
+    $(`.indiv-players > * > *`).css('border', '0');
 
-    $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed')
+    $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed');
+
+    console.log('show deed now!')
 
 }
 //****END******
@@ -618,15 +631,21 @@ function hidePlayerStats(){
 
 function showDeed() {
     $('#property-modal').show();
-    var propertyIndex = $(this).attr('pos');
+    var propertyIndex = currentPlayersObject[`${currentPlayer}`].playerPosition;
+    console.log('this is property index: ', propertyIndex);
     var deedData = null;
+    var foundMatch = false;
 
     for (var arrayNum = 0; arrayNum < propData.length; arrayNum++){
         console.log('made it in@')
         if (propData[arrayNum][11] == propertyIndex){
             deedData = propData[arrayNum];
+            foundMatch = true;
         }
     }
+
+
+    if (foundMatch === true){
 
     $('#base-rent').text(deedData[3]);
     $('#property-title').text(deedData[0]);
@@ -637,6 +656,9 @@ function showDeed() {
 
    $('#mortgage-cost').text(deedData[9]);
    $('.title-name-container').css('background-color', deedData[10]);
+
+   $('.property-container').show();
+    }
 
 }
 

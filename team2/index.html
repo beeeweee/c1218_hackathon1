@@ -51,7 +51,8 @@
                 <div id='selectPlayer'></div>
             </div>
         </div>
-        <a href="#" id="start-button">Start</a>
+        <button id="start-button">Start</button>
+        <!--<a href="#" id="start-button">Start</a>-->
     </div>
 </div>
     <!-- Game-Board Setup !-->
@@ -88,7 +89,7 @@
                     <div class = 'dice' id="myDice1"></div>
                     <div class="dice" id="myDice2"></div>
                 </div>
-
+                <div class="boardImage"><img src="monopoly_images/board_images/centerGameImage.png" alt=""></div>
             </div>
             <div class="bottom-row">
                 <div class="position-9 small-square" pos="9"></div>
@@ -149,7 +150,7 @@
             </div>
             <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
             <div class="houses-rent">
-                <p id="property-text">With 1 Houses $ <span id="rent-1"></span>
+                <p id="property-text">With 1 House  $ <span id="rent-1"></span>
                     <br>
                     With 2 Houses $ <span id="rent-2"></span>
                     <br>
@@ -161,6 +162,12 @@
             </div>
             <div class="hotel-rent">
             </div>
+
+            <div class="button-container">
+                <button>Buy</button>
+                <button id="passButton">Pass</button>
+            </div>
+
         </div>
 
         <div class="currentPlayerInfoContainer"></div>
