@@ -501,6 +501,10 @@ function playerCurrentPosition() {
 
     )
 
+    $(`.indiv-players > * > *`).css('border', '0')
+
+    $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed')
+
 }
 //****END******
 
