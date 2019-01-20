@@ -158,12 +158,11 @@ function initializeGame() {
 //create Dice Roll Effect
 
     $("#btn").click(function () {
-        console.log("testing1");
         playerCurrentPosition();
     })
 //Deal Cards
 
-    $('.chest-card-deck-spot').click(function () {
+   /* $('.chest-card-deck-spot').click(function () {
         if($('.chest-card-deck-spot').children().length===1){
             removeChestCard();
         } else {
@@ -177,7 +176,7 @@ function initializeGame() {
         } else {
             dealChanceCard(randomChanceCard());
         }
-     })
+     }) */
 //Background Game Music Audio
     $('#start-button').click(function(){
         playAudio();
@@ -510,7 +509,7 @@ function playerCurrentPosition() {
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
     console.log(newPosition);
-     currentPlayerPosition = $('.' + currentPlayer + '.circle');
+     currentPlayerPosition = $('.' + currentPlayer + '.circle');//if element has two classes(first (.) and second (.circle)
     console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     console.log( currentPlayerPosition );
