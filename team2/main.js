@@ -14,16 +14,11 @@ var currentPlayer = "player1";
 var currentPlayersObject = {
     'player1': {
         'playerPosition': 0, 'playerStatus': 1, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {
-            '1': '1',
-            '2': '3'
-        }, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
     'player2': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {
-            'property1': 1,
-        }, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
     'player3': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
@@ -34,6 +29,9 @@ var currentPlayersObject = {
         'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
     },
 }
+//****END****/
+
+
 
 //Game Sound
     //Background Music
@@ -59,6 +57,9 @@ this.playAudio = function(){
 //     }
 // }
 //Current Player Turns
+//*****END *****/
+
+
 
 function playerTurnCycler(currentPlayerTurn) {
     var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
@@ -79,36 +80,6 @@ function disperseMoney() {
     }
 }
 
-//property checks and allocation
-function numberOfPropertiesOwned(){
-    var numberOfActivePlayers = numberOfPlayers;
-    // var currentNumberOfPropertiesOwned = Object.keys(currentPlayersObject.player1.propertiesOwned).length;
-    var numberOfPropertiesOwned = 0;
-    console.log(currentPlayersObject.player1.propertiesOwned['2']);
-    while(numberOfActivePlayers){
-        numberOfPropertiesOwned += Object.keys(currentPlayersObject[`player${numberOfActivePlayers}`].propertiesOwned).length;
-        numberOfActivePlayers--;
-    }
-    return numberOfPropertiesOwned;
-}
-
-function checkWhatTypeOfPropertiesPlayerHas(currentProperty){
-    var currentNumberOfPropertiesOwned = numberOfPropertiesOwned();
-    var activePlayers = numberOfPlayers;
-    while(activePlayers){
-        for(currentNumberOfPropertiesOwned; currentNumberOfPropertiesOwned > 0; currentNumberOfPropertiesOwned--){
-            debugger;
-            if(currentProperty === currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`]){
-                console.log('Same property');
-            }
-            console.log(currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`])
-            console.log(currentProperty);
-        }
-        activePlayers--;  
-    }
- }
-
-
 //player population
 function populateBoardSpots(){
     for (var currentSquare = 0; currentSquare <= 39; currentSquare++){
@@ -128,6 +99,7 @@ function changePlayerArray(){
         playerIds.push(`player${indivPlayer}`);
     }
 }
+//*******END ********/
 
 
 //************ Initialize App **************
@@ -144,15 +116,11 @@ function initializeGame() {
     });
 
     $("#toggleplayer").click(function () {
-
         togglePlayer();
-
     });
-
 
     $('.currentPlayerInfoContainer').text(
         `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
-
     //create Dice Roll Effect
 
 //create Dice Roll Effect
@@ -176,7 +144,9 @@ function initializeGame() {
         } else {
             dealChanceCard(randomChanceCard());
         }
-     }) */
+
+     })
+
 //Background Game Music Audio
     $('#start-button').click(function(){
         playAudio();
@@ -187,6 +157,7 @@ function initializeGame() {
     })
     */
 //remove cards clickHandlers
+
     $('.remove-community-card').click(function () {
         $('#community-card-deck').addClass('active');
     })
@@ -221,6 +192,29 @@ function initializeGame() {
     
     $('.small-square, .large-square').click(showDeed);
 
+    //clickHandlers
+$('.remove-community-card').click(function () {
+    $('#community-card-deck').addClass('active');
+})
+
+$('.remove-chance-card').click(function () {
+    $('#chance-card').addClass('active');
+})
+}
+//****END******
+
+
+//****start game number of players and board setup*****
+$('.currentPlayerInfoContainer').text(
+    `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+function playerLandingLocation(){
+    var playerLocation = currentPlayersObject[currentPlayer].playerPosition;
+    return 'position-'+playerLocation;
+}
+
+function displayCurrentLandingCard(){
+    var locationNumber = playerLandingLocation();
+    return findNameByPropertyPosition(locationNumber);
 }
 
 function togglePlayer(){
@@ -245,28 +239,13 @@ function togglePlayer(){
         } else if ((currentPlayerIndex==1 ||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar")){
             dealChanceCard() ;
             removeChestCard()
- 
         }
     };
-
     currentPlayerIndex = currentPlayerIndex + 1;
-
-
 };
 
 
-//clickHandlers
 
-$('.remove-community-card').click(function () {
-    $('#community-card-deck').addClass('active');
-})
-
-$('.remove-chance-card').click(function () {
-    $('#chance-card').addClass('active');
-})
-
-
-//****start game number of players and board setup*****
 function numberOfPlayersSelected() {
     numberOfPlayers = $('#numberOfPlayersSelect').val();
     console.log(numberOfPlayers);
@@ -465,7 +444,9 @@ function removePlayerPieces() {
         player4.remove($('.position-0'));
     }
 }
-//*****END
+//*****END******
+
+
 
 //player game function
 function diceNumbers() {
@@ -518,12 +499,17 @@ function playerCurrentPosition() {
     }
 
     $('.currentPlayerInfoContainer').text(
-        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`
+        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+        playerLandsOnAProperty();
 
-    )
+    $(`.indiv-players > * > *`).css('border', '0')
+
+    $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed')
 
 }
 //****END******
+
+
 
 //Deal Community Chest Cards
 var communityChestDeck = new Array();
@@ -576,8 +562,6 @@ function randomChanceCard() {
     return Math.floor(Math.random() * numberOfCardsInDeck);
 }
 
-
-
 function dealChanceCard() {
     //if (numberOfCardsInDeck === 0) return false;
     //var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
@@ -596,6 +580,8 @@ function removeCard(card) {
     }
 }
 //*****END*****
+
+
 
 //Modal Property
 var Property = function(){
@@ -620,8 +606,6 @@ var Property = function(){
     }
     
 };
-
-
 
 // Show Player Stats Modal
 function showPlayerStats(){
@@ -668,7 +652,7 @@ function showCharacterStats(player){
     }else if(owner !== player){
         playerLandsOnAnotherPlayersProperty(player, property);
     } else{
-        playerLandsOnOwnedProperty(player, property);
+        playerLandsOnAProperty();
 
     }
     $('#character-title-name').css('background-color', deedData[10]);
@@ -676,123 +660,39 @@ function showCharacterStats(player){
     // $('#houses-owned').text(characterData[]);
     // $('#hotels-owned').text(characterData[]);
 }
+/*****END *******/
 
-function playerCanBuyProperties(player, property) {
-    var playerWantToPurchase = true;
-    if (currentPlayersObjects.balance >= property) {
-        playerHasEnoughMoney();
-        playerHasPurchase();
-        displayNewOwnerShip();
-        displayRemainingAmount();
-        playerDoesNotPurchase();
-        playerDoesNotHaveEnoughMoney();
+
+
+//Property Functionality
+function playerLandsOnAProperty(){
+    var currentProperty = displayCurrentLandingCard();
+    var currentPropertyOwner = findPropertyOwner(currentProperty);
+    if(currentPropertyOwner === currentPlayer){
+        return console.log('You can buy houses/hotels');
+    } else if(currentPropertyOwner === null){
+        return console.log('No one owns. Buy property');
     }
-}
+        return console.log('Pay Up buddy')
 
-// Plays Has Enough Money To Purchase Property
-function PlayerHasEnoughMoney() {
-    $('#hasMoney').text();
-}
-
-function playerHasPurchase() {
-    var costOfDifference = currentPlayersObject.balance;
-    ('#playerPurchase').text();
-    costOfDifference = costOfDifference - currentPlayersObject.balance;
-}
-
-
-function displayNewOwnerShip() {
-    $('#new-ownership').text();
-
-    function displayRemainingAmount() {
-        $('#currentAmountLeft').text();
-
-    }
-
-    function playerDoesNotPurchase() {
-        $('#doesNotPurchase').text();
-    }
-
-
-    function playerDoesNotHaveEnoughMoney() {
-        $('#noMoneyLeft').text();
-    }
-    
-// if player has money equal to or more than the cost of the property
-    // display message "You have enough money to buy property"
-    // prompt if player wants to buy
-    // if player buys property
-        // display message "You have purchased the property"
-        // subtract cost of property from player money
-        // change displayed property owner
-        // display remaining money
-    // else player doesn't buy property
-        // display message "You decided not to buy"
-// else player doesn't have enough money to buy property
-    // display message "Not enough money"
-// 
-//player can buy prop if they have enough money and if so subtract from value  
-
-function playerLandsOnAnotherPlayersProperty(player, property){
-
-    // get player's current money and how much they owe to property owner
-    //  display how much player owes 
-    //  while player doesn't have enough money to pay owner
-        // if player has no remaining properties
-            // player loses and pays remaining money to owner
-            // exit function
-        // else player does have remaining properties
-            // display player's owned properties, houses, hotels, mortgages
-            // display how much player can get by selling each property
-            // give player choice of which property (house, hotel, mortgage) to sell
-            // display message "You chose to sell _____ property"
-            // change ownership status player-chosen property
-            // add amount of sale to player's money
-            // display player's new money total
-    // player has enough money to pay owner
-    // player pays money to owner
-    // display player's and owner's new money total
-}
-
-function playerLandsOnOwnedProperty(player, property){
     // display "You already own this property"
     // prompt player to finish turn
     //console.log(`${player} owns ${}.`);
 }
 
-
-//need the id to see which property the player lands on and use that function to know the character index
-
-  //once the person lands on the property, they will need to know if they either are owners of the property or not
-    //if owners: they can either purchase a another house /motel 
-    //if not owners: they need to check who is the owner of the property and see how much rent to pay the owner
-    //create function to check who is the owner 
-   
-    //create an function to find out the cost of the property any money system
-    //
-   // to get the amount / will need the monetary value function and create a function to run that function 
-function getPropertyOwner(propertyIndex){
-    //  propertyData.index
-    
-     if(propertyData[propertyIndex]["ownerProperty"]){
-         return propertyData[propertyIndex]["ownerProperty"];
-     }
-     return null;
+function playerBuysProperty(property, player){
+    if(currentPlayersObject.player.balance >= findPropertyCost(property)){
+        updateNewOwner(property,player);
+    }
+    return console.log('Not Enought Money');
 }
 
-function setPropertyOwner(propertyIndex, currentPlayerID){
-    propertyData[propertyIndex]["ownerProperty"] = currentPlayerID;
-}
-    
-function getByID(propertyIndex){
-    return propertyData[propertyIndex];
-    console.log("hi");
-}
-}
-    //$('#mortgage-cost').text(deedData[9]);
+
+
+/********END *********/
+
 
 /*
-
 0 name  
 1 price
 2 Price per house    

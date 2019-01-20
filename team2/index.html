@@ -12,6 +12,7 @@
         crossorigin="anonymous"></script>
     <script src="main.js"></script>
     <script src="propertydata.js"></script>
+    <script src="transactions.js"></script>
 
 </head>
 
@@ -20,8 +21,7 @@
 <!--Charu-->
   <div class="overlay">
     <div class="overlay-content">
-        <h2>Welcome to Monopoly Game</h2>
-        <h3>Number of Players</h3>
+        <h3 class="playersNumberText">Number of Players</h3>
             <div id="numberOfPlayersContainer">
                 <select id="numberOfPlayersSelect">
                     <option value="1">1</option>
@@ -51,8 +51,8 @@
                 <div id='player4Text'>Player 4</div>
                 <div id='selectPlayer'></div>
             </div>
-            <a href="#" id="start-button">Start</a>
         </div>
+        <a href="#" id="start-button">Start</a>
     </div>
 </div>
     <!-- Game-Board Setup !-->
@@ -237,6 +237,8 @@
             <!--</div>      -->
             <!---->
             
+
+            <!--Audio-->
             <!--&lt;!&ndash;Display OwnerShip / Property Text  for Each Player-&ndash;&gt;-->
             <!--<h4 id="hasMoney" class="display-ownership-text">"You have enough money to buy property. Do you want to buy the Property?</h4>-->
             <!--<h4 id="playerPurchase" class="display-ownership-text">You have purchased the property.</h4>-->
@@ -255,9 +257,10 @@
             <audio id="monopoly-audio" autoplay="autoplay">
                 <source src="audio/bkg_song.mp3" />
             </audio>
-            <audio id="dice-audio" autoplay="autoplay">
+            <!-- <audio id="dice-audio" autoplay="autoplay">
                 <source src="audio/Dice_throw.wav" />
             </audio>
+
 
 
 
