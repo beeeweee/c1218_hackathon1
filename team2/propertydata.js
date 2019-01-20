@@ -217,7 +217,7 @@ var propertyData = [{
         'propertyOwner': null,
     },
     {
-        'property-title': "HarrenHall",
+        'property-title': "Harrenhall",
         'property-position': 'position-21',
         'property-current-rent': null,
         'property-cost': 220,

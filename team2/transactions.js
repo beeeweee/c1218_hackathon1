@@ -1,3 +1,4 @@
+//Property GamePlay Functionality
 function currentPlayersBalance(){
     var player = currentPlayer;
     return currentPlayersObject[currentPlayer].balance;
@@ -8,6 +9,7 @@ function playerTransactionToBank(currentPlayersBank, amount){
 }
 
 function playerBuysProperty(property, player){
+    debugger;
     var propertyCost = findPropertyCost(property);
     var currentPlayersBankFunds = currentPlayersBalance();
     if(currentPlayersBankFunds >= propertyCost){
@@ -27,6 +29,6 @@ function rentPaidToOwner(currentProperty){
     console.log(currentPlayersBankFunds);
     console.log(propertyOwnersBankFunds);
 }
-
+//*****END*****/
 
 //Display Transactions to DOM

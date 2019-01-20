@@ -105,6 +105,10 @@ function changePlayerArray(){
 //************ Initialize App **************
 
 function initializeGame() {
+    disperseMoney();
+
+    $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
+    $('.buy-property').click(playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
      populateBoardSpots();
 
      $('.property-container').hide();
@@ -219,6 +223,9 @@ $('.remove-chance-card').click(function () {
     $('#chance-card').addClass('active');
 })
 }
+
+//Property Click Handlers
+
 //****END******
 
 
@@ -701,23 +708,29 @@ function showCharacterStats(player){
 
 //Property Functionality
 function playerLandsOnAProperty(){
+    debugger;
     var currentProperty = displayCurrentLandingCard();
     var currentPropertyOwner = findPropertyOwner(currentProperty);
     if(currentPropertyOwner === currentPlayer){
         return console.log('You can buy houses/hotels');
     } else if(currentPropertyOwner === null){
         return console.log('No one owns. Buy property');
-    }
+    } else if (currentPropertyOwner !== currentPlayer) {
         return console.log('Pay Up buddy')
+    }
+        return console.log('Nothing Property')
 
     // display "You already own this property"
     // prompt player to finish turn
     //console.log(`${player} owns ${}.`);
 }
 
-function playerBuysProperty(property, player){
-    if(currentPlayersObject.player.balance >= findPropertyCost(property)){
-        updateNewOwner(property,player);
+function playerBuysProperty(){
+    debugger;
+    var currentProperty = displayCurrentLandingCard();
+    if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
+        updateNewOwner(currentProperty,currentPlayer);
+        return console.log('Property Bought');
     }
     return console.log('Not Enought Money');
 }
