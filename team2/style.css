@@ -3,6 +3,7 @@ body{
     display: flex;
     height: 100vh;
     width: 100vw;
+    font-family: 'Alegreya Sans', sans-serif;
 }
   
 .overlay {
@@ -77,9 +78,6 @@ html {
 }
 
 .board{
-    background-image: url("monopoly_images/board_images/centerGameImage.png");
-    background-position: center;
-    background-size: cover;
     position: relative;
     height: 70%;
     background-color: purple;
@@ -176,8 +174,11 @@ html {
 }
 
 .stats-text-info-container{
+    position: relative;
     height: 65%;
     width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -194,7 +195,7 @@ html {
 
 #property-title, .character-title-name{
     margin-top: 8px;
-    color: white;
+    color: black;
     text-transform: uppercase;
     font-size: 1.5rem;
 
@@ -217,8 +218,8 @@ html {
 }
 
 .title-name-container, .character-name-container {
-    height: 60%;
-    width: 75%;
+    height: 100%;
+    width: 100%;
     margin: auto;
 
 }
@@ -243,7 +244,8 @@ html {
 }
 
 .currentPlayerInfoContainer{
-    margin-top: 45%;
+    position: absolute;
+    bottom: 3%;
     font-size: large;
 }
 
@@ -325,21 +327,21 @@ html {
     width: 20%;
     background-image: url("monopoly_images/chance/got_sigils.jpg");
     background-size: cover;
-    top: 41px;
-    right: 49px;
-    transform: rotate(-135deg);
+    top: 55px;
+    right: 54px;
+    transform: rotate(-140deg);
 
 }
 
 .chest-card-deck-spot{
     position: absolute;
-    bottom: 34px;
-    left: 44px;
+    bottom: 53px;
+    left: 45px;
     height: 15%;
     width: 20%;
     background-image: url("monopoly_images/community_chest/animal.jpeg");
     background-size: cover;
-    transform: rotate(45deg);
+    transform: rotate(41deg);
 
 
 }
@@ -360,8 +362,7 @@ html {
 }
 
 .playersNumberText{
-    margin: 2% 0;
-}
+    margin: 2% 0 0 0;}
 
 #numberOfPlayersContainer{
     margin-bottom: 15px;
@@ -376,6 +377,7 @@ html {
     margin-bottom: 1%;
 }
 
+
 .currentPlayerCards{
     height: 50px;
     background: transparent;
@@ -384,4 +386,21 @@ html {
 .currentPlayerCards img {
     height: 50px;
     width: 50px;
+
+.button-container button, #btn{
+    padding: 2%;
+    border-radius: 20%;
+    font-size: 17px;
+}
+
+.boardImage, .boardImage img{
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+}
+
+#start-button{
+    padding: 0 3%;
+    font-size: 30px;
+    border-radius: 20%;
 }
