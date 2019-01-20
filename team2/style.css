@@ -317,6 +317,7 @@ html {
 
 }
 .moveSound{
+
     display:none;
 }
 
@@ -324,7 +325,7 @@ html {
     position: absolute;
     height: 15%;
     width: 20%;
-    background-image: url("monopoly_images/chance/chanceBackOfCard.png");
+    background-image: url("monopoly_images/chance/got_sigils.jpg");
     background-size: cover;
     top: 55px;
     right: 54px;
@@ -338,7 +339,7 @@ html {
     left: 45px;
     height: 15%;
     width: 20%;
-    background-image: url("monopoly_images/community_chest/chestBackOfCard.png");
+    background-image: url("monopoly_images/community_chest/animal.jpeg");
     background-size: cover;
     transform: rotate(41deg);
 
@@ -375,6 +376,16 @@ html {
 .welcomeText{
     margin-bottom: 1%;
 }
+
+
+.currentPlayerCards{
+    height: 50px;
+    background: transparent;
+}
+
+.currentPlayerCards img {
+    height: 50px;
+    width: 50px;
 
 .button-container button, #btn{
     padding: 2%;
