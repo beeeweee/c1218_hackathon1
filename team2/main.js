@@ -14,19 +14,19 @@ var currentPlayer = "player1";
 var currentPlayersObject = {
     'player1': {
         'playerPosition': 0, 'playerStatus': 1, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,'cards':[],
     },
     'player2': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,'cards':[],
     },
     'player3': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,'cards':[],
     },
     'player4': {
         'playerPosition': 0, 'playerStatus': 0, 'playerName': '', 'balance': 0,
-        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,
+        'propertiesOwned': {}, 'railRoadsOwned': [], 'railRoadsAmtOwned': 0,'cards':[],
     },
 }
 //****END****/
@@ -111,6 +111,9 @@ function initializeGame() {
     $('.buy-property').click(playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
      populateBoardSpots();
 
+     $('.property-container').hide();
+     $('#passButton').click(function(){$('.property-container').hide()});
+
     $("select").change(numberOfPlayersSelected);
     numberOfPlayersSelected();
 
@@ -123,19 +126,33 @@ function initializeGame() {
         togglePlayer();
     });
 
+
+    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition} || Total No. of Cards: ${currentPlayersObject[currentPlayer].cards.length}`;
+
+    $('.currentPlayerInfoContainer').text(stats);
+    $('.currentPlayerCards').empty();
+    var currentPlayerCards = currentPlayersObject[currentPlayer].cards;
+    for(var i=0;i<currentPlayerCards.length;i++){
+        $('.currentPlayerCards').append(currentPlayerCards[i]);
+    }
+
+    $(`.indiv-players > .player1 > img`).css('border', 'yellow 3px dashed');
+
+
+
     $('.currentPlayerInfoContainer').text(
         `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+
     //create Dice Roll Effect
 
 //create Dice Roll Effect
 
     $("#btn").click(function () {
-        console.log("testing1");
         playerCurrentPosition();
     })
 //Deal Cards
 
-    $('.chest-card-deck-spot').click(function () {
+   /* $('.chest-card-deck-spot').click(function () {
         if($('.chest-card-deck-spot').children().length===1){
             removeChestCard();
         } else {
@@ -149,6 +166,7 @@ function initializeGame() {
         } else {
             dealChanceCard(randomChanceCard());
         }
+
      })
 
 //Background Game Music Audio
@@ -182,8 +200,6 @@ function initializeGame() {
     $('.player-2-stat').mouseover(showPlayerStats);
     $('.player-2-stat').mouseout(showPlayerStats);
 
-    $('.small-square, .large-square').click(showDeed);
-    
 //Click Handlers
     $('.remove-community-card').click(function () {
         $('#community-card-deck').addClass('active');
@@ -194,7 +210,9 @@ function initializeGame() {
     })
     //Modal Handler
     
-    $('.small-square, .large-square').click(showDeed);
+    // $('.small-square, .large-square').click(showDeed);
+
+    showDeed();
 
     //clickHandlers
 $('.remove-community-card').click(function () {
@@ -212,8 +230,17 @@ $('.remove-chance-card').click(function () {
 
 
 //****start game number of players and board setup*****
-$('.currentPlayerInfoContainer').text(
-    `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+var stats = `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition} || Total No. of Cards: ${currentPlayersObject[currentPlayer].cards.length}`
+
+$('.currentPlayerInfoContainer').text(stats);
+
+var currentPlayerCards = currentPlayersObject[currentPlayer].cards;
+
+$('.currentPlayerCards').empty();
+for(var i=0;i<currentPlayerCards.length;i++){
+    $('.currentPlayerCards').append(currentPlayerCards[i]);
+}
+
 function playerLandingLocation(){
     var playerLocation = currentPlayersObject[currentPlayer].playerPosition;
     return 'position-'+playerLocation;
@@ -225,30 +252,28 @@ function displayCurrentLandingCard(){
 }
 
 function togglePlayer(){
-
-    if (currentPlayerIndex < playerIds.length) {
-        currentPlayer = playerIds[currentPlayerIndex];
- 
-        if( (currentPlayerIndex===0 || currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar") ){
-            dealCommunityChestCard(randomCommunityCard());
-            removeChanceCard();
-        } else if((currentPlayerIndex===1||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar")){
-            dealChanceCard();
-            removeChestCard()
-        }
- 
-    } else {
-        currentPlayerIndex = 0;
-        currentPlayer = playerIds[currentPlayerIndex];
-        if( (currentPlayerIndex===0 ||currentPlayerIndex===2) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar") ){
-            dealCommunityChestCard(randomCommunityCard());
-            removeChanceCard();
-        } else if ((currentPlayerIndex==1 ||currentPlayerIndex==3) && $(currentPlayerPosition).parent().hasClass("iron-Throne")|| $(currentPlayerPosition).parent().hasClass("valar")){
-            dealChanceCard() ;
-            removeChestCard()
-        }
-    };
     currentPlayerIndex = currentPlayerIndex + 1;
+    if (currentPlayerIndex >= playerIds.length) {
+        currentPlayerIndex = 0;
+    }
+
+    currentPlayer = playerIds[currentPlayerIndex];
+ 
+    if($(currentPlayerPosition).parent().hasClass("chance") ){
+        removeChanceCard();
+        removeChestCard();
+        dealChanceCard();
+
+    } else if ($(currentPlayerPosition).parent().hasClass("community")){
+        removeChanceCard();
+        removeChestCard();
+        dealCommunityChestCard();
+
+    } else{
+        removeChanceCard();
+        removeChestCard();
+    }
+
 };
 
 
@@ -497,21 +522,40 @@ function playerCurrentPosition() {
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
     console.log(newPosition);
-     currentPlayerPosition = $('.' + currentPlayer + '.circle');
+     currentPlayerPosition = $('.' + currentPlayer + '.circle');//if element has two classes(first (.) and second (.circle)
     console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     console.log( currentPlayerPosition );
     if(result.toggle){
+        $(`.indiv-players > * > *`).css('border', '0')
+
+        $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed');
+
         togglePlayer()
     }
+
+    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition} || Total No. of Cards: ${currentPlayersObject[currentPlayer].cards.length}`
+
+    $('.currentPlayerInfoContainer').text(stats);
+    var currentPlayerCards = currentPlayersObject[currentPlayer].cards;
+
+    $('.currentPlayerCards').empty();
+    for(var i=0;i<currentPlayerCards.length;i++){
+        $('.currentPlayerCards').append(currentPlayerCards[i]);
+    }
+
+    $('.property-container').hide();
 
     $('.currentPlayerInfoContainer').text(
         `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
         playerLandsOnAProperty();
 
-    $(`.indiv-players > * > *`).css('border', '0')
+    showDeed();
+    $(`.indiv-players > * > *`).css('border', '0');
 
-    $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed')
+    $(`.indiv-players > .${currentPlayer} > img`).css('border', 'yellow 3px dashed');
+
+    console.log('show deed now!')
 
 }
 //****END******
@@ -519,30 +563,19 @@ function playerCurrentPosition() {
 
 
 //Deal Community Chest Cards
-var communityChestDeck = new Array();
-var numberOfCardsInDeck = 10;
-communityChestDeck[0] = "capture_1";
-communityChestDeck[1] = "capture_2";
-communityChestDeck[2] = "capture_1";
-communityChestDeck[3] = "capture_1";
-communityChestDeck[4] = "capture_1";
-communityChestDeck[5] = "capture_1";
-communityChestDeck[6] = "capture_1";
-communityChestDeck[7] = "capture_1";
-communityChestDeck[8] = "capture_1";
-communityChestDeck[9] = "capture_1";
-communityChestDeck[10] = "capture_1";
+var communityChestDeck = ['drogon_and_daenerys.jpg', 'stark_wolf.png','fire_dragon.png'];
+
 
 function randomCommunityCard() {
-    return Math.floor(Math.random() * numberOfCardsInDeck);
+    return Math.floor(Math.random() * communityChestDeck.length);
 }
 
 function dealCommunityChestCard() {
-    //if (numberOfCardsInDeck === 0) return false;
-    //var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[i]}.PNG">`)
-    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/capture_1.PNG">`)
-
+    var cardIndex = randomCommunityCard();
+    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[cardIndex]}">`)
+    removeChestCard();
     $('.chest-card-deck-spot').append(img);
+    currentPlayersObject[currentPlayer].cards.push(img);
 }
 
 function removeChestCard(){
@@ -550,30 +583,23 @@ function removeChestCard(){
 }
 
 //Deal Chance Cards
-var chanceDeck = new Array();
-var numberOfCardsInChanceDeck = 10;
-chanceDeck[0] = "chance_1";
-chanceDeck[1] = "chance_2";
-chanceDeck[2] = "chance_3";
-chanceDeck[3] = "chance_4";
-chanceDeck[4] = "chance_5";
-chanceDeck[5] = "chance_6";
-chanceDeck[6] = "chance_7";
-chanceDeck[7] = "chance_8";
-chanceDeck[8] = "chance_9";
-chanceDeck[9] = "chance_10";
-chanceDeck[10] = "go_to_jail";
-chanceDeck[11] = "Get_out_jail";
+var chanceDeck = ['braided_warrior.png','wildling_horde.png','Bronn.png','red_cloaks.png'];
+
 
 function randomChanceCard() {
-    return Math.floor(Math.random() * numberOfCardsInDeck);
+    return Math.floor(Math.random() * chanceDeck.length);
 }
 
 function dealChanceCard() {
-    //if (numberOfCardsInDeck === 0) return false;
-    //var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[i]}.PNG">`)
-    var img = (`<img id="chance-card" src="monopoly_images/chance/chance_1.PNG">`)
+   var cardIndex=randomChanceCard();
+    var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[cardIndex]}">`)
+    removeChanceCard();
     $('.chance-card-deck-spot').append(img);
+    currentPlayersObject[currentPlayer].cards.push(img);
+
+
+
+
 }
 
 function removeChanceCard(){
@@ -626,15 +652,21 @@ function hidePlayerStats(){
 
 function showDeed() {
     $('#property-modal').show();
-    var propertyIndex = $(this).attr('pos');
+    var propertyIndex = currentPlayersObject[`${currentPlayer}`].playerPosition;
+    console.log('this is property index: ', propertyIndex);
     var deedData = null;
+    var foundMatch = false;
 
     for (var arrayNum = 0; arrayNum < propData.length; arrayNum++){
         console.log('made it in@')
         if (propData[arrayNum][11] == propertyIndex){
             deedData = propData[arrayNum];
+            foundMatch = true;
         }
     }
+
+
+    if (foundMatch === true){
 
     $('#base-rent').text(deedData[3]);
     $('#property-title').text(deedData[0]);
@@ -645,6 +677,9 @@ function showDeed() {
 
    $('#mortgage-cost').text(deedData[9]);
    $('.title-name-container').css('background-color', deedData[10]);
+
+   $('.property-container').show();
+    }
 
 }
 
