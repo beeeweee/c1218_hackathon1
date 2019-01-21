@@ -1,7 +1,7 @@
 var propData = [
 
-    ["Craster's Keep",60,50,2,10,30,90,160,250,30,"#894d31",1,'player1'],
-    ["The First of The First Men",60,50,4,20,60,180,320,450,30,"#894d31", 3],
+    ["Craster's Keep",60,50,2,10,30,90,160,250,30,"#7c533b",1,'player1'],
+    ["The First of The First Men",60,50,4,20,60,180,320,450,30,"57137f", 3],
     ["The NightFort",100,50,6,30,90,270,400,550,50,"#abe7fe",6],
     ["Moles's Town",100,50,6,30,90,270,400,550,50, "#abe7fe",8],
     ["The Inn at The CrossRoads",120,50,8,40,100,300,450,600,60, "#abe7fe",9],

@@ -175,7 +175,7 @@ html {
 
 .stats-text-info-container{
     position: relative;
-    height: 65%;
+    height: 41%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -244,7 +244,6 @@ html {
 }
 
 .currentPlayerInfoContainer{
-    position: absolute;
     bottom: 3%;
     font-size: large;
 }
@@ -325,7 +324,7 @@ html {
     position: absolute;
     height: 15%;
     width: 20%;
-    background-image: url("community_&_chance/chance_bkg.jpg");
+    background-image: url("monopoly_images/chance_bkg.jpg");
     background-size: cover;
     top: 55px;
     right: 54px;
@@ -339,7 +338,7 @@ html {
     left: 45px;
     height: 15%;
     width: 20%;
-    background-image: url("community_&_chance/bkg_community.jpg");
+    background-image: url("monopoly_images/bkg_community.jpg");
     background-size: cover;
     transform: rotate(41deg);
 
@@ -417,4 +416,10 @@ html {
 
 .currentPlayerCards > img{
     border-radius: 10%;
+}
+
+.player-financial-info{
+    height: 20%;
+    font-size: 20px;
+    padding: 1%;
 }

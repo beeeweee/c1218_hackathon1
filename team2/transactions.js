@@ -8,17 +8,25 @@ function getPlayersBalance(playerId){
     return currentPlayersObject[playerId].balance;
 }
 function givePlayerMoney(playerId, amount){
-    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+    var textToDisplay = ''
+    textToDisplay += "Player had: " + getPlayersBalance(playerId)+ " golden dragons <br/>";
     currentPlayersObject[playerId].balance += amount;
-    console.log("player "+playerId+" was given: " + amount+ " golden dragons");
-    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+    textToDisplay += "Player was given: " + amount+ " golden dragons <br/>";
+    textToDisplay += "Player now has: " + getPlayersBalance(playerId)+ " golden dragons <br/>";
+    var playerFinancialInfo = $('.player-financial-info');
+    playerFinancialInfo.text('')
+    playerFinancialInfo.append(textToDisplay)
 }
 function takePlayerMoney(playerId, amount){
-    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+    var textToDisplay = ''
+    textToDisplay += "Player had: " + getPlayersBalance(playerId)+ " golden dragons <br/>";
     currentPlayersObject[playerId].balance -= amount;
-    console.log("player "+playerId+" money taken: " + amount+ " golden dragons");
-    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+    textToDisplay += "Player money taken: " + amount+ " golden dragons <br/>";
+    textToDisplay += "Player now has: " + getPlayersBalance(playerId)+ " golden dragons <br/>";
     //Handle negative amounts
+    playerFinancialInfo.text('')
+    $('.player-financial-info').append(textToDisplay);
+
 }
 
 
