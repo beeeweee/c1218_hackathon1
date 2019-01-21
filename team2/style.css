@@ -382,7 +382,7 @@ html {
     height: 50px;
     background: transparent;
     position: absolute;
-    bottom: 7%;
+    bottom: 12%;
 }
 
 .currentPlayerCards img {
@@ -406,4 +406,8 @@ html {
     padding: 0 3%;
     font-size: 30px;
     border-radius: 20%;
+}
+
+.currentPlayerCards > img{
+    border-radius: 10%;
 }

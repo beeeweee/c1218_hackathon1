@@ -706,7 +706,6 @@ function showCharacterStats(player){
 
 //Property Functionality
 function playerLandsOnAProperty(){
-    debugger;
     var currentProperty = displayCurrentLandingCard();
     var currentPropertyOwner = findPropertyOwner(currentProperty);
     if(currentPropertyOwner === currentPlayer){
@@ -724,7 +723,6 @@ function playerLandsOnAProperty(){
 }
 
 function playerBuysProperty(){
-    debugger;
     var currentProperty = displayCurrentLandingCard();
     if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
         updateNewOwner(currentProperty,currentPlayer);
