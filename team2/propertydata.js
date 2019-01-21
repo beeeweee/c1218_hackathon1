@@ -29,6 +29,7 @@ var propData = [
     ["House Targaryen ",200,25,50,100,200,200,200,200,200,"white",25],
     ["House Stark", 200,25,50,100,200,200,200,200,200,"white",35]
 ]
+    
 /*
 var PropertyObject =[];
 for(let i = 0; i < propData.length; i++){
@@ -547,7 +548,7 @@ function findPropertyCurrentRent(propertyName){
 
 //Updates to Property Object
 function updateNewOwner (property, player){
-    debugger;
+
     var numberOfProperties = propertyData.length;
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === property){
@@ -569,7 +570,7 @@ function updateNewOwnerWithRent (property, player){
 }
 
 function updateCurrentRentAmount(property){
-    debugger;
+
     var numberOfProperties = propertyData.length;
     var currentProperty = findProperty(property);
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
