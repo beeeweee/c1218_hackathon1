@@ -547,7 +547,6 @@ function findPropertyCurrentRent(propertyName){
 
 //Updates to Property Object
 function updateNewOwner (property, player){
-    debugger;
     var numberOfProperties = propertyData.length;
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === property){
@@ -569,7 +568,6 @@ function updateNewOwnerWithRent (property, player){
 }
 
 function updateCurrentRentAmount(property){
-    debugger;
     var numberOfProperties = propertyData.length;
     var currentProperty = findProperty(property);
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){

@@ -8,15 +8,17 @@ function playerTransactionToBank(currentPlayersBank, amount){
     return currentPlayersBank-amount;
 }
 
-function playerBuysProperty(property, player){
-    debugger;
-    var propertyCost = findPropertyCost(property);
+function playerBuysProperty(){
+    var currentPosition = currentPlayersObject[currentPlayer].playerPosition;
+    var currentProperty = findNameByPropertyPosition(currentPosition);
+    var propertyCost = findPropertyCost(currentProperty);
     var currentPlayersBankFunds = currentPlayersBalance();
     if(currentPlayersBankFunds >= propertyCost){
-        updateNewOwner(property,player);
+        updateNewOwner(currentProperty,currentPlayer);
         playerTransactionToBank(currentPlayersBankFunds, propertyCost);
-    }
-    return console.log(findPropertyOwner(property));
+    } 
+    // else if ($("#passButton").on('click', passButton))
+    return console.log(findPropertyOwner(currentProperty));
 }
 
 function rentPaidToOwner(currentProperty){
@@ -28,6 +30,12 @@ function rentPaidToOwner(currentProperty){
     propertyOwnersBankFunds += currentPropertyRentAmount;
     console.log(currentPlayersBankFunds);
     console.log(propertyOwnersBankFunds);
+}
+
+function passingGo(){
+    var currentPlayersBankFunds = currentPlayersBalance()
+    console.log('Passed Go. Collected 200')
+    return currentPlayersBankFunds+200;
 }
 //*****END*****/
 

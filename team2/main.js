@@ -107,9 +107,9 @@ function changePlayerArray(){
 function initializeGame() {
     disperseMoney();
 
-    $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
-    $('.buy-property').click(playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
-     populateBoardSpots();
+    // $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
+    //  populateBoardSpots();
+    //  $("#passButton").on('click', passButton);
 
      $('.property-container').hide();
      $('#passButton').click(function(){$('.property-container').hide()});
@@ -526,6 +526,7 @@ function playerCurrentPosition() {
     console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     console.log( currentPlayerPosition );
+    setTimeout(playerBuysProperty);
     if(result.toggle){
         $(`.indiv-players > * > *`).css('border', '0')
 
@@ -596,10 +597,6 @@ function dealChanceCard() {
     removeChanceCard();
     $('.chance-card-deck-spot').append(img);
     currentPlayersObject[currentPlayer].cards.push(img);
-
-
-
-
 }
 
 function removeChanceCard(){
@@ -708,7 +705,6 @@ function showCharacterStats(player){
 
 //Property Functionality
 function playerLandsOnAProperty(){
-    debugger;
     var currentProperty = displayCurrentLandingCard();
     var currentPropertyOwner = findPropertyOwner(currentProperty);
     if(currentPropertyOwner === currentPlayer){
@@ -724,18 +720,6 @@ function playerLandsOnAProperty(){
     // prompt player to finish turn
     //console.log(`${player} owns ${}.`);
 }
-
-function playerBuysProperty(){
-    debugger;
-    var currentProperty = displayCurrentLandingCard();
-    if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
-        updateNewOwner(currentProperty,currentPlayer);
-        return console.log('Property Bought');
-    }
-    return console.log('Not Enought Money');
-}
-
-
 
 /********END *********/
 
