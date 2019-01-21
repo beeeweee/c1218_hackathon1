@@ -122,7 +122,15 @@ function initializeGame() {
 
     $("#start-button").click(function () {
         $(".overlay").hide();
-        "'stats = `Current Player: ${currentPlayer.toUpperCase()} || Board Position: ${currentPlayersObject[currentPlayer].playerPosition} || Balance: ${currentPlayersObject[currentPlayer].balance}`;
+        changePlayerArray();
+    });
+
+    $("#toggleplayer").click(function () {
+        togglePlayer();
+    });
+
+
+    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Board Position: ${currentPlayersObject[currentPlayer].playerPosition} || Balance: ${currentPlayersObject[currentPlayer].balance}`;
 
     $('.currentPlayerInfoContainer').text(stats);
     $('.currentPlayerCards').empty();
