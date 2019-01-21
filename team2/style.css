@@ -386,6 +386,7 @@ html {
 .currentPlayerCards img {
     height: 50px;
     width: 50px;
+}
 
 .button-container button, #btn{
     padding: 2%;
