@@ -144,8 +144,7 @@ function initializeGame() {
 
 
 
-    $('.currentPlayerInfoContainer').text(
-        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+    $('.currentPlayerInfoContainer').text(stats);
 
         $('player1Img').click(function(){
             showPlayerStats()
@@ -569,8 +568,7 @@ if(newPosition==20){
 
     $('.property-container').hide();
 
-    $('.currentPlayerInfoContainer').text(
-        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+    $('.currentPlayerInfoContainer').text(stats);
         playerLandsOnAProperty();
 
     showDeed();
