@@ -325,7 +325,7 @@ html {
     position: absolute;
     height: 15%;
     width: 20%;
-    background-image: url("monopoly_images/chance/got_sigils.jpg");
+    background-image: url("community_&_chance/chance_bkg.jpg");
     background-size: cover;
     top: 55px;
     right: 54px;
@@ -339,7 +339,7 @@ html {
     left: 45px;
     height: 15%;
     width: 20%;
-    background-image: url("monopoly_images/community_chest/animal.jpeg");
+    background-image: url("community_&_chance/bkg_community.jpg");
     background-size: cover;
     transform: rotate(41deg);
 
@@ -384,10 +384,17 @@ html {
 }
 
 .currentPlayerCards img {
-    height: 50px;
-    width: 50px;
+    height: 280px;
+    width: 500px;
 }
-
+.chance-or-community-cards{
+    height: 50px;
+    background: transparent;
+}
+.chance-or-community-cards img{
+    height: 280px;
+    width: 500px;
+}
 .button-container button, #btn{
     padding: 2%;
     border-radius: 20%;

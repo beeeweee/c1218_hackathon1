@@ -16,7 +16,7 @@ function checkWhatTypeOfPropertiesPlayerHas(currentProperty){
     var activePlayers = numberOfPlayers;
     while(activePlayers){
         for(currentNumberOfPropertiesOwned; currentNumberOfPropertiesOwned > 0; currentNumberOfPropertiesOwned--){
-            debugger;
+     
             if(currentProperty === currentPlayersObject[`player${activePlayers}`].propertiesOwned[`${currentNumberOfPropertiesOwned}`]){
                 console.log('Same property');
             }

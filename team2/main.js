@@ -32,6 +32,10 @@ var currentPlayersObject = {
 //****END****/
 
 
+function addMoneyToPlayer(){
+
+}
+
 
 //Game Sound
     //Background Music
@@ -143,6 +147,10 @@ function initializeGame() {
     $('.currentPlayerInfoContainer').text(
         `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
 
+        $('player1Img').click(function(){
+            showPlayerStats()
+
+        });
     //create Dice Roll Effect
 
 //create Dice Roll Effect
@@ -484,7 +492,7 @@ function removePlayerPieces() {
 function diceNumbers() {
     var totalValueOfDiceRoll = [];
     var totalMove;
-
+    clearChanceAndCommunityCards();
     $("#player1").attr('enable');
 
     totalValueOfDiceRoll[0] = Math.floor(Math.random() * (max - min + 1) + min);
@@ -526,6 +534,21 @@ function playerCurrentPosition() {
     console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     console.log( currentPlayerPosition );
+
+if(newPosition == 30){
+    setTimeout(function(){
+        console.log("Going To Jail");
+        goToJail();
+    }, 2000)
+    
+}
+if(newPosition==20){
+    setTimeout(function(){
+        console.log("Player gets $300");
+        freeParking();
+    },2000)
+}
+
     if(result.toggle){
         $(`.indiv-players > * > *`).css('border', '0')
 
@@ -563,8 +586,35 @@ function playerCurrentPosition() {
 
 
 //Deal Community Chest Cards
-var communityChestDeck = ['drogon_and_daenerys.jpg', 'stark_wolf.png','fire_dragon.png'];
+var communityChestDeck = generateCommunityCards();
 
+function generateCommunityCards(){
+    var returnArray = [];
+    for(var chanceCard in chanceCardActions){
+        returnArray.push(
+            {
+                "cardName":chanceCard,
+                "cardImage":`communitychance/${chanceCard}.jpg`,
+                "cardAction": chanceCardActions[chanceCard] 
+            }
+        )
+    }
+    return returnArray;
+}
+
+function generateChanceCards(){
+    var returnArray = [];
+    for(var communityCard in communityCardActions){
+        returnArray.push(
+            {
+                "cardName":communityCard,
+                "cardImage":`communitychance/${communityCard}.jpg`,
+                "cardAction": communityCardActions[communityCard] 
+            }
+        )
+    }
+    return returnArray;
+}
 
 function randomCommunityCard() {
     return Math.floor(Math.random() * communityChestDeck.length);
@@ -572,10 +622,11 @@ function randomCommunityCard() {
 
 function dealCommunityChestCard() {
     var cardIndex = randomCommunityCard();
-    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[cardIndex]}">`)
+    var img = (`<img id="community-card-deck" src="${communityChestDeck[cardIndex].cardImage}">`);
     removeChestCard();
-    $('.chest-card-deck-spot').append(img);
-    currentPlayersObject[currentPlayer].cards.push(img);
+    $('.chance-or-community-cards').append(img);
+    //currentPlayersObject[currentPlayer].cards.push(img);
+    communityChestDeck[cardIndex].cardAction();
 }
 
 function removeChestCard(){
@@ -583,23 +634,23 @@ function removeChestCard(){
 }
 
 //Deal Chance Cards
-var chanceDeck = ['braided_warrior.png','wildling_horde.png','Bronn.png','red_cloaks.png'];
+var chanceDeck = generateChanceCards(10);
 
 
 function randomChanceCard() {
     return Math.floor(Math.random() * chanceDeck.length);
 }
-
+function clearChanceAndCommunityCards(){
+    $("#community-card-deck").remove();
+    $("#chance-card").remove();
+}
 function dealChanceCard() {
    var cardIndex=randomChanceCard();
-    var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[cardIndex]}">`)
+    var img = (`<img id="chance-card" src="${chanceDeck[cardIndex].cardImage}">`)
     removeChanceCard();
-    $('.chance-card-deck-spot').append(img);
-    currentPlayersObject[currentPlayer].cards.push(img);
-
-
-
-
+    $('.chance-or-community-cards').append(img);
+    //currentPlayersObject[currentPlayer].cards.push(img);
+    chanceDeck[cardIndex].cardAction();
 }
 
 function removeChanceCard(){
@@ -668,11 +719,11 @@ function showDeed() {
 
     if (foundMatch === true){
 
-    $('#base-rent').text(deedData[3]);
+    $('#property-cost').text(deedData[1]);
     $('#property-title').text(deedData[0]);
-    $('#rent-1').text(deedData[1]);
-    $('#rent-2').text(deedData[2]);
-    $('#rent-3').text(deedData[4]);
+    $('#rent-1').text(deedData[4]);
+    $('#rent-2').text(deedData[5]);
+    $('#rent-3').text(deedData[6]);
     $('#rent-hotel').text(deedData[8]);
 
    $('#mortgage-cost').text(deedData[9]);
@@ -683,10 +734,29 @@ function showDeed() {
 
 }
 
+
+
+// 'property-title': "Qarth",
+// 'property-position': 'position-13',
+// 'property-current-rent': null,
+// 'property-cost': 140,
+// 'property-rent': 100,
+// 'base-rent': 10,
+// 'rent-1': 50,
+// 'rent-2': 150,
+// 'rent-3': 450,
+// 'rent-4': 625,
+// 'rent-hotel': 750,
+// 'mortgage-cost': 70,
+// 'propertyOwner': null,
+
 function showCharacterStats(player){
-    var characterIndex = currentPlayersObject[player].playerPosition;// 
+    $('.modal-character-content').show();
+    var characterIndex = currentPlayersObject[`${currentPlayer}`].playerPosition;// 
     var property = propertyData[characterIndex];
-    var owner = getPropertyOwner(characterIndex);
+    var characterMoneyValue= currentPlayersObject[player].balance;
+
+
    
     if (!owner){
        
@@ -708,7 +778,6 @@ function showCharacterStats(player){
 
 //Property Functionality
 function playerLandsOnAProperty(){
-    debugger;
     var currentProperty = displayCurrentLandingCard();
     var currentPropertyOwner = findPropertyOwner(currentProperty);
     if(currentPropertyOwner === currentPlayer){
@@ -726,13 +795,13 @@ function playerLandsOnAProperty(){
 }
 
 function playerBuysProperty(){
-    debugger;
+
     var currentProperty = displayCurrentLandingCard();
     if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
         updateNewOwner(currentProperty,currentPlayer);
         return console.log('Property Bought');
     }
-    return console.log('Not Enought Money');
+    return console.log('Not Enough Money');
 }
 
 
