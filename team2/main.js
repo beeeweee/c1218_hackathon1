@@ -122,15 +122,7 @@ function initializeGame() {
 
     $("#start-button").click(function () {
         $(".overlay").hide();
-        changePlayerArray();
-    });
-
-    $("#toggleplayer").click(function () {
-        togglePlayer();
-    });
-
-
-    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Board Position: ${currentPlayersObject[currentPlayer].playerPosition} || Balance: ${currentPlayersObject[currentPlayer].balance}`;
+        "'stats = `Current Player: ${currentPlayer.toUpperCase()} || Board Position: ${currentPlayersObject[currentPlayer].playerPosition} || Balance: ${currentPlayersObject[currentPlayer].balance}`;
 
     $('.currentPlayerInfoContainer').text(stats);
     $('.currentPlayerCards').empty();
@@ -813,6 +805,7 @@ function playerBuysProperty(){
             updateNewOwner(currentProperty,currentPlayer);
             playerTransactionToBank(currentPlayersBankFunds, propertyCost);
             updateNewOwnerWithRent(currentProperty, currentPlayer);
+            $('#property-owner').text(currentPlayer);
             return console.log('property bought')
         }
     }
