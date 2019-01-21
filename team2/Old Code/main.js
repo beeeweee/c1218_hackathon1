@@ -158,3 +158,13 @@ function playerCanBuyProperties(player, property) {
         playerDoesNotHaveEnoughMoney();
     }
 }
+
+
+function playerBuysProperty(){
+    var currentProperty = displayCurrentLandingCard();
+    if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
+        updateNewOwner(currentProperty,currentPlayer);
+        return console.log('Property Bought');
+    }
+    return console.log('Not Enough Money');
+}

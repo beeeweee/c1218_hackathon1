@@ -111,9 +111,9 @@ function changePlayerArray(){
 function initializeGame() {
     disperseMoney();
 
-    $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
-    $('.buy-property').click(playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
-     populateBoardSpots();
+    // $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
+    // $('.buy-property').click(playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
+    //  populateBoardSpots();
 
      $('.property-container').hide();
      $('#passButton').click(function(){$('.property-container').hide()});
@@ -525,6 +525,7 @@ function playerCurrentPosition() {
     console.log(diceRolls);
     var newPosition = currentPosition + diceRolls;
     if (newPosition > totlBlockCount) {
+        passGo();
         newPosition = newPosition - totlBlockCount - 1;
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
@@ -791,15 +792,6 @@ function playerLandsOnAProperty(){
     // display "You already own this property"
     // prompt player to finish turn
     //console.log(`${player} owns ${}.`);
-}
-
-function playerBuysProperty(){
-    var currentProperty = displayCurrentLandingCard();
-    if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
-        updateNewOwner(currentProperty,currentPlayer);
-        return console.log('Property Bought');
-    }
-    return console.log('Not Enough Money');
 }
 
 
