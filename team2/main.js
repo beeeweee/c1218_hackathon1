@@ -32,10 +32,6 @@ var currentPlayersObject = {
 //****END****/
 
 
-function addMoneyToPlayer(){
-
-}
-
 
 //Game Sound
     //Background Music
@@ -66,6 +62,7 @@ this.playAudio = function(){
 
 
 function playerTurnCycler(currentPlayerTurn) {
+    debugger;
     var totalAmtOfPlayers = Object.keys(currentPlayersObject).length;
     if (currentPlayerTurn < totalAmtOfPlayers) {
         return `player${currentPlayerTurn + 1}`;
@@ -111,9 +108,9 @@ function changePlayerArray(){
 function initializeGame() {
     disperseMoney();
 
-    $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
-    $('.buy-property').click(playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
-     populateBoardSpots();
+    // $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
+    //  populateBoardSpots();
+    //  $("#passButton").on('click', passButton);
 
      $('.property-container').hide();
      $('#passButton').click(function(){$('.property-container').hide()});
@@ -144,12 +141,9 @@ function initializeGame() {
 
 
 
-    $('.currentPlayerInfoContainer').text(stats);
+    $('.currentPlayerInfoContainer').text(
+        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
 
-        $('player1Img').click(function(){
-            showPlayerStats()
-
-        });
     //create Dice Roll Effect
 
 //create Dice Roll Effect
@@ -491,7 +485,7 @@ function removePlayerPieces() {
 function diceNumbers() {
     var totalValueOfDiceRoll = [];
     var totalMove;
-    clearChanceAndCommunityCards();
+
     $("#player1").attr('enable');
 
     totalValueOfDiceRoll[0] = Math.floor(Math.random() * (max - min + 1) + min);
@@ -525,6 +519,7 @@ function playerCurrentPosition() {
     console.log(diceRolls);
     var newPosition = currentPosition + diceRolls;
     if (newPosition > totlBlockCount) {
+        passGo();
         newPosition = newPosition - totlBlockCount - 1;
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
@@ -533,21 +528,7 @@ function playerCurrentPosition() {
     console.log( currentPlayerPosition );
     $(`.position-${newPosition}`).append(currentPlayerPosition);
     console.log( currentPlayerPosition );
-
-if(newPosition == 30){
-    setTimeout(function(){
-        console.log("Going To Jail");
-        goToJail();
-    }, 2000)
-    
-}
-if(newPosition==20){
-    setTimeout(function(){
-        console.log("Player gets $300");
-        freeParking();
-    },2000)
-}
-
+    setTimeout(playerBuysProperty);
     if(result.toggle){
         $(`.indiv-players > * > *`).css('border', '0')
 
@@ -568,9 +549,9 @@ if(newPosition==20){
 
     $('.property-container').hide();
 
-    $('.currentPlayerInfoContainer').text(stats);
+    $('.currentPlayerInfoContainer').text(
+        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
         playerLandsOnAProperty();
-
 
     showDeed();
     $(`.indiv-players > * > *`).css('border', '0');
@@ -585,35 +566,8 @@ if(newPosition==20){
 
 
 //Deal Community Chest Cards
-var communityChestDeck = generateCommunityCards();
+var communityChestDeck = ['drogon_and_daenerys.jpg', 'stark_wolf.png','fire_dragon.png'];
 
-function generateCommunityCards(){
-    var returnArray = [];
-    for(var chanceCard in chanceCardActions){
-        returnArray.push(
-            {
-                "cardName":chanceCard,
-                "cardImage":`communitychance/${chanceCard}.jpg`,
-                "cardAction": chanceCardActions[chanceCard] 
-            }
-        )
-    }
-    return returnArray;
-}
-
-function generateChanceCards(){
-    var returnArray = [];
-    for(var communityCard in communityCardActions){
-        returnArray.push(
-            {
-                "cardName":communityCard,
-                "cardImage":`communitychance/${communityCard}.jpg`,
-                "cardAction": communityCardActions[communityCard] 
-            }
-        )
-    }
-    return returnArray;
-}
 
 function randomCommunityCard() {
     return Math.floor(Math.random() * communityChestDeck.length);
@@ -621,11 +575,10 @@ function randomCommunityCard() {
 
 function dealCommunityChestCard() {
     var cardIndex = randomCommunityCard();
-    var img = (`<img id="community-card-deck" src="${communityChestDeck[cardIndex].cardImage}">`);
+    var img = (`<img id="community-card-deck" src="monopoly_images/community_chest/${communityChestDeck[cardIndex]}">`)
     removeChestCard();
-    $('.chance-or-community-cards').append(img);
-    //currentPlayersObject[currentPlayer].cards.push(img);
-    communityChestDeck[cardIndex].cardAction();
+    $('.chest-card-deck-spot').append(img);
+    currentPlayersObject[currentPlayer].cards.push(img);
 }
 
 function removeChestCard(){
@@ -633,23 +586,19 @@ function removeChestCard(){
 }
 
 //Deal Chance Cards
-var chanceDeck = generateChanceCards(10);
+var chanceDeck = ['braided_warrior.png','wildling_horde.png','Bronn.png','red_cloaks.png'];
 
 
 function randomChanceCard() {
     return Math.floor(Math.random() * chanceDeck.length);
 }
-function clearChanceAndCommunityCards(){
-    $("#community-card-deck").remove();
-    $("#chance-card").remove();
-}
+
 function dealChanceCard() {
    var cardIndex=randomChanceCard();
-    var img = (`<img id="chance-card" src="${chanceDeck[cardIndex].cardImage}">`)
+    var img = (`<img id="chance-card" src="monopoly_images/chance/${chanceDeck[cardIndex]}">`)
     removeChanceCard();
-    $('.chance-or-community-cards').append(img);
-    //currentPlayersObject[currentPlayer].cards.push(img);
-    chanceDeck[cardIndex].cardAction();
+    $('.chance-card-deck-spot').append(img);
+    currentPlayersObject[currentPlayer].cards.push(img);
 }
 
 function removeChanceCard(){
@@ -718,11 +667,11 @@ function showDeed() {
 
     if (foundMatch === true){
 
-    $('#property-cost').text(deedData[1]);
+    $('#base-rent').text(deedData[3]);
     $('#property-title').text(deedData[0]);
-    $('#rent-1').text(deedData[4]);
-    $('#rent-2').text(deedData[5]);
-    $('#rent-3').text(deedData[6]);
+    $('#rent-1').text(deedData[1]);
+    $('#rent-2').text(deedData[2]);
+    $('#rent-3').text(deedData[4]);
     $('#rent-hotel').text(deedData[8]);
 
    $('#mortgage-cost').text(deedData[9]);
@@ -733,29 +682,10 @@ function showDeed() {
 
 }
 
-
-
-// 'property-title': "Qarth",
-// 'property-position': 'position-13',
-// 'property-current-rent': null,
-// 'property-cost': 140,
-// 'property-rent': 100,
-// 'base-rent': 10,
-// 'rent-1': 50,
-// 'rent-2': 150,
-// 'rent-3': 450,
-// 'rent-4': 625,
-// 'rent-hotel': 750,
-// 'mortgage-cost': 70,
-// 'propertyOwner': null,
-
 function showCharacterStats(player){
-    $('.modal-character-content').show();
-    var characterIndex = currentPlayersObject[`${currentPlayer}`].playerPosition;// 
+    var characterIndex = currentPlayersObject[player].playerPosition;// 
     var property = propertyData[characterIndex];
-    var characterMoneyValue= currentPlayersObject[player].balance;
-
-
+    var owner = getPropertyOwner(characterIndex);
    
     if (!owner){
        
@@ -793,15 +723,7 @@ function playerLandsOnAProperty(){
     //console.log(`${player} owns ${}.`);
 }
 
-function playerBuysProperty(){
-    var currentProperty = displayCurrentLandingCard();
-    if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
-        updateNewOwner(currentProperty,currentPlayer);
-        return console.log('Property Bought');
-    }
-    return console.log('Not Enough Money');
-}
-
+/********END *********/
 
 
 /*

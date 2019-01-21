@@ -48,6 +48,12 @@ function rentPaidToOwner(currentProperty){
     console.log(currentPlayersBankFunds);
     console.log(propertyOwnersBankFunds);
 }
+
+function passingGo(){
+    var currentPlayersBankFunds = currentPlayersBalance()
+    console.log('Passed Go. Collected 200')
+    return currentPlayersBankFunds+200;
+}
 //*****END*****/
 
 //Display Transactions to DOM
