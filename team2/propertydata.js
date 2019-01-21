@@ -591,7 +591,6 @@ function updateCurrentRentAmount(property){
 //****End ******/
 
 function payRent(){
-    debugger;
     var currentProperty = displayCurrentLandingCard();
     var propertyCost = findPropertyCurrentRent(currentProperty);
     var currentPlayersBankFunds = currentPlayersBalance();
@@ -603,15 +602,13 @@ function payRent(){
     }
 }
 
-function displayGoToJail(){
-    var imageGoToJail = (`<img id="jail_img" src="go_to_jail_display.jpg"/>`);
-    $('#go-to-jail-image').prepend(imageGoToJail);
-}
-
-
-
-
-function displayFreeParking(){
-    var imageFreeParking =  (`<img id="jail_img" src="free_parking_img"/>`);
-    $('#free-parking-image').prepend(imageFreeParking);
-}
+// function displayGoToJail(){
+//     var imageGoToJail = (`<img id="jail_img" src="go_to_jail_display.jpg"/>`);
+//     $('.chance-or-community-cards').prepend(imageGoToJail);
+// }
+//
+//
+// function displayFreeParking(){
+//     var imageFreeParking =  (`<img id="jail_img" src="free_parking_img"/>`);
+//     $('.chance-or-community-cards').prepend(imageFreeParking);
+// }
