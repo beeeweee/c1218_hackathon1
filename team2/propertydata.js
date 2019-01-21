@@ -555,24 +555,22 @@ function updateNewOwner (property, player){
             return propertyData[propertyIndex]['propertyOwner'] = player;
         }
     }
+    console.log('New Owner '+propertyData[propertyIndex]['propertyOwner']+'');
 }
 
 function updateNewOwnerWithRent (property, player){
     var numberOfProperties = propertyData.length;
-    var newProperty = findProperty(property);
-    var currentPlayer = player;
     updateCurrentRentAmount();
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === property){
             return propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['base-rent'];
         }
     }
+    console.log('New Rent is '+propertyData[propertyIndex]['property-current-rent']+'');
 }
 
 function updateCurrentRentAmount(property){
-
     var numberOfProperties = propertyData.length;
-    var currentProperty = findProperty(property);
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === property){
             switch(propertyData[propertyIndex]['property-current-rent']){
@@ -592,6 +590,18 @@ function updateCurrentRentAmount(property){
 }
 //****End ******/
 
+function payRent(){
+    debugger;
+    var currentProperty = displayCurrentLandingCard();
+    var propertyCost = findPropertyCurrentRent(currentProperty);
+    var currentPlayersBankFunds = currentPlayersBalance();
+    if(findPropertyOwner(currentProperty != null)){
+        if(currentPlayersBankFunds >= propertyCost){
+            rentPaidToOwner(currentProperty);
+            return console.log('Rent Paid')
+        } return console.log('not enough money');
+    }
+}
 
 function displayGoToJail(){
     var imageGoToJail = (`<img id="jail_img" src="go_to_jail_display.jpg"/>`);
