@@ -31,7 +31,7 @@ function takePlayerMoney(playerId, amount){
 
 
 function playerTransactionToBank(currentPlayersBank, amount){
-    return currentPlayersBank-amount;
+    return currentPlayersObject[currentPlayer].balance = currentPlayersBank-amount;
 }
 
 

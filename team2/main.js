@@ -804,6 +804,7 @@ function playerLandsOnAProperty(){
     //console.log(`${player} owns ${}.`);
 }
 function playerBuysProperty(){
+    debugger;
     var currentProperty = displayCurrentLandingCard();
     var propertyCost = findPropertyCost(currentProperty);
     var currentPlayersBankFunds = currentPlayersBalance();
