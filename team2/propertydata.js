@@ -593,3 +593,15 @@ function updateCurrentRentAmount(property){
 //****End ******/
 
 
+function displayGoToJail(){
+    var imageGoToJail = (`<img id="jail_img" src="go_to_jail_display.jpg"/>`);
+    $('#go-to-jail-image').prepend(imageGoToJail);
+}
+
+
+
+
+function displayFreeParking(){
+    var imageFreeParking =  (`<img id="jail_img" src="free_parking_img"/>`);
+    $('#free-parking-image').prepend(imageFreeParking);
+}
