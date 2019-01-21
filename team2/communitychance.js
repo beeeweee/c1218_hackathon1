@@ -7,9 +7,11 @@ var chanceCardActions = {
     },
     "chance_3": ()=>{
         goToJail();
+        displayGoToJail();
     },
     "chance_4": ()=>{
         goToJail();
+        displayGoToJail();
     },
     "chance_5": ()=>{
         givePlayerMoney(currentPlayer, 100);
@@ -28,6 +30,7 @@ var chanceCardActions = {
     },
     "chance_10": ()=>{
         goToJail();
+        displayGoToJail();
     },
 }
 
@@ -37,6 +40,7 @@ var communityCardActions = {
     },
     "community_2": ()=>{
         goToJail();
+        displayGoToJail();
     },
     "community_3": ()=>{
         takePlayerMoney(currentPlayer, 5);
@@ -53,6 +57,7 @@ var communityCardActions = {
     "community_7": ()=>{
         
         goToFreeParking();
+        displayFreeParking();
     },
     "community_8": ()=>{
         goToDragonStone();

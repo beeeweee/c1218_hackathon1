@@ -130,7 +130,7 @@ function initializeGame() {
     });
 
 
-    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition} || Total No. of Cards: ${currentPlayersObject[currentPlayer].cards.length}`;
+    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Board Position: ${currentPlayersObject[currentPlayer].playerPosition} || Balance: ${currentPlayersObject[currentPlayer].balance}`;
 
     $('.currentPlayerInfoContainer').text(stats);
     $('.currentPlayerCards').empty();
@@ -236,7 +236,7 @@ $('.remove-chance-card').click(function () {
 
 
 //****start game number of players and board setup*****
-var stats = `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition} || Total No. of Cards: ${currentPlayersObject[currentPlayer].cards.length}`
+var stats = `Current Player: ${currentPlayer.toUpperCase()} || Board Position: ${currentPlayersObject[currentPlayer].playerPosition} || Balance: ${currentPlayersObject[currentPlayer].balance}`
 
 $('.currentPlayerInfoContainer').text(stats);
 
@@ -526,6 +526,8 @@ function playerCurrentPosition() {
         newPosition = newPosition - totlBlockCount - 1;
         passGo();
     }
+
+    $('.player-financial-info').text('');
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
     console.log(newPosition);
      currentPlayerPosition = $('.' + currentPlayer + '.circle');//if element has two classes(first (.) and second (.circle)
@@ -555,7 +557,7 @@ if(newPosition==20){
         togglePlayer()
     }
 
-    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition} || Total No. of Cards: ${currentPlayersObject[currentPlayer].cards.length}`
+    var stats = `Current Player: ${currentPlayer.toUpperCase()} || Board Position: ${currentPlayersObject[currentPlayer].playerPosition} || Balance: ${currentPlayersObject[currentPlayer].balance}`
 
     $('.currentPlayerInfoContainer').text(stats);
     var currentPlayerCards = currentPlayersObject[currentPlayer].cards;
@@ -570,6 +572,14 @@ if(newPosition==20){
     $('.currentPlayerInfoContainer').text(stats);
         playerLandsOnAProperty();
 
+
+    if ($(`.${currentPlayer}`).parent().hasClass('white-space')){
+        $('#property-title').css('color', 'black')
+    }
+    else{
+        $('#property-title').css('color', 'white')
+
+    }
 
     showDeed();
     $(`.indiv-players > * > *`).css('border', '0');
@@ -725,6 +735,7 @@ function showDeed() {
     $('#rent-hotel').text(deedData[8]);
 
    $('#mortgage-cost').text(deedData[9]);
+   $('#property-owner').text(findPropertyOwner(displayCurrentLandingCard()));
    $('.title-name-container').css('background-color', deedData[10]);
 
    $('.property-container').show();
@@ -813,6 +824,7 @@ function passOrBuyAction(){
     } else if($('#passButton').click(function(){$('.property-container').hide()}))
     return console.log("passed");
 }
+
 
 /*
 0 name  
