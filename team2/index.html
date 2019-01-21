@@ -10,9 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
+    <script src="communitychance.js"></script>
     <script src="main.js"></script>
     <script src="propertydata.js"></script>
     <script src="transactions.js"></script>
+
 
 </head>
 
@@ -59,29 +61,29 @@
     <!-- Game-Board Setup !-->
     <div class="board-game-container col-md-8 container">
         <div class="left-column-container">
-            <div class="position-20 large-square chance" pos="20"></div>
+            <div class="position-20 large-square free-parking" pos="20"></div>
             <div class="position-19 small-square" pos="19"></div>
             <div class="position-18 small-square" pos="18"></div>
-            <div class="position-17 small-square" pos="17"></div>
-            <div class="position-16 small-square community" pos="16"></div>
-            <div class="position-15 small-square chance" pos="15"></div>
+            <div class="position-17 small-square community" pos="17"></div>
+            <div class="position-16 small-square" pos="16"></div>
+            <div class="position-15 small-square " pos="15"></div>
             <div class="position-14 small-square" pos="14"></div>
-            <div class="position-13 small-square community" pos="13"></div>
+            <div class="position-13 small-square " pos="13"></div>
             <div class="position-12 small-square" pos="12"></div>
-            <div class="position-11 small-square chance" pos="11"></div>
-            <div class="position-10 large-square" pos="10"></div>
+            <div class="position-11 small-square " pos="11"></div>
+            <div class="position-10 large-square visiting-jail" pos="10"></div>
         </div>
         <div class="middle-section-container">
             <div class="top-row">
-                <div class="position-21 small-square community" pos="21"></div>
+                <div class="position-21 small-square " pos="21"></div>
                 <div class="position-22 small-square chance" pos="22"></div>
                 <div class="position-23 small-square" pos="23"></div>
                 <div class="position-24 small-square" pos="24"></div>
-                <div class="position-25 small-square chance" pos="25"></div>
-                <div class="position-26 small-square community" pos="26"></div>
+                <div class="position-25 small-square" pos="25"></div>
+                <div class="position-26 small-square " pos="26"></div>
                 <div class="position-27 small-square" pos="27"></div>
                 <div class="position-28 small-square" pos="28"></div>
-                <div class="position-29 small-square community" pos="29"></div>
+                <div class="position-29 small-square " pos="29"></div>
             </div>
             <div class="board">
                 <div class="chest-card-deck-spot"></div>
@@ -93,20 +95,20 @@
                 <div class="boardImage"><img src="monopoly_images/board_images/centerGameImage.png" alt=""></div>
             </div>
             <div class="bottom-row">
-                <div class="position-9 small-square community" pos="9"></div>
+                <div class="position-9 small-square" pos="9"></div>
                 <div class="position-8 small-square" pos="8"></div>
-                <div class="position-7 small-square community" pos="7"></div>
+                <div class="position-7 small-square chance" pos="7"></div>
                 <div class="position-6 small-square" pos="6"></div>
-                <div class="position-5 small-square chance" pos="5"></div>
+                <div class="position-5 small-square" pos="5"></div>
                 <div class="position-4 small-square" pos="4"></div>
                 <div class="position-3 small-square" pos="3"></div>
                 <div class="position-2 small-square community" pos="2"></div>
-                <div class="position-1 small-square" pos="1"></div>
+                <div class="position-1 small-square go-start-game" pos="1"></div>
             </div>
     </div>
         <div class="right-column-container">
-            <div class="position-30 large-square" pos="30"></div>
-            <div class="position-31 small-square chance" pos="31"></div>
+            <div class="position-30 large-square go-to-jail" pos="30"></div>
+            <div class="position-31 small-square" pos="31"></div>
             <div class="position-32 small-square" pos="32"></div>
             <div class="position-33 small-square community" pos="33"></div>
             <div class="position-34 small-square" pos="34"></div>
@@ -149,7 +151,7 @@
             <div class="title-name-container">
                 <h5 id="title-deed"><span id="property-title"></span></h5>
             </div>
-            <h6 id="rent-label">Rent $<span id="base-rent"></span></h6>
+            <h6 id="rent-label">Rent $<span id="property-cost"></span></h6>
             <div class="houses-rent">
                 <p id="property-text">With 1 House  $ <span id="rent-1"></span>
                     <br>
@@ -179,12 +181,9 @@
 
         </div>
 
-        <div class="currentPlayerInfoContainer">
-        </div>
-
-        <div class="currentPlayerCards">Current Player Cards</div>
-
-
+        <div class="currentPlayerInfoContainer"></div>
+        <div class="chance-or-community-cards"></div>
+        <div class="currentPlayerCards"></div>
 
         <!--<div class="character-stat-container">-->
             <!--<div class="character-name-container">-->
@@ -234,44 +233,40 @@
             <!--</div>-->
         <!--</div>-->
 
+<!--Character Stats -->
+                    <!-- Modal Character Stats
+            <div class="modal-character-content">
+                <span class="close">&times;</span>
+                <div class="property-container">
+                    <div class="character-stat-container">
+                        <div class="character-name-container">-->
+                            <!-- <h5 id="character-title-name"><span id="character-name"></span></h5>-->
+                        <!-- </div>  -->
+                        <!-- <h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6> -->
+                        <!-- <div class="houses-rent"> -->
+                            <!-- <p id="property-own">Property Currently Owned By and is $ <span id="property-owned-description"></span>
+                              <br></br> -->
+                                <!-- Currently has <span id="houses-owned"></span>
+                                <br>
+                                Currently has <span id="hotels-owned"></span>
+                                <br> -->
+                        <!-- </div>
+                    </div>
+                </div>
+            </div>     
+          --> -->
+             
 
-            <!--&lt;!&ndash;Modal Character Stats&ndash;&gt;-->
-            <!--<div class="modal-character-content">-->
-                <!--<span class="close">&times;</span>-->
-                <!--<div class="property-container">-->
-                    <!--<div class="character-stat-container">-->
-                        <!--<div class="character-name-container">-->
-                            <!--<h5 id="character-title-name"><span id="character-name"></span></h5>-->
-                        <!--</div>-->
-                        <!--<h6 id="amount-has">Amount has<span id="amount-currently-has"></span></h6>-->
-                        <!--<div class="houses-rent">-->
-                            <!--<p id="property-own">Property Currently Owned By and is $ <span id="property-owned-description"></span>-->
-                                <!--<br>-->
-                                <!--Currently has <span id="houses-owned"></span>-->
-                                <!--<br>-->
-                                <!--Currently has <span id="hotels-owned"></span>-->
-                                <!--<br>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>      -->
-            <!---->
-            
-
-            <!--Audio-->
-            <!--&lt;!&ndash;Display OwnerShip / Property Text  for Each Player-&ndash;&gt;-->
-            <!--<h4 id="hasMoney" class="display-ownership-text">"You have enough money to buy property. Do you want to buy the Property?</h4>-->
-            <!--<h4 id="playerPurchase" class="display-ownership-text">You have purchased the property.</h4>-->
-            <!--<h4 id="new-ownership" class="display-ownership-text">You are the owner of this property.</h4>-->
-            <!--<h4 id="currentAmountLeft" class="display-ownership-text">You currently have this much money.</h4>-->
-            <!--<h4 id="doesNotPurchase" class="display-ownership-text">You do not want to buy the property.</h4>-->
-            <!--<h4 id="noMoneyLeft" class="display-ownership-text">You have no money.</h4>-->
-            <!--<h4 id="displayWhatTypeOfProperties" class="display-ownership-text">You owed <span id="houses-hotels-mortgages-owned">     houses</span></h4>-->
-            <!--<h4 id="howMuchPlayerCanGet" class="display-ownership-text">You can get <span id="player-can-get">  .....</span></h4>-->
-            <!--<h4 id="playChoiceOfProperty" class="display-ownership-text">You can sell <span id="player-choice-to-sell">  .....</span></h4>-->
-     <!---->
-            <!--give player choice of which property (house, hotel, mortgage) to sell-->
-            <!--// display message "You chose to sell _____ property"-->
+    <!--Display Community Chance Text-->
+<!-- <div class="give-play-money-container">
+    <p id="first-phrase"> Player <span class="give-playerid-money1"> </span> has
+        <<span class='getPlayersBalance'>${getPlayersBalance(playerId)}</span> golden dragons</p>
+    <p>`Player <span class="give-playerid-money" ${playerId}`</span> was given <span class="amount"></span>
+        golden dragons</p>
+    <p>Player <span class="give-playerid-money">${playerId}</span>has<span class='getPlayersBalance'>${getPlayersBalance(playerId)}</span>
+        golden dragons</p>
+</div>
+             -->
 
 
             <audio id="monopoly-audio" autoplay="autoplay">

@@ -3,13 +3,32 @@ function currentPlayersBalance(){
     var player = currentPlayer;
     return currentPlayersObject[currentPlayer].balance;
 }
+function getPlayersBalance(playerId){
+    var player = currentPlayer;
+    return currentPlayersObject[playerId].balance;
+}
+function givePlayerMoney(playerId, amount){
+    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+    currentPlayersObject[playerId].balance += amount;
+    console.log("player "+playerId+" was given: " + amount+ " golden dragons");
+    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+}
+function takePlayerMoney(playerId, amount){
+    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+    currentPlayersObject[playerId].balance -= amount;
+    console.log("player "+playerId+" money taken: " + amount+ " golden dragons");
+    console.log("player "+playerId+" has: " + getPlayersBalance(playerId)+ " golden dragons");
+    //Handle negative amounts
+}
+
+
 
 function playerTransactionToBank(currentPlayersBank, amount){
     return currentPlayersBank-amount;
 }
 
 function playerBuysProperty(property, player){
-    debugger;
+
     var propertyCost = findPropertyCost(property);
     var currentPlayersBankFunds = currentPlayersBalance();
     if(currentPlayersBankFunds >= propertyCost){
