@@ -1,10 +1,10 @@
 var propData = [
 
-    ["Craster's Keep",60,50,2,10,30,90,160,250,30,"#894d31",1,'player1'],
-    ["The First of The First Men",60,50,4,20,60,180,320,450,30,"#894d31", 3],
-    ["The NightFort",100,50,6,30,90,270,400,550,50,"#abe7fe",6],
-    ["Moles's Town",100,50,6,30,90,270,400,550,50, "#abe7fe",8],
-    ["The Inn at The CrossRoads",120,50,8,40,100,300,450,600,60, "#abe7fe",9],
+    ["Craster's Keep",60,50,2,10,30,90,160,250,30,"#7c533b",1,'player1'],
+    ["The First of The First Men",60,50,4,20,60,180,320,450,30,"57137f", 3],
+    ["The NightFort",100,50,6,30,90,270,400,550,50,"9addf3",6],
+    ["Moles's Town",100,50,6,30,90,270,400,550,50, "9addf3",8],
+    ["The Inn at The CrossRoads",120,50,8,40,100,300,450,600,60, "9addf3",9],
     ["Vaes Dothrak",140,100,10,50,150,450,625,750,70,"#e83a7a",11],
     ["Qarth",140,100,10,50,150,450,625,750,70, "#e83a7a",13],
     ["Pentos",160,100,12,60,180,500,700,900,80, "#e83a7a",14],
@@ -555,24 +555,22 @@ function updateNewOwner (property, player){
             return propertyData[propertyIndex]['propertyOwner'] = player;
         }
     }
+    console.log('New Owner '+propertyData[propertyIndex]['propertyOwner']+'');
 }
 
 function updateNewOwnerWithRent (property, player){
     var numberOfProperties = propertyData.length;
-    var newProperty = findProperty(property);
-    var currentPlayer = player;
     updateCurrentRentAmount();
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === property){
             return propertyData[propertyIndex]['property-current-rent'] = propertyData[propertyIndex]['base-rent'];
         }
     }
+    console.log('New Rent is '+propertyData[propertyIndex]['property-current-rent']+'');
 }
 
 function updateCurrentRentAmount(property){
-
     var numberOfProperties = propertyData.length;
-    var currentProperty = findProperty(property);
     for(var propertyIndex = 0; propertyIndex < numberOfProperties; propertyIndex++){
         if(propertyData[propertyIndex]['property-title'] === property){
             switch(propertyData[propertyIndex]['property-current-rent']){
@@ -592,4 +590,16 @@ function updateCurrentRentAmount(property){
 }
 //****End ******/
 
+function payRent(){
+    debugger;
+    var currentProperty = displayCurrentLandingCard();
+    var propertyCost = findPropertyCurrentRent(currentProperty);
+    var currentPlayersBankFunds = currentPlayersBalance();
+    if(findPropertyOwner(currentProperty != null)){
+        if(currentPlayersBankFunds >= propertyCost){
+            rentPaidToOwner(currentProperty);
+            return console.log('Rent Paid')
+        } return console.log('not enough money');
+    }
+}
 

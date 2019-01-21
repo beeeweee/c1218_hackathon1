@@ -111,8 +111,7 @@ function changePlayerArray(){
 function initializeGame() {
     disperseMoney();
 
-    $(".buy-property").on('click', playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
-    $('.buy-property').click(playerBuysProperty(displayCurrentLandingCard(), currentPlayer));
+    $("#buyButton").on('click', playerBuysProperty);
      populateBoardSpots();
 
      $('.property-container').hide();
@@ -504,7 +503,6 @@ function diceNumbers() {
 
     $('#myDice2').html(`<img src="monopoly_images/figma_photo/dice/dice_${totalValueOfDiceRoll[1]}.PNG">`)
     if (totalValueOfDiceRoll[0] !== totalValueOfDiceRoll[1]) {
-
         return {
             totalMove: totalMove,
             toggle: true,
@@ -526,6 +524,7 @@ function playerCurrentPosition() {
     var newPosition = currentPosition + diceRolls;
     if (newPosition > totlBlockCount) {
         newPosition = newPosition - totlBlockCount - 1;
+        passGo();
     }
     currentPlayersObject[currentPlayer]['playerPosition'] = newPosition;
     console.log(newPosition);
@@ -784,6 +783,7 @@ function playerLandsOnAProperty(){
     } else if(currentPropertyOwner === null){
         return console.log('No one owns. Buy property');
     } else if (currentPropertyOwner !== currentPlayer) {
+        payRent();
         return console.log('Pay Up buddy')
     }
         return console.log('Nothing Property')
@@ -792,17 +792,27 @@ function playerLandsOnAProperty(){
     // prompt player to finish turn
     //console.log(`${player} owns ${}.`);
 }
-
 function playerBuysProperty(){
     var currentProperty = displayCurrentLandingCard();
-    if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
-        updateNewOwner(currentProperty,currentPlayer);
-        return console.log('Property Bought');
+    var propertyCost = findPropertyCost(currentProperty);
+    var currentPlayersBankFunds = currentPlayersBalance();
+    if(findPropertyOwner(currentProperty) === null){
+        if(currentPlayersBankFunds >= propertyCost){
+            updateNewOwner(currentProperty,currentPlayer);
+            playerTransactionToBank(currentPlayersBankFunds, propertyCost);
+            updateNewOwnerWithRent(currentProperty, currentPlayer);
+            return console.log('property bought')
+        }
     }
-    return console.log('Not Enough Money');
+    return console.log(findPropertyOwner(currentProperty));
 }
 
-
+function passOrBuyAction(){
+    if(playerBuysProperty()){
+        return console.log('propert bought');
+    } else if($('#passButton').click(function(){$('.property-container').hide()}))
+    return console.log("passed");
+}
 
 /*
 0 name  
