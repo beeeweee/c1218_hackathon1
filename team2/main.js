@@ -571,6 +571,7 @@ if(newPosition==20){
     $('.currentPlayerInfoContainer').text(stats);
         playerLandsOnAProperty();
 
+
     showDeed();
     $(`.indiv-players > * > *`).css('border', '0');
 
