@@ -140,8 +140,7 @@ function initializeGame() {
 
 
 
-    $('.currentPlayerInfoContainer').text(
-        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+    $('.currentPlayerInfoContainer').text(stats);
 
     //create Dice Roll Effect
 
@@ -546,8 +545,7 @@ function playerCurrentPosition() {
 
     $('.property-container').hide();
 
-    $('.currentPlayerInfoContainer').text(
-        `Current Player: ${currentPlayer.toUpperCase()} || Position on Board: ${currentPlayersObject[currentPlayer].playerPosition}`);
+    $('.currentPlayerInfoContainer').text(stats);
         playerLandsOnAProperty();
 
     showDeed();

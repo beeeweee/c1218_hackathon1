@@ -381,6 +381,8 @@ html {
 .currentPlayerCards{
     height: 50px;
     background: transparent;
+    position: absolute;
+    bottom: 7%;
 }
 
 .currentPlayerCards img {
