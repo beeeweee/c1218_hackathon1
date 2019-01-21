@@ -793,7 +793,6 @@ function playerLandsOnAProperty(){
 }
 
 function playerBuysProperty(){
-
     var currentProperty = displayCurrentLandingCard();
     if(currentPlayersObject.currentPlayer.balance >= findPropertyCost(currentProperty)){
         updateNewOwner(currentProperty,currentPlayer);
@@ -802,9 +801,6 @@ function playerBuysProperty(){
     return console.log('Not Enough Money');
 }
 
-
-
-/********END *********/
 
 
 /*
